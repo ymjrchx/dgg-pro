@@ -1,0 +1,141 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s;
+  -webkit-transition: opacity .3s;
+  -moz-transition: opacity .3s;
+  -ms-transition: opacity .3s;
+  -o-transition: opacity .3s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
+
+.junFadeIn {
+  opacity: 1;
+  animation: opacity .8s forwards;
+  -moz-animation: opacity .8s forwards;
+  -webkit-animation: opacity .8s forwards;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* //动态效果 */
+.fadeIn-enter-active,
+.fadeIn-leave-active {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.fadeIn-enter,
+.fadeIn-leave-to {
+  opacity: 0;
+}
+
+/* //左右摇摆 */
+.fade_swing:hover {
+  -webkit-animation: l_r 2s infinite linear;
+  animation: l_r 2s infinite linear;
+}
+
+@-webkit-keyframes l_r {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+}
+
+@keyframes l_r {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+}
+
+
+.opti {
+  animation-name: opacit;
+  -webkit-animation-name: opacit;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes opacit {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacit {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}

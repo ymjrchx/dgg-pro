@@ -1,0 +1,270 @@
+/*#loginModal .modal-dialog{
+    width: 400px;
+    margin: 30px auto;
+}*/
+
+#noteEditModal .modal-dialog{
+    width: 500px;
+    margin: 30px auto;
+}
+
+#loginModalBody{
+    width: 100%;
+    height: 450px;
+}
+.divisionLine{
+    border-top: 1px solid #e5e5e5;
+    margin: 12px 0px;
+}
+.fixed-logo{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    box-shadow: 0px -2px 8px #dbdbdb;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.fixed-logo div{
+    margin-left: 35px;
+}
+
+.logo-img{
+    width: 100%;
+    float: left;
+}
+.logo-title{
+    color: #333333;
+    font-size: 12px;
+}
+.logo-content{
+    color: #666666;
+    font-size: 10px;
+}
+
+.weixin{
+    color: #ffffff;
+    background: #3CB033;
+    position: absolute;
+    right: 80px;
+    top: 15px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+.weixin img{
+    width: 20px;
+    padding-right: 5px
+}
+
+#logo-space{
+    height: 80px;
+}
+
+#radar-search-list a{
+    z-index: 999;
+}
+
+@media screen and (min-device-width: 375px) and (max-device-width: 667px){
+    /* style */
+    /*.fixed-logo div{
+        margin-left: 55px;
+    }
+
+    .logo-img{
+        width: 50px;
+        float: left;
+    }
+    .logo-title{
+        color: #333333;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .logo-content{
+        color: #666666;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .guanzhu{
+        color: #ffffff;
+        background: #1094f6;
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        text-decoration: none;
+        box-sizing: border-box;
+        font-size: 15px;
+        height: 30px;
+    }*/
+
+    .weixin{
+        color: #ffffff;
+        background: #3CB033;
+        position: absolute;
+        right: 100px;
+        top: 20px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        text-decoration: none;
+        box-sizing: border-box;
+        font-size: 15px;
+        height: 30px;
+        line-height: 20px;
+    }
+
+    .weixin img{
+        width: 25px;
+        padding-right: 5px;
+        vertical-align: bottom;
+        margin-bottom: 2px;
+    }
+
+}
+
+/*底部广告*/
+@keyframes popleft {0%   {margin-left: -100%;} 100% {margin-left: 0px;} } 
+@-moz-keyframes popleft {0%   {margin-left: -100%;} 100% {margin-left: 0px;} } 
+@-webkit-keyframes popleft {0%   {margin-left: -100%;} 100% {margin-left: 0px;} } 
+
+@keyframes popRight {0%   {margin-left: 0px;} 100% {margin-left: -100%;} } 
+@-moz-keyframes popRight {0%   {margin-left: 0px;} 100% {margin-left: -100%;} } 
+@-webkit-keyframes popRight {0%   {margin-left: 0px;} 100% {margin-left: -100%;} }
+                    
+
+.bottomSuspend{ 
+    width: 100%; 
+    position: fixed;
+    bottom: 0px;
+    z-index: 10;
+    /* background:url("../images/app11.0.8.png") center bottom no-repeat; */
+    height: 136px;
+} 
+
+.bottomSuspend .attendDownload{
+    cursor: pointer;
+    width: 860px;
+    position: absolute;
+    bottom: 0px;
+    height: 90px;
+    left: 50%;
+    margin-left: -520px;
+}
+
+
+.acction-left{
+    z-index:10000;
+    margin-left: 0px !important; animation: popleft 0.5s; -moz-animation: popleft 0.5s; -webkit-animation: popleft 0.5s; 
+} 
+.acction-right{
+    margin-left: -100% !important; animation: popRight 0.5s; -moz-animation: popRight 0.5s; -webkit-animation: popRight 0.5s; 
+} 
+
+.bottomSuspend .closeSuspend{
+    position: absolute; top: 70px; right: 28px;
+    width: 40px;
+    height: 40px;
+    /* background: url("../images/app10.0.2_close.png") no-repeat center center; */
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.bottomSuspend .closeSuspend:hover{ 
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+.openSuspend{
+    z-index: 10;
+    position: fixed; bottom: 35px; left: 0px;
+    width: 56px;
+    height: 50px; 
+    /* background: url("../fapiao/app_down@2x.png") no-repeat center center; */
+    background-size: 56px 50px;
+    display: none; 
+}
+
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+    .bottomSuspend {
+        display: none;
+    }
+}
+
+@media (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio:2) {
+    .bottomSuspend{ 
+        /* background:url("../images/app11.0.4@2x.png") center bottom no-repeat; */
+        background-size: 1920px 136px;
+    } 
+}
+.bg-dark {
+    background-color: #222733;
+    color: #7a87a7;
+}
+.m-b-lg {
+    margin: 10px 0;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.footer {
+    min-height: 50px;
+    padding: 0 15px;
+}
+.bg-dark {
+    background-color: #222733;
+    color: #7a87a7;
+}
+ .list-unstyled li a {
+    font-size: 14px;
+    color: #7281ad !important;
+}
+ .list-unstyled li a {
+    font-size: 14px;
+    color: #7281ad;
+}
+.list-unstyled li a:hover{
+    color: #fff;    
+}
+
+#footer .bg-dark.dk, .bg-dark .dk {
+	/*background-color: #3b4865;*/
+    background: #2d3237;
+    min-width: 1250px;
+}
+
+.bg-dark a, .bg-dark .text-muted {
+	font-size: 14px;
+    color: #7584ac !important;
+}
+
+.bg-dark a:hover{color:white !important;}
+
+#footer h4{
+	font-size: 16px;
+	color:#879acd;
+}
+
+#footer .list-unstyled li,.bg-dark .list-unstyled li a{
+	font-size: 14px;
+	color:#7281ad !important;
+}
+#footer .list-unstyled li a:hover{color:white !important;}
+
+#footer .m_frilink li a{margin-right:15px;display: inline-block;}
+
+#footer .m_codeimg div{position:relative;}
+#footer .m_codeimg div span{display: block;position: absolute;top:120px;}
+#footer .m_codeimg div span.ma_wx{left:48px;}
+#footer .m_codeimg div span.ma_app{left:41px;}
+

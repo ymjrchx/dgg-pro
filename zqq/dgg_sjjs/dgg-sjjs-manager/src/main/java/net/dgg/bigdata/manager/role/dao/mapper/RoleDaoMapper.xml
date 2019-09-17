@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.bigdata.manager.role.dao.RoleDao">
+    <!--查询角色是否存在-->
+   <!-- <select id="existRole" resultType="java.lang.Integer">
+        select count(*) from role
+        where role_name=#{roleName}
+        <if test="roleId!=null and roleId!=''">
+            and role_id != #{roleId}
+        </if>
+    </select>-->
+    <!--添加菜单-->
+    <!--<insert id="addRole" parameterType="net.dgg.bigdata.manager.role.entity.Role">
+        INSERT INTO role(
+        role_id,
+        role_name,
+        creator_id,
+        createtime,
+        updator_id,
+        updatetime,
+        remark,
+        enable
+        ) VALUES (
+        #{roleId},
+        #{roleName},
+        #{creatorId},
+        #{createtime},
+        #{updatorId},
+        #{updatetime},
+        #{remark},
+        #{enable}
+        )
+    </insert>-->
+    <!--修改角色信息-->
+    <!--<update id="updateRole" parameterType="net.dgg.bigdata.manager.role.entity.Role">
+        UPDATE role SET
+        role_name=#{roleName},
+        remark=#{remark},
+        updator_id=#{updatorId},
+        updatetime=#{updatetime}
+        where role_id=#{roleId}
+    </update>-->
+    <!--修改角色禁用状态-->
+<!--    <update id="updateRoleEnable">
+        UPDATE role SET
+        enable=#{enable}
+        where role_id=#{roleId};
+    </update>-->
+
+    <sql id="role_mapper">
+        role_id as roleId ,
+        role_name as roleName,
+        creator_id as creatorId,
+        createtime as createtime,
+        updator_id as updatorId,
+        updatetime as updatetime,
+        remark ,
+        enable
+    </sql>
+    <!--查询所有的角色信息-->
+<!--    <select id="queryRoles" resultType="net.dgg.bigdata.manager.role.entity.Role">
+        select <include refid="role_mapper" /> from role
+        where 1=1
+        <if test="roleName!=null and roleName!=''">
+            and role_name LIKE CONCAT('%',CONCAT(#{roleName},'%'))
+        </if>
+    </select>-->
+    <!--根据id查询角色-->
+<!--    <select id="queryRoleById" resultType="net.dgg.bigdata.manager.role.entity.Role">
+        select <include refid="role_mapper" /> from role
+        where role_id=#{roleId}
+    </select>-->
+    <!--根据id查询角色，并用","连接-->
+    <!--<select id="findOwnedRoleNameByUserId" resultType="String" parameterType="long">
+        SELECT GROUP_CONCAT(role_name) FROM user_role a LEFT JOIN role b ON a.role_id=b.role_id WHERE 1=1 AND a.user_id=#{userId}
+    </select>-->
+
+    <!--<select id="existsMenuPermissionUser" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            user_info a
+        JOIN user_role b
+        JOIN role_menu_permission c
+        JOIN menu_main d ON a.user_id = b.user_id
+        AND b.role_id = c.role_id
+        AND c.menu_id = d.menu_id
+        WHERE
+            a.user_id = #{userId}
+        AND d.menu_url = #{url}
+    </select>-->
+    <!--根据角色名称查询角色ID-->
+    <!--<select id="findIdByRoleName" resultType="long" parameterType="String">
+        SELECT a.role_id FROM role a WHERE 1=1 AND a.role_name=#{roleName}
+    </select>-->
+    <!--根据RoleID查询角色名称-->
+    <!--<select id="findRoleNameByRoleId" resultType="String" parameterType="long">
+        SELECT role_name FROM role WHERE role_id=#{roleId}
+    </select>-->
+    <!--查询所有角色名称-->
+    <!--<select id="findAllRoleNames" resultType="String" parameterType="long">
+        SELECT role_name FROM role WHERE 1=1 AND role_name NOT IN(SELECT b.role_name FROM user_role a LEFT JOIN role b ON a.role_id=b.role_id WHERE a.user_id=#{userId})
+    </select>-->
+    <!--向数据库插入角色信息-->
+    <!--<insert id="insertUserRole" parameterType="net.dgg.bigdata.manager.role.entity.UserRoleDTO">
+        INSERT INTO user_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            user_id,
+            role_id,
+            creator_id,
+            createtime
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{userId},
+            #{roleId},
+            #{creatorId},
+            #{createtime}
+        </trim>
+    </insert>-->
+
+    <!--根据用户ID和角色名称删除相应角色-->
+   <!-- <delete id="delRoleWithUserNameAndRoleId" parameterType="Map">
+        DELETE FROM user_role WHERE user_id=#{map.userId} AND role_id IN (SELECT role_id FROM role WHERE role_id=#{map.roleId})
+    </delete>-->
+
+    <!--根据用户ID删除所有角色-->
+    <!--<delete id="delAllRoleByUserId" parameterType="long">
+        DELETE FROM user_role WHERE user_id=#{userId}
+    </delete>-->
+
+    <!--根据用户ID和角色名称判断用户是否具备相应角色-->
+  <!--  <select id="findExistRoleByUserIdAndRoleId" resultType="Integer">
+        SELECT COUNT(*) FROM user_role a LEFT JOIN role b ON a.role_id=b.role_id WHERE 1=1 AND a.user_id=#{map.userId} AND b.role_id=#{map.roleId}
+    </select>-->
+
+    <!--根据用户ID查询UserRoleDTO实体-->
+    <!--<select id="findUserRoleDTOByUserId" parameterType="long" resultType="net.dgg.bigdata.manager.role.entity.UserRoleDTO" >
+        SELECT id AS id, user_id AS userId, role_id AS roleId, creator_id AS creatorId, createtime AS createtime FROM user_role WHERE user_id=#{userId}
+    </select>-->
+
+    <!--根据用户ID查询所有Role实体-->
+    <!--<select id="findAllRoleWithoutExist" parameterType="long" resultType="net.dgg.bigdata.manager.role.entity.Role">
+        SELECT role_id AS roleId, role_name AS roleName, creator_id AS creatorId, createtime AS createtime, updator_id AS updatorId, updatetime AS updatetime, remark AS remark, enable AS enable FROM role WHERE role_id NOT IN(SELECT role_id FROM user_role WHERE user_id=#{userId})
+    </select>-->
+
+    <!--查询所有角色-->
+    <!--<select id="findAllRoles" resultType="net.dgg.bigdata.manager.role.entity.Role">
+        SELECT role_id AS roleId, role_name AS roleName, creator_id AS creatorId, createtime AS createtime, updator_id AS updatorId, updatetime AS updatetime, remark AS remark, enable AS enable FROM role
+    </select>-->
+</mapper>

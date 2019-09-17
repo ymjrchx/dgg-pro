@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.predict.PredictHelperDao">
+
+    <select id="queryByIndustryId" parameterType="String" resultType="java.util.Map">
+        SELECT
+            c.id     AS `id`,
+            c.number AS `number`,
+            c.name   AS `name`
+        FROM
+            zqq_class_first c
+        WHERE
+            c.number IN
+            (
+                SELECT
+                    t.first_cate_no
+                FROM
+                    zqq_industry_categorys_third t,
+                    db_zqq.zqq_industry i
+                WHERE
+                    t.industry_id = i.id
+                AND (
+                        i.id = #{0}
+                    OR  t.industry_id IN
+                        (
+                            SELECT
+                                zi.id
+                            FROM
+                                zqq_industry zi
+                            WHERE
+                                zi.parent_id = #{0})
+                    OR  t.industry_id IN
+                        (
+                            SELECT
+                                zii.id
+                            FROM
+                                zqq_industry zii
+                            WHERE
+                                zii.parent_id IN
+                                (
+                                    SELECT
+                                        ziii.id
+                                    FROM
+                                        zqq_industry ziii
+                                    WHERE
+                                        ziii.parent_id = #{0})) ) )
+    </select>
+
+    <select id="queryAllIndustry" resultType="java.util.Map">
+        select z.id as `id`,z.name as `name` from zqq_industry z where z.level = 1
+    </select>
+
+</mapper>

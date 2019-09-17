@@ -1,0 +1,286 @@
+[
+  {
+    "task": "copy",
+    "from": "_id",
+    "to": "companyId"
+  },
+  {
+    "task": "copy",
+    "from": "companyName",
+    "to": "commercial.companyName",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.companyBrief",
+    "to": "commercial.companyBrief",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.businessState",
+    "to": "commercial.businessState",
+    "apply": "net.dgg.yk.platform.backend.mapping.BusinessState"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.businessScope",
+    "to": "commercial.businessScope",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registerAddress",
+    "to": "commercial.registerAddress",
+    "defaultValue": "-"
+  },
+  {
+    "task": "process",
+    "to": "commercial.companyTel",
+    "apply": "net.dgg.yk.platform.backend.mapping.CompanyTelProcess"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registerAddress",
+    "to": "commercial.province",
+    "apply": "net.dgg.yk.platform.backend.mapping.AreaConvert",
+    "defaultValue": "-"
+  },
+  {
+    "task": "process",
+    "to": "commercial.address",
+    "apply": "net.dgg.yk.platform.backend.mapping.AddressCompanyProcess"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.industry",
+    "to": "commercial.industry",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registerMoney",
+    "to": "commercial.registerMoney",
+    "apply": "net.dgg.yk.platform.backend.mapping.CNYWan"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registerTime",
+    "to": "commercial.registerTime",
+    "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.companyType",
+    "to": "commercial.companyType",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.creditCode",
+    "to": "commercial.creditCode",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registerNum",
+    "to": "commercial.registerNum",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.OrganizationCode",
+    "to": "commercial.organizationCode",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.legalMan",
+    "to": "commercial.representMan",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.businessTimeout",
+    "to": "commercial.businessTimeout",
+    "apply": "net.dgg.yk.platform.backend.mapping.DateConvertString"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.registOrgan",
+    "to": "commercial.registOrgan",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.approveDate",
+    "to": "commercial.approveDate"
+  },
+  {
+    "task": "process",
+    "from": "docs.businessStatus.productInfo",
+    "to": "commercial.product",
+    "apply": "net.dgg.yk.platform.backend.mapping.ProductProcess"
+  },
+  {
+    "task": "copy",
+    "from": "docs.background.baseInfo.manNum",
+    "to": "commercial.manNum",
+    "apply": "net.dgg.yk.platform.backend.mapping.LongNumberConverter"
+  },
+  {
+    "task": "list2list",
+    "from": "docs.background.holderInfo",
+    "to": "commercial.shareholders",
+    "tasks": [
+      {
+        "task": "copy",
+        "from": "hiName",
+        "to": "hiName",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "hiContribu",
+        "to": "hiContribu",
+        "apply": "net.dgg.yk.platform.backend.mapping.CNYWan"
+      },
+      {
+        "task": "copy",
+        "from": "hiTime",
+        "to": "hiTime",
+        "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+      },
+      {
+        "task": "copy",
+        "from": "hiType",
+        "to": "hiType",
+        "defaultValue": "-"
+      }
+    ]
+  },
+  {
+    "task": "list2list",
+    "from": "docs.background.staffCount",
+    "to": "commercial.mainPeoples",
+    "tasks": [
+      {
+        "task": "copy",
+        "from": "scName",
+        "to": "scName",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "scPosition",
+        "to": "scPosition",
+        "defaultValue": "-"
+      }
+    ]
+  },
+  {
+    "task": "list2list",
+    "from": "docs.background.changeInfo",
+    "to": "commercial.commercialChanges",
+    "tasks": [
+      {
+        "task": "copy",
+        "from": "changeTime",
+        "to": "changeTime",
+        "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+      },
+      {
+        "task": "copy",
+        "from": "changeItem",
+        "to": "changeItem",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "changeBefore",
+        "to": "changeBefore",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "changeAfter",
+        "to": "changeAfter",
+        "defaultValue": "-"
+      }
+    ]
+  },
+  {
+    "task": "list2list",
+    "from": "docs.businessStatus.recruitInfo",
+    "to": "recruitment.hirings",
+    "tasks": [
+      {
+        "task": "copy",
+        "from": "brJobTitle",
+        "to": "brJobTitle",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "brSource",
+        "to": "brSource",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "brCity",
+        "to": "brCity",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "brSalary",
+        "to": "brSalary",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "brDescribe",
+        "to": "brDescribe",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "brType",
+        "to": "brType",
+        "defaultValue": "-"
+      }
+    ]
+  },
+  {
+    "task": "list2list",
+    "from": "docs.knowledgeProperty.webCount",
+    "to": "webSite.webSiteRecords",
+    "tasks": [
+      {
+        "task": "copy",
+        "from": "wHomeUrl",
+        "to": "wHomeUrl",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "wName",
+        "to": "wName",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "wPermitNum",
+        "to": "wPermitNum",
+        "defaultValue": "-"
+      },
+      {
+        "task": "copy",
+        "from": "wCheckTime",
+        "to": "wCheckTime",
+        "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+      }
+    ]
+  }
+]

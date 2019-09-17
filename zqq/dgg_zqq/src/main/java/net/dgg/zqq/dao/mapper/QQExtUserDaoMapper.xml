@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.qq.QQExtUserDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.qq.QQExtUser">
+     INSERT INTO sys_user_qq
+    (`id`,`user_id`,`open_id`,`ret`,`is_lost`,`gender`,`is_yellow_vip`,`city`,`year`,`level`,`figureurl2`,`figureurl1`,`is_yellow_year_vip`,`province`,`constellation`,`figureurl`,`nickname`,`yellow_vip_level`,`figureurl_qq1`,`vip`,`figureurl_qq2`,`create_time`,`creater_id`,`creater_org_id`,`creater_name`,`update_time`,`updater_id`,`updater_name`,`updater_org_id`)
+     VALUES 
+    (#{id},#{userId},#{openId},#{ret},#{isLost},#{gender},#{isYellowVip},#{city},#{year},#{level},#{figureurl2},#{figureurl1},#{isYellowYearVip},#{province},#{constellation},#{figureurl},#{nickname},#{yellowVipLevel},#{figureurlQq1},#{vip},#{figureurlQq2},#{createTime},#{createrId},#{createrOrgId},#{createrName},#{updateTime},#{updaterId},#{updaterName},#{updaterOrgId})
+</insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.qq.QQExtUser">
+     UPDATE sys_user_qq SET 
+    `user_id` = #{userId},
+    `open_id` = #{openId},
+    `ret` = #{ret},
+    `is_lost` = #{isLost},
+    `gender` = #{gender},
+    `is_yellow_vip` = #{isYellowVip},
+    `city` = #{city},
+    `year` = #{year},
+    `level` = #{level},
+    `figureurl2` = #{figureurl2},
+    `figureurl1` = #{figureurl1},
+    `is_yellow_year_vip` = #{isYellowYearVip},
+    `province` = #{province},
+    `constellation` = #{constellation},
+    `figureurl` = #{figureurl},
+    `nickname` = #{nickname},
+    `yellow_vip_level` = #{yellowVipLevel},
+    `figureurl_qq1` = #{figureurlQq1},
+    `vip` = #{vip},
+    `figureurl_qq2` = #{figureurlQq2},
+    `create_time` = #{createTime},
+    `creater_id` = #{createrId},
+    `creater_org_id` = #{createrOrgId},
+    `creater_name` = #{createrName},
+    `update_time` = #{updateTime},
+    `updater_id` = #{updaterId},
+    `updater_name` = #{updaterName},
+    `updater_org_id` = #{updaterOrgId}
+     WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.qq.QQExtUser">
+     SELECT 
+    t.`id` as `id`,
+    t.`user_id` as `userId`,
+    t.`open_id` as `openId`,
+    t.`ret` as `ret`,
+    t.`is_lost` as `isLost`,
+    t.`gender` as `gender`,
+    t.`is_yellow_vip` as `isYellowVip`,
+    t.`city` as `city`,
+    t.`year` as `year`,
+    t.`level` as `level`,
+    t.`figureurl2` as `figureurl2`,
+    t.`figureurl1` as `figureurl1`,
+    t.`is_yellow_year_vip` as `isYellowYearVip`,
+    t.`province` as `province`,
+    t.`constellation` as `constellation`,
+    t.`figureurl` as `figureurl`,
+    t.`nickname` as `nickname`,
+    t.`yellow_vip_level` as `yellowVipLevel`,
+    t.`figureurl_qq1` as `figureurlQq1`,
+    t.`vip` as `vip`,
+    t.`figureurl_qq2` as `figureurlQq2`,
+    t.`create_time` as `createTime`,
+    t.`creater_id` as `createrId`,
+    t.`creater_org_id` as `createrOrgId`,
+    t.`creater_name` as `createrName`,
+    t.`update_time` as `updateTime`,
+    t.`updater_id` as `updaterId`,
+    t.`updater_name` as `updaterName`,
+    t.`updater_org_id` as `updaterOrgId`
+
+    FROM sys_user_qq t
+
+    WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.qq.QQExtUser">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`open_id` as `openId`,
+        t.`ret` as `ret`,
+        t.`is_lost` as `isLost`,
+        t.`gender` as `gender`,
+        t.`is_yellow_vip` as `isYellowVip`,
+        t.`city` as `city`,
+        t.`year` as `year`,
+        t.`level` as `level`,
+        t.`figureurl2` as `figureurl2`,
+        t.`figureurl1` as `figureurl1`,
+        t.`is_yellow_year_vip` as `isYellowYearVip`,
+        t.`province` as `province`,
+        t.`constellation` as `constellation`,
+        t.`figureurl` as `figureurl`,
+        t.`nickname` as `nickname`,
+        t.`yellow_vip_level` as `yellowVipLevel`,
+        t.`figureurl_qq1` as `figureurlQq1`,
+        t.`vip` as `vip`,
+        t.`figureurl_qq2` as `figureurlQq2`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM sys_user_qq t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`open_id` as `openId`,
+        t.`ret` as `ret`,
+        t.`is_lost` as `isLost`,
+        t.`gender` as `gender`,
+        t.`is_yellow_vip` as `isYellowVip`,
+        t.`city` as `city`,
+        t.`year` as `year`,
+        t.`level` as `level`,
+        t.`figureurl2` as `figureurl2`,
+        t.`figureurl1` as `figureurl1`,
+        t.`is_yellow_year_vip` as `isYellowYearVip`,
+        t.`province` as `province`,
+        t.`constellation` as `constellation`,
+        t.`figureurl` as `figureurl`,
+        t.`nickname` as `nickname`,
+        t.`yellow_vip_level` as `yellowVipLevel`,
+        t.`figureurl_qq1` as `figureurlQq1`,
+        t.`vip` as `vip`,
+        t.`figureurl_qq2` as `figureurlQq2`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM sys_user_qq t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM sys_user_qq t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM sys_user_qq  WHERE  `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=userId and ''!=userId">
+            AND t.`user_id` = #{userId}
+        </if>
+        <if test="null!=openId and ''!=openId">
+            AND t.`open_id` = #{openId}
+        </if>
+        <if test="null!=ret and ''!=ret">
+            AND t.`ret` = #{ret}
+        </if>
+        <if test="null!=isLost and ''!=isLost">
+            AND t.`is_lost` = #{isLost}
+        </if>
+        <if test="null!=gender and ''!=gender">
+            AND t.`gender` = #{gender}
+        </if>
+        <if test="null!=isYellowVip and ''!=isYellowVip">
+            AND t.`is_yellow_vip` = #{isYellowVip}
+        </if>
+        <if test="null!=city and ''!=city">
+            AND t.`city` = #{city}
+        </if>
+        <if test="null!=year and ''!=year">
+            AND t.`year` = #{year}
+        </if>
+        <if test="null!=level and ''!=level">
+            AND t.`level` = #{level}
+        </if>
+        <if test="null!=figureurl2 and ''!=figureurl2">
+            AND t.`figureurl2` = #{figureurl2}
+        </if>
+        <if test="null!=figureurl1 and ''!=figureurl1">
+            AND t.`figureurl1` = #{figureurl1}
+        </if>
+        <if test="null!=isYellowYearVip and ''!=isYellowYearVip">
+            AND t.`is_yellow_year_vip` = #{isYellowYearVip}
+        </if>
+        <if test="null!=province and ''!=province">
+            AND t.`province` = #{province}
+        </if>
+        <if test="null!=constellation and ''!=constellation">
+            AND t.`constellation` = #{constellation}
+        </if>
+        <if test="null!=figureurl and ''!=figureurl">
+            AND t.`figureurl` = #{figureurl}
+        </if>
+        <if test="null!=nickname and ''!=nickname">
+            AND t.`nickname` = #{nickname}
+        </if>
+        <if test="null!=yellowVipLevel and ''!=yellowVipLevel">
+            AND t.`yellow_vip_level` = #{yellowVipLevel}
+        </if>
+        <if test="null!=figureurlQq1 and ''!=figureurlQq1">
+            AND t.`figureurl_qq1` = #{figureurlQq1}
+        </if>
+        <if test="null!=vip and ''!=vip">
+            AND t.`vip` = #{vip}
+        </if>
+        <if test="null!=figureurlQq2 and ''!=figureurlQq2">
+            AND t.`figureurl_qq2` = #{figureurlQq2}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

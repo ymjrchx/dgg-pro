@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.trademarkConsult.TrademarkConsultExtDao">
+
+    <select id="query" resultType="net.dgg.zqq.entity.trademarkConsult.TrademarkConsult">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`trademarker_name` as `trademarkerName`,
+        t.`trademarker_type` as `trademarkerType`,
+        t.`user_name` as `userName`,
+        t.`phone` as `phone`,
+        t.`email` as `email`,
+        t.`intentional_price` as `intentionalPrice`,
+        t.`requirement_desc` as `requirementDesc`,
+        t.`application_num` as `applicationNum`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_trademark_consult t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`trademarker_name` as `trademarkerName`,
+        t.`trademarker_type` as `trademarkerType`,
+        t.`user_name` as `userName`,
+        t.`phone` as `phone`,
+        t.`email` as `email`,
+        t.`intentional_price` as `intentionalPrice`,
+        t.`requirement_desc` as `requirementDesc`,
+        t.`application_num` as `applicationNum`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_trademark_consult t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_trademark_consult t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=userId and ''!=userId">
+            AND t.`user_id` = #{userId}
+        </if>
+        <if test="null!=trademarkerName and ''!=trademarkerName">
+            AND t.`trademarker_name` LIKE concat('%',#{trademarkerName},'%')
+        </if>
+        <if test="null!=trademarkerType and ''!=trademarkerType">
+            AND t.`trademarker_type` LIKE concat('%',#{trademarkerType},'%')
+        </if>
+        <if test="null!=userName and ''!=userName">
+            AND t.`user_name` LIKE concat('%',#{userName},'%')
+        </if>
+        <if test="null!=phone and ''!=phone">
+            AND t.`phone` = #{phone}
+        </if>
+        <if test="null!=email and ''!=email">
+            AND t.`email` = #{email}
+        </if>
+        <if test="null!=intentionalPrice and ''!=intentionalPrice">
+            AND t.`intentional_price` = #{intentionalPrice}
+        </if>
+        <if test="null!=requirementDesc and ''!=requirementDesc">
+            AND t.`requirement_desc` LIKE concat('%',#{requirementDesc},'%')
+        </if>
+        <if test="null!=applicationNum and ''!=applicationNum">
+            AND t.`application_num` = #{applicationNum}
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

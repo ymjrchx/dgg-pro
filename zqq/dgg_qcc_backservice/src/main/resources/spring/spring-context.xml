@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+ ">
+    <!--全局spring包扫描基础包-->
+    <context:component-scan base-package="net.dgg.dqc"/>
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <import resource="classpath:spring/spring-dggcloud.xml"/>
+    <import resource="classpath:spring/spring-mybatis.xml"/>
+    <import resource="classpath:spring/spring-fastdfs.xml"/>
+
+</beans>

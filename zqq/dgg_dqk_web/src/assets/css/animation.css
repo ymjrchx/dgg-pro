@@ -1,0 +1,223 @@
+
+.antion {
+  transition: all .3s cubic-bezier(.215, .61, .355, 1);
+  -webkit-transition: all .3s cubic-bezier(.215, .61, .355, 1);
+  -moz-transition: all .3s cubic-bezier(.215, .61, .355, 1);
+  -ms-transition: all .3s cubic-bezier(.215, .61, .355, 1);
+  -o-transition: all .3s cubic-bezier(.215, .61, .355, 1);
+}
+
+
+.junFadeIn {
+  opacity: 0;
+  animation: opacity .5s forwards;
+  -moz-animation: opacity .5s forwards;
+  -webkit-animation: opacity .5s forwards;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/* //页面渐入效果 */
+.slide-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.slide-fade-enter-active {
+  -webkit-transition: all 1.2s ease;
+  transition: all 1.2s ease;
+}
+
+.slide-fade-leave-active {
+  -webkit-transition: all 0.1s cubic-bezier(2, 0.5, 0.8, 1);
+  transition: all 0.1s cubic-bezier(2, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  left: 0;
+  right: 0;
+  -webkit-transform: translateX(50px);
+          transform: translateX(50px);
+  opacity: 0;
+}
+
+/* //动态效果 */
+.fadeIn-enter-active,
+.fadeIn-leave-active {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.fadeIn-enter,
+.fadeIn-leave-to {
+  opacity: 0;
+}
+/* //转圈 */
+.loading {
+          display: inline-block;
+          -webkit-animation: loading .5s linear infinite;
+          animation: loading .5s linear infinite;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/* //阴影 */
+.shadow{
+  -webkit-box-shadow: 0 2px 7px 0 rgba(50, 99, 137, .23);
+  box-shadow: 0 2px 7px 0 rgba(50, 99, 137, .23);
+
+}
+
+/* //左右摇摆 */
+.fade_swing:hover {
+  -webkit-animation: l_r 2s infinite linear;
+  animation: l_r 2s infinite linear;
+}
+
+@-webkit-keyframes l_r {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+}
+
+@keyframes l_r {
+
+  0%,
+  100% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  25% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg)
+  }
+
+  75% {
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+  }
+}
+
+
+.opti {
+  animation-name: opacit;
+  -webkit-animation-name: opacit;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes opacit {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacit {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* //icon图标引用 */
+.iconfont {
+  font-size: 16px;
+  font-family: 'iconfont'
+}
+
+@font-face {
+  font-family: 'iconfont';
+  /* project id 958064 */
+  src: url('//at.alicdn.com/t/font_958064_blps27wfbg.eot');
+  src: url('//at.alicdn.com/t/font_958064_blps27wfbg.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_958064_blps27wfbg.woff') format('woff'),
+    url('//at.alicdn.com/t/font_958064_blps27wfbg.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_958064_blps27wfbg.svg#iconfont') format('svg');
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.tmd.foundation.platform.user.dao.OrgClosureDAO">
+	<!--通过组织机构ID查找Distance-->
+	<select id="findDistanceByOrgId" parameterType="long" resultType="Integer">
+		SELECT distance FROM org_closure WHERE organization_id=#{orgId}
+	</select>
+
+	<!--通过组织机构ID查找父ID-->
+	<select id="findAncestorIdByOrgId" parameterType="long" resultType="Long">
+        SELECT ancestor_id FROM org_closure WHERE organization_id=#{orgId}
+    </select>
+
+	<!--通过祖先ID查找组织机构ID-->
+	<select id="findOrgIdByAncestorId" parameterType="long" resultType="Long">
+		SELECT organization_id FROM org_closure WHERE ancestor_id=#{ancestorId}
+	</select>
+
+	<!--通过祖先ID统计子集数量-->
+	<select id="findTotalByAncestorId" parameterType="long" resultType="long">
+		SELECT COUNT(*) FROM org_closure a ,org_main b WHERE ancestor_id=#{ancestorId} AND distance=1 AND 1=1 AND a.organization_id=b.org_id
+	</select>
+</mapper>

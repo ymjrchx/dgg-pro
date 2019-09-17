@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.gspt.dqc.dao.businessPushRecord.BusinessPushRecordDao">
+<insert id="save" parameterType="net.dgg.gspt.dqc.entity.businessPushRecord.BusinessPushRecord" >
+     INSERT INTO gspt_dqc_business_push_record
+    (`id`,`name`,`phone`,`area`,`type`,`status`,`create_time`,`industry`,`trademark_name`)
+     VALUES 
+    (#{id},#{name},#{phone},#{area},#{type},#{status},#{createTime},#{industry},#{trademarkName})
+</insert>
+
+<update id="update" parameterType="net.dgg.gspt.dqc.entity.businessPushRecord.BusinessPushRecord">
+     UPDATE gspt_dqc_business_push_record SET 
+    `name` = #{name},
+    `phone` = #{phone},
+    `area` = #{area},
+    `type` = #{type},
+    `status` = #{status},
+    `create_time` = #{createTime},
+    `industry` = #{industry},
+    `trademark_name` = #{trademarkName}
+     WHERE id = #{id}
+</update>
+
+<select id="findById" parameterType="String" resultType="net.dgg.gspt.dqc.entity.businessPushRecord.BusinessPushRecord">
+     SELECT 
+    t.`id` as `id`,
+    t.`name` as `name`,
+    t.`phone` as `phone`,
+    t.`area` as `area`,
+    t.`type` as `type`,
+    t.`status` as `status`,
+    t.`create_time` as `createTime`,
+    t.`industry` as `industry`,
+    t.`trademark_name` as `trademarkName`
+
+    FROM gspt_dqc_business_push_record t
+
+    WHERE t.`id`=#{id}
+</select>
+
+<select id="query" resultType="net.dgg.gspt.dqc.entity.businessPushRecord.BusinessPushRecord">
+     SELECT 
+    t.`id` as `id`,
+    t.`name` as `name`,
+    t.`phone` as `phone`,
+    t.`area` as `area`,
+    t.`type` as `type`,
+    t.`status` as `status`,
+    t.`create_time` as `createTime`,
+    t.`industry` as `industry`,
+    t.`trademark_name` as `trademarkName`
+
+    FROM gspt_dqc_business_push_record t
+
+    <where>
+    <include refid="where"></include>
+    </where>
+
+    <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+       limit #{start},#{limit}
+    </if>
+    <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+       limit #{limit}
+    </if>
+
+
+</select>
+
+<select id="queryMap" resultType="java.util.Map">
+     SELECT 
+    t.`id` as `id`,
+    t.`name` as `name`,
+    t.`phone` as `phone`,
+    t.`area` as `area`,
+    t.`type` as `type`,
+    t.`status` as `status`,
+    t.`create_time` as `createTime`,
+    t.`industry` as `industry`,
+    t.`trademark_name` as `trademarkName`
+
+    FROM gspt_dqc_business_push_record t
+
+    <where>
+    <include refid="where"></include>
+    </where>
+
+    <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+       limit #{start},#{limit}
+    </if>
+    <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+       limit #{limit}
+    </if>
+
+
+</select>
+
+<select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(*) 
+
+    FROM gspt_dqc_business_push_record t
+
+    <where>
+    <include refid="where"></include>
+    </where>
+
+</select>
+
+<delete id="deleteById" parameterType="String">
+    DELETE FROM gspt_dqc_business_push_record  WHERE  `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+          AND t.`id` = #{id}
+        </if>
+        <if test="null!=name and ''!=name">
+          AND t.`name` = #{name}
+        </if>
+        <if test="null!=phone and ''!=phone">
+          AND t.`phone` = #{phone}
+        </if>
+        <if test="null!=area and ''!=area">
+          AND t.`area` = #{area}
+        </if>
+        <if test="null!=type and ''!=type">
+          AND t.`type` = #{type}
+        </if>
+        <if test="null!=status and ''!=status">
+          AND t.`status` = #{status}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+          AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+          AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=industry and ''!=industry">
+          AND t.`industry` = #{industry}
+        </if>
+        <if test="null!=trademarkName and ''!=trademarkName">
+          AND t.`trademark_name` = #{trademarkName}
+        </if>
+    </sql>
+
+</mapper>

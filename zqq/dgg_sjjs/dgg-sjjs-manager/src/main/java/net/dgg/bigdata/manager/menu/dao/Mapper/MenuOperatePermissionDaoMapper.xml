@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.bigdata.manager.menu.dao.MenuOperatePermissionDao">
+    <!--添加菜单-->
+    <!--<insert id="save" parameterType="net.dgg.bigdata.manager.menu.entity.MenuOperatePermission">
+        INSERT INTO menu_operate_permission(
+        id,
+        operate_permission_id,
+        menu_id,
+        creator_id,
+        createtime
+        ) VALUES
+        <foreach collection="menuOperatePermissions" item="menuOperatePermission" separator=",">
+            (#{menuOperatePermission.id},#{menuOperatePermission.operatePermissionId},
+                #{menuOperatePermission.menuId},#{menuOperatePermission.creatorId},#{menuOperatePermission.createtime})
+        </foreach>
+
+    </insert>-->
+
+    <!--<delete id="removeByMenuId" >
+        DELETE  from menu_operate_permission where menu_id=#{menuId}
+        <if test="operatePermissionIds!=null">
+            and operate_permission_id in (
+            <foreach collection="operatePermissionIds" item="operatePermissionId" separator=",">
+                #{operatePermissionId}
+            </foreach>
+            )
+        </if>
+
+    </delete>-->
+    <!--如果权限删除，删除对应的菜单权限-->
+    <!--<delete id="removeByPermId" >
+        DELETE  from menu_operate_permission where operate_permission_id=#{operatePermissionId}
+    </delete>-->
+
+    <!--根据menuID获取操作权限id-->
+    <!--<select id="queryOpmsIdsByMenuId" resultType="java.lang.Long">
+        select operate_permission_id from menu_operate_permission where menu_id = #{menuId}
+    </select>-->
+
+
+</mapper>

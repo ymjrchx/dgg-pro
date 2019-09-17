@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.order.OrderExtDao">
+
+    <!--根据id修改订单状态-->
+    <update id="updateStatus" parameterType="net.dgg.zqq.entity.order.Order">
+        UPDATE zqq_order
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="query" resultType="net.dgg.zqq.entity.order.Order">
+        t.`id` as `id`,
+        t.`order_no` as `orderNo`,
+        t.`user_id` as `userId`,
+        t.`service_id` as `serviceId`,
+        t.`service_name` as `serviceName`,
+        t.`service_type_level1_code` as `serviceTypeLevel1Code`,
+        t.`service_type_level2_code` as `serviceTypeLevel2Code`,
+        t.`service_type_level3_code` as `serviceTypeLevel3Code`,
+        t.`service_price` as `servicePrice`,
+        t.`service_official_price` as `serviceOfficialPrice`,
+        t.`service_attr_id` as `serviceAttrId`,
+        t.`service_attr_name` as `serviceAttrName`,
+        t.`service_attr_code` as `serviceAttrCode`,
+        t.`service_attr_service_price` as `serviceAttrServicePrice`,
+        t.`service_attr_official_price` as `serviceAttrOfficialPrice`,
+        t.`all_num` as `allNum`,
+        t.`all_service_price` as `allServicePrice`,
+        t.`all_official_price` as `allOfficialPrice`,
+        t.`all_trademark_class_price` as `allTrademarkClassPrice`,
+        t.`invoice_fee` as `invoiceFee`,
+        t.`all_price` as `allPrice`,
+        t.`contact_name` as `contactName`,
+        t.`contact_phone` as `contactPhone`,
+        t.`contact_email` as `contactEmail`,
+        t.`contact_telephone` as `contactTelephone`,
+        t.`remark` as `remark`,
+        t.`type` as `type`,
+        t.`comment` as `comment`,
+        t.`status` as `status`,
+        t.`flag` as `flag`,
+        t.`invoice_status` as `invoiceStatus`,
+        t.`bao_jian_no` as `baoJianNo`,
+        t.`bao_jian_status` as `baoJianStatus`,
+        t.`bao_jian_reason` as `baoJianReason`,
+        t.`audit_type` as `auditType`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_order t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`order_no` as `orderNo`,
+        t.`user_id` as `userId`,
+        t.`service_id` as `serviceId`,
+        t.`service_name` as `serviceName`,
+        t.`service_type_level1_code` as `serviceTypeLevel1Code`,
+        t.`service_type_level2_code` as `serviceTypeLevel2Code`,
+        t.`service_type_level3_code` as `serviceTypeLevel3Code`,
+        t.`service_price` as `servicePrice`,
+        t.`service_official_price` as `serviceOfficialPrice`,
+        t.`service_attr_id` as `serviceAttrId`,
+        t.`service_attr_name` as `serviceAttrName`,
+        t.`service_attr_code` as `serviceAttrCode`,
+        t.`service_attr_service_price` as `serviceAttrServicePrice`,
+        t.`service_attr_official_price` as `serviceAttrOfficialPrice`,
+        t.`all_num` as `allNum`,
+        t.`all_service_price` as `allServicePrice`,
+        t.`all_official_price` as `allOfficialPrice`,
+        t.`all_trademark_class_price` as `allTrademarkClassPrice`,
+        t.`invoice_fee` as `invoiceFee`,
+        t.`all_price` as `allPrice`,
+        t.`contact_name` as `contactName`,
+        t.`contact_phone` as `contactPhone`,
+        t.`contact_email` as `contactEmail`,
+        t.`contact_telephone` as `contactTelephone`,
+        t.`remark` as `remark`,
+        t.`type` as `type`,
+        t.`comment` as `comment`,
+        t.`status` as `status`,
+        t.`flag` as `flag`,
+        t.`invoice_status` as `invoiceStatus`,
+        t.`bao_jian_no` as `baoJianNo`,
+        t.`bao_jian_status` as `baoJianStatus`,
+        t.`bao_jian_reason` as `baoJianReason`,
+        t.`audit_type` as `auditType`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`,
+        ta.`example_address` as `exampleAddress`,
+        ta.`name` as `trademarkName`,
+        t.`bao_jian_status` as `baoJianStatus`,
+        s.`username` as `username`,
+        ta.`name` as `trademarkName`,
+        p.`create_time` as `payTime`
+
+
+
+        FROM zqq_order t
+        LEFT JOIN sys_user_info s ON t.user_id = s.userId
+        LEFT JOIN zqq_trademark_and_applicant ta on t.`id` = ta.`order_id`
+        LEFT JOIN zqq_pay_record p on t.id = p.order_id
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER BY
+        <if test="(null!=payTimeStart and ''!=payTimeStart) or (null!=payTimeEnd and ''!=payTimeEnd) ">
+            p.`create_time` DESC ,
+        </if>
+
+        t.`update_time` DESC
+
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_order t
+        LEFT JOIN sys_user_info s ON t.user_id = s.userId
+        LEFT JOIN zqq_trademark_and_applicant ta on t.`id` = ta.`order_id`
+        LEFT JOIN zqq_pay_record p on t.id = p.order_id
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=orderNo and ''!=orderNo">
+            AND t.`order_no` = #{orderNo}
+        </if>
+        <if test="null!=userId and ''!=userId">
+            AND t.`user_id` = #{userId}
+        </if>
+        <if test="null!=username and ''!=username">
+            AND s.`username` = #{username}
+        </if>
+        <if test="null!=serviceId and ''!=serviceId">
+            AND t.`service_id` = #{serviceId}
+        </if>
+        <if test="null!=serviceName and ''!=serviceName">
+            AND t.`service_name` = #{serviceName}
+        </if>
+        <if test="null!=serviceTypeLevel1Code and ''!=serviceTypeLevel1Code">
+            AND t.`service_type_level1_code` = #{serviceTypeLevel1Code}
+        </if>
+        <if test="null!=serviceTypeLevel2Code and ''!=serviceTypeLevel2Code">
+            AND t.`service_type_level2_code` = #{serviceTypeLevel2Code}
+        </if>
+        <if test="null!=serviceTypeLevel3Code and ''!=serviceTypeLevel3Code">
+            AND t.`service_type_level3_code` = #{serviceTypeLevel3Code}
+        </if>
+        <if test="null!=servicePrice and ''!=servicePrice">
+            AND t.`service_price` = #{servicePrice}
+        </if>
+        <if test="null!=serviceOfficialPrice and ''!=serviceOfficialPrice">
+            AND t.`service_official_price` = #{serviceOfficialPrice}
+        </if>
+        <if test="null!=serviceAttrId and ''!=serviceAttrId">
+            AND t.`service_attr_id` = #{serviceAttrId}
+        </if>
+        <if test="null!=serviceAttrName and ''!=serviceAttrName">
+            AND t.`service_attr_name` = #{serviceAttrName}
+        </if>
+        <if test="null!=serviceAttrCode and ''!=serviceAttrCode">
+            AND t.`service_attr_code` = #{serviceAttrCode}
+        </if>
+        <if test="null!=serviceAttrOfficialPrice and ''!=serviceAttrOfficialPrice">
+            AND t.`service_attr_official_price` = #{serviceAttrOfficialPrice}
+        </if>
+        <if test="null!=allNum and ''!=allNum">
+            AND t.`all_num` = #{allNum}
+        </if>
+        <if test="null!=allServicePrice and ''!=allServicePrice">
+            AND t.`all_service_price` = #{allServicePrice}
+        </if>
+        <if test="null!=allOfficialPrice and ''!=allOfficialPrice">
+            AND t.`all_official_price` = #{allOfficialPrice}
+        </if>
+        <if test="null!=allTrademarkClassPrice and ''!=allTrademarkClassPrice">
+            AND t.`all_trademark_class_price` = #{allTrademarkClassPrice}
+        </if>
+        <if test="null!=invoiceFee and ''!=invoiceFee">
+            AND t.`invoice_fee` = #{invoiceFee}
+        </if>
+        <if test="null!=allPrice and ''!=allPrice">
+            AND t.`all_price` = #{allPrice}
+        </if>
+        <if test="null!=contactName and ''!=contactName">
+            AND t.`contact_name` = #{contactName}
+        </if>
+        <if test="null!=contactPhone and ''!=contactPhone">
+            AND t.`contact_phone` = #{contactPhone}
+        </if>
+        <if test="null!=contactEmail and ''!=contactEmail">
+            AND t.`contact_email` = #{contactEmail}
+        </if>
+        <if test="null!=contactTelephone and ''!=contactTelephone">
+            AND t.`contact_telephone` = #{contactTelephone}
+        </if>
+        <if test="null!=remark and ''!=remark">
+            AND t.`remark` = #{remark}
+        </if>
+        <if test="null!=type and ''!=type">
+            AND t.`type` = #{type}
+        </if>
+        <if test="null!=comment and ''!=comment">
+            AND t.`comment` = #{comment}
+        </if>
+        <if test="null!=status and ''!=status">
+            AND t.`status` = #{status}
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+        <if test="null!=payWay and ''!=payWay">
+            AND EXISTS (SELECT a.`id` from zqq_pay_record a where a.`pay_way` =
+            #{payWay} and t.`id` = a.`order_id` )
+        </if>
+        <if test="null!=markName and ''!=markName">
+            AND EXISTS (SELECT s.`id` from zqq_trademark_and_applicant s where s.`name` LIKE CONCAT('%',#{markName},'%')
+            and t.`id` = s.`order_id` )
+        </if>
+        <if test="null!=payTimeStart and ''!=payTimeStart">
+            AND p.`create_time` &gt;= CONCAT(#{payTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=payTimeEnd and ''!=payTimeEnd">
+            AND p.`create_time` &lt;= CONCAT(#{payTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=trademarkName and ''!=trademarkName">
+            AND ta.`name` like CONCAT('%',#{trademarkName},'%')
+        </if>
+    </sql>
+
+</mapper>

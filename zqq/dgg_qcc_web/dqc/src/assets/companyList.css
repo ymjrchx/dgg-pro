@@ -1,0 +1,350 @@
+.car_top {
+    position: relative;
+}
+/* //展开 */
+.handel_content {
+    position: absolute;
+    padding-right: 18px;
+    left: 50%;
+    bottom: -28px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    color: #979797;
+    background: url("./images/icon_up2.png") 70% center no-repeat;
+    height: 30px;
+    line-height: 28px;
+    width: 100px;
+    text-align: center;
+    color: #128bed;
+    border: #eaeef1 2px solid;
+    border-top: white 1px solid;
+    text-align: center;
+    display: block;
+    background-color: white;
+    width: 100px;
+    margin: 0 auto;
+}
+.handel_content.isShow {
+    background: url("./images/icon_down2.png") 70% center no-repeat;
+}
+.card {
+    width: 100%;
+    background-color: #fcfcfd;
+    border: 1px solid #e9eeef;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    height: 44px;
+}
+.card > div.active {
+    float: left;
+    color: #128cec;
+    border-left: 1px solid #e9eeef;
+    border-right: 1px solid #e9eeef;
+    background: #fff;
+    margin-bottom: -2px;
+    border-bottom: solid 1px #fff;
+    font-weight: 700;
+    position: relative;
+    bottom: -1px;
+}
+.card > div {
+    height: 100%;
+    line-height: 44px;
+    text-align: center;
+    float: left;
+    display: block;
+    font-size: 14px;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+.card > div a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.card > div:first-child {
+    border-left: none !important;
+}
+/* //选项卡 */
+.tab_content {
+    padding: 20px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #e9eeef;
+    border-top: none;
+}
+.tab_content_item {
+    clear: both;
+    margin-bottom: 6px;
+    position: relative;
+}
+.classify_more {
+    position: absolute;
+    padding-right: 18px;
+    right: 2%;
+    top: 0px;
+    cursor: pointer;
+    color: #979797;
+    background: url("./images/icon_down.png") 100% center no-repeat;
+    /* transition:all .5s linear; */
+}
+.classify_more:hover {
+    position: absolute;
+    padding-right: 18px;
+    right: 2%;
+    top: 0px;
+    cursor: pointer;
+    color: #128cec;
+    background: url("./images/icon_down2.png") 100% center no-repeat;
+}
+.classify_more.down {
+    background: url("./images/icon_up.png") 100% center no-repeat;
+    background-size: 18px auto;
+}
+.classify_more.down:hover {
+    background: url("./images/icon_up2.png") 100% center no-repeat;
+    background-size: 18px auto;
+}
+.tab_content_item > label {
+    float: left;
+    font-size: 13px;
+    color: #9a9a9a;
+    width: 8%;
+    line-height: 1.80571;
+    font-weight: normal;
+}
+.tab_content_classify {
+    width: 80%;
+    float: left;
+    margin-bottom: 6px;
+}
+.tab_content_classify > span,
+.tab_content_classify .custom {
+    display: inline-block;
+    padding: 0.1em 0.6em 0.2em;
+    margin: 0 4px 8px;
+    border-radius: 1px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    color: #222;
+}
+.tab_content_classify .hasNum0{
+    color: #999;
+    cursor:not-allowed; 
+}
+
+.tab_content_classify span:not(.hasNum0):hover,
+.custom:hover {
+    background: #128cec;
+    color: #fff;
+}
+.tab_content_classify > .hideSpan,.hide{
+    display: none;
+}
+/* 自定义搜索 */
+.custom {
+    position: relative;
+}
+.custom section {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    padding: 15px;
+    color: #333;
+    width: 160px;
+    text-align: right;
+    font-size: 13px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.custom section input {
+    width: 100px;
+    display: inline-block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 0px;
+    padding-left: 8px;
+    padding-right: 25px;
+}
+ .custom section > div{
+     margin-bottom: 10px;
+     text-align: left;
+ }
+  .custom section > .mon::after {
+    content: "万";
+   
+}
+ .custom section > div::after {
+    content: "年";
+    position: absolute;
+    color: rgb(153, 153, 153);
+    margin-left: -25px;
+    margin-top: 3px;
+}
+.customBtn{
+    padding: 3px 6px;
+    color: #fff;
+    background: #128cec;
+    border-radius: 2px;
+}
+/* //公司列表 */
+.goods_list {
+    margin-top: 50px;
+    background: #fff;
+}
+.list_title {
+    padding: 15px;
+    margin-bottom: -1px;
+    border-color: #eaeef1;
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); */
+    color: #666;
+    font-size: 16px;
+    border-bottom: 1px solid #eaeef1;
+}
+/* 表格 */
+#list_table {
+    width: 100%;
+    /* border: 1px solid #eee; */
+    margin-top: 2px;
+    border-top: none;
+}
+#list_table tr {
+    border-bottom: 1px solid #eee;
+}
+#list_table tr:hover {
+    background: #fcfcfc;
+}
+#list_table tr:hover .company_titel {
+    color: #128cec;
+}
+#list_table td {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #888;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* //右边状态 */
+.list_handel {
+    font-weight: normal;
+    display: inline-block;
+    line-height: 16px;
+    font-size: 14px;
+    padding: 4px 8px 4px 8px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+}
+.list_handel.green {
+    color: #009944;
+}
+.list_handel.blue {
+    color: #2196f4;
+}
+.list_handel.red {
+    color: #ff0000;
+}
+.list_handel.violet {
+    color: #840084;
+}
+.logoBox {
+    text-align: center !important;
+}
+.logo_img {
+    width: 80px;
+}
+td > p:last-child {
+    margin: 0;
+}
+.company_titel {
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+ 
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+.company_titel span{
+    cursor: pointer;
+}
+/* //分页 */
+.pageination {
+    margin-top: 30px;
+    padding: 20px 10px;
+    background: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 50px;
+}
+/* 未找到数据 */
+.search_no {
+    padding: 100px 0;
+    background: #fff;
+    border: 1px solid #eee;
+    text-align: center;
+}
+.search_no img {
+    width: 80px;
+}
+.search_no p {
+    font-size: 16px;
+    color: #a1a8ac;
+    margin-top: 30px;
+}
+/* //已选条件 */
+.clearAll {
+    margin-right: 2%;
+    color: #128cec;
+    margin-top: 4px;
+}
+.SelectedCondition {
+    padding: 15px 0px 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 1px dashed rgb(204, 204, 204);
+    box-shadow: none;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+.SelectedCondition label {
+    font-size: 15px;
+    color: #666;
+}
+.SelectedCondition label {
+    font-size: 15px;
+    color: #666;
+}
+.SelectedCondition .tab_content_classify span {
+    padding: 5px;
+    cursor: pointer;
+    font-weight: normal;
+    color: #128cec !important;
+    background-color: #ffffff;
+    border: #128cec 1px solid;
+    font-size: 75%;
+    line-height: 1;
+    vertical-align: baseline;
+}
+.SelectedCondition .tab_content_classify :after {
+    content: "X";
+    margin: 5px 5px 0px 5px;
+}
+.SelectedCondition .tab_content_classify span:hover {
+    color: #fff !important;
+    background-color: #128cec;
+}

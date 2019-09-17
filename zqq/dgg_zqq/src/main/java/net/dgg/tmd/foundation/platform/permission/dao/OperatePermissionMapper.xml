@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.tmd.foundation.platform.permission.dao.OperatePermissionDAO">
+  <!--向数据库插入实体-->
+  <insert id="insertPermissionInfo" parameterType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    INSERT INTO operate_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      operate_permission_id,
+      operate_permission_name,
+      <if test="code != null">
+        code,
+      </if>
+      remark,
+      creator_id,
+      createtime
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{operatePermissionId},
+      #{operatePermissionName},
+      <if test="code != null">
+        #{code},
+      </if>
+      #{remark},
+      #{creatorId},
+      #{createtime}
+    </trim>
+  </insert>
+
+  <update id="updatePermissionInfo" parameterType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    UPDATE operate_permission
+    <set>
+      <if test="operatePermissionName!=null">
+        operate_permission_name=#{operatePermissionName},
+      </if>
+      <if test="code!=null">
+        code=#{code},
+      </if>
+      <if test="creatorId!=null">
+        creator_id=#{creatorId},
+      </if>
+      <if test="remark!=null">
+        remark=#{remark},
+      </if>
+      <if test="createtime!=null">
+        createtime=#{createtime},
+      </if>
+    </set>
+    WHERE operate_permission_id=#{operatePermissionId}
+  </update>
+
+  <!--从数据库通过ID删除信息-->
+  <delete id="deletePermissionById">
+    DELETE FROM operate_permission WHERE operate_permission_id=#{permsId}
+  </delete>
+
+  <!--从数据库通过ID查询权限实体-->
+  <select id="findPermsEntityByPermsId" parameterType="long" resultType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    SELECT operate_permission_id AS operatePermissionId, operate_permission_name AS operatePermissionName, code AS code,remark, creator_id AS creatorId, createtime AS createtime FROM operate_permission WHERE operate_permission_id=#{permsId}
+  </select>
+
+  <!--从数据库通过关键字查询权限实体-->
+  <select id="findPermsEntityBykeyWords" resultType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    SELECT operate_permission_id AS operatePermissionId, operate_permission_name AS operatePermissionName, code AS code, creator_id AS creatorId, createtime AS createtime FROM operate_permission
+    <where>
+      <if test="keyWords.permsName!=null">
+        operate_permission_name=#{keywords.permsName}
+      </if>
+      <if test="keyWords.code!=null">
+        code=#{keywords.code}
+      </if>
+      <if test="keyWords.creatorId!=null">
+        creator_id=#{keywords.creatorId}
+      </if>
+      <if test="keyWords.createtime!=null">
+        createtime=#{keywords.createtime}
+      </if>
+    </where>
+  </select>
+
+  <!--根据菜单查询-->
+  <select id="findOperatePermissionByMenuId" resultType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    select op.operate_permission_id as operatePermissionId,op.operate_permission_name as operatePermissionName,
+    op.code as code
+    from operate_permission op
+    where 1=1
+    <if test="operatePermissionName!=null and operatePermissionName!=''">
+      and op.operate_permission_name LIKE CONCAT('%',CONCAT(#{operatePermissionName},'%'))
+    </if>
+    <if test="isMenu==1 ">
+      and op.operate_permission_id in
+      (select operate_permission_id from menu_operate_permission
+          where 1=1
+          <if test="menuId!=null and menuId !=''">
+            and menu_id = #{menuId}
+          </if>
+      )
+    </if>
+    <if test="isMenu==0">
+      and op.operate_permission_id not in
+      (select operate_permission_id from menu_operate_permission
+          where 1=1
+          <if test="menuId!=null and menuId !=''">
+          and menu_id = #{menuId}
+          </if>
+      )
+    </if>
+    ORDER BY op.createtime desc
+  </select>
+  <!--独立权限的获取-->
+  <select id="findOperatePermissionByMenuRole" resultType="java.util.Map">
+    select op.operate_permission_id as operatePermissionId,op.operate_permission_name as operatePermissionName,
+    op.code as code,
+    <if test="roleId!=null and roleId !=''">
+      case when a.operate_permission_id = op.operate_permission_id then  1 else 0 end
+    </if>
+    <if test="roleId==null or roleId ==''">
+      0
+    </if>
+    as roleOpm
+    from operate_permission op
+    <if test="roleId!=null and roleId !=''">
+    LEFT JOIN (select operate_permission_id from role_operate_permission
+    where role_id=#{roleId}
+    ) a
+    on op.operate_permission_id = a.operate_permission_id
+    </if>
+    where
+    op.operate_permission_id NOT IN (
+    SELECT
+    operate_permission_id
+    FROM
+    menu_operate_permission
+    )
+    <if test="operatePermissionName!=null and operatePermissionName!=''">
+      and op.operate_permission_name LIKE CONCAT('%',CONCAT(#{operatePermissionName},'%'))
+    </if>
+    ORDER BY op.createtime desc
+  </select>
+
+  <!--独立权限的获取-->
+  <select id="findMenuOps" resultType="java.util.Map">
+    select op.operate_permission_id as operatePermissionId,op.operate_permission_name as operatePermissionName,
+    op.code as code,
+    <if test="roleId!=null and roleId !=''">
+      case when a.operate_permission_id = op.operate_permission_id then  1 else 0 end
+    </if>
+    <if test="roleId==null or roleId ==''">
+      0
+    </if>
+    as LAY_CHECKED
+    from operate_permission op
+    <if test="roleId!=null and roleId !=''">
+    LEFT JOIN (select operate_permission_id from role_operate_permission
+    where role_id=#{roleId}
+    ) a
+    on op.operate_permission_id = a.operate_permission_id
+    </if>
+    where
+    op.operate_permission_id IN (
+    SELECT
+    operate_permission_id
+    FROM
+    menu_operate_permission
+    where menu_id = #{menuId}
+    )
+    ORDER BY op.createtime desc
+  </select>
+
+  <select id="queryBySearch" parameterType="java.util.Map" resultType="net.dgg.tmd.foundation.platform.permission.entity.OperatePermissionEntity">
+    select operate_permission_id as operatePermissionId,operate_permission_name as operatePermissionName,
+    code ,remark,createtime ,creator_id as creatorId
+    from operate_permission where 1=1
+    <if test="operatePermissionName!=null and operatePermissionName!=''">
+      and operate_permission_name LIKE CONCAT('%',CONCAT(#{operatePermissionName},'%'))
+    </if>
+    ORDER BY createtime desc
+  </select>
+
+  <select id="existCode" resultType="java.lang.Integer">
+    select count(1) from operate_permission where code=#{code}
+    <if test="id!=null and id!=''">
+      and operate_permission_id != #{id}
+    </if>
+  </select>
+
+  <!--根据用户ID查询所具有的所有操作权限CODE-->
+  <select id="findOperationCodeByUserId" resultType="String" parameterType="long">
+    SELECT code
+    FROM operate_permission
+    WHERE operate_permission_id
+    IN (SELECT DISTINCT(operate_permission_id) FROM role_operate_permission WHERE role_id IN(SELECT role_id FROM user_role WHERE user_id=#{userId}))
+  </select>
+</mapper>

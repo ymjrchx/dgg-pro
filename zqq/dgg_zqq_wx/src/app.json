@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main",
+    "pages/news/main",
+    "pages/newInfo/main",
+    "pages/mine/main",
+    "pages/name/main",
+    "pages/order/main",
+    "pages/phone/main",
+    "pages/pay/main",
+    "pages/seting/main",
+    "pages/myOrder/main",
+    "pages/orderDetail/main",
+    "pages/detail/main",
+    "pages/authorized/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "知千秋",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#ff6600",
+    "borderStyle": "black",
+    "list": [{
+      "selectedIconPath": "./static/img/home_ic_home_s_48px.png",
+      "iconPath": "./static/img/home_ic_home_n_48px.png",
+      "pagePath": "pages/index/main",
+      "text": "首页"
+    }, {
+      "selectedIconPath": "./static/img/message_ic_s_48px.png",
+      "iconPath": "./static/img/message_ic_n_48px.png",
+      "pagePath": "pages/news/main",
+      "text": "资讯"
+    }, {
+      "selectedIconPath": "./static/img/me_ic_s_48px.png",
+      "iconPath": "./static/img/me_ic_n_48px.png",
+      "pagePath": "pages/mine/main",
+      "text": "我的"
+    }]
+  }
+}

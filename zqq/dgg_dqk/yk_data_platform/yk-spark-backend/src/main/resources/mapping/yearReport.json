@@ -1,0 +1,252 @@
+[
+  {
+    "task": "copy",
+    "from": "_id",
+    "to": "companyId"
+  },
+  {
+    "task": "copy",
+    "from": "allTime.enterTime.collectTime",
+    "to": "loadTime",
+    "apply": "net.dgg.yk.platform.backend.mapping.Date2YmdTHms"
+  },
+  {
+    "task": "map2list",
+    "from": "docs.background.reportInfo",
+    "to": "companyReports",
+    "tasks": [
+      {
+        "task": "keyCopy",
+        "to": "year",
+        "apply": "net.dgg.yk.platform.backend.mapping.FirstNumConverter"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rCreditCode",
+        "to": "yearReport.rCreditCode",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rName",
+        "to": "yearReport.rName",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rPostalCode",
+        "to": "yearReport.rPostalCode",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rAddress",
+        "to": "yearReport.rAddress",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rTel",
+        "to": "yearReport.rTel",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rEmail",
+        "to": "yearReport.rEmail",
+        "apply": "net.dgg.yk.platform.backend.mapping.EmailFunction"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rWorkNum",
+        "to": "yearReport.rWorkNum"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rWomanNum",
+        "to": "yearReport.rWomanNum"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rState",
+        "to": "yearReport.rState",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rComConState",
+        "to": "yearReport.rComConState",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rHasWeb",
+        "to": "yearReport.rHasWeb",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rHasBuy",
+        "to": "yearReport.rHasBuy",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rHasmove",
+        "to": "yearReport.rHasmove",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rBusinessScope",
+        "to": "yearReport.rBusinessScope",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rSyComName",
+        "to": "yearReport.rSyComName",
+        "defaultValue": "-"
+      },
+      {
+        "task": "valueCopy",
+        "from": "rBaseInfo.rSyComRegNo",
+        "to": "yearReport.rSyComRegNo",
+        "defaultValue": "-"
+      },
+      {
+        "task": "list2list",
+        "from": "rWebInfo",
+        "to": "yearReport.sites",
+        "tasks": [
+          {
+            "task": "copy",
+            "from": "rWebType",
+            "to": "rWebType",
+            "defaultValue": "-"
+          },
+          {
+            "task": "copy",
+            "from": "rName",
+            "to": "rName",
+            "defaultValue": "-"
+          },
+          {
+            "task": "copy",
+            "from": "rWeb",
+            "to": "rWeb",
+            "defaultValue": "-"
+          }
+        ]
+      },
+      {
+        "task": "list2list",
+        "from": "rHolderInfo",
+        "to": "yearReport.holders",
+        "tasks": [
+          {
+            "task": "copy",
+            "from": "rHolder",
+            "to": "rHolder",
+            "defaultValue": "-"
+          },
+          {
+            "task": "copy",
+            "from": "rConfirmNum",
+            "to": "rConfirmNum",
+            "apply": "net.dgg.yk.platform.backend.mapping.FirstNumConverter"
+          },
+          {
+            "task": "copy",
+            "from": "rConfirmTime",
+            "to": "rConfirmTime",
+            "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+          },
+          {
+            "task": "copy",
+            "from": "rConfirmWay",
+            "to": "rConfirmWay",
+            "defaultValue": "-"
+          },
+          {
+            "task": "copy",
+            "from": "rIndeedNum",
+            "to": "rIndeedNum",
+            "apply": "net.dgg.yk.platform.backend.mapping.FirstNumConverter"
+          },
+          {
+            "task": "copy",
+            "from": "rIndeedTime",
+            "to": "rIndeedTime",
+            "apply": "net.dgg.yk.platform.backend.mapping.DateConvert"
+          },
+          {
+            "task": "copy",
+            "from": "rIndeedWay",
+            "to": "rIndeedWay",
+            "defaultValue": "-"
+          }
+        ]
+      },
+      {
+        "task": "list2list",
+        "from": "rFundInfo",
+        "to": "yearReport.holdeDws",
+        "tasks": [
+          {
+            "task": "copy",
+            "from": "rfiName",
+            "to": "rfiName",
+            "defaultValue": "-"
+          },
+          {
+            "task": "copy",
+            "from": "rfiNum",
+            "to": "rfiNum",
+            "defaultValue": "-"
+          }
+        ]
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rAssetsNum",
+        "to": "yearReport.enterpriseAssets.rAssetsNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rSalesNum",
+        "to": "yearReport.enterpriseAssets.rSalesNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rRightsNum",
+        "to": "yearReport.enterpriseAssets.rRightsNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rProfitsNum",
+        "to": "yearReport.enterpriseAssets.rProfitsNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rMainBusinessNum",
+        "to": "yearReport.enterpriseAssets.rMainBusinessNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rNetProfitNum",
+        "to": "yearReport.enterpriseAssets.rNetProfitNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rTaxNum",
+        "to": "yearReport.enterpriseAssets.rTaxNum"
+      },
+      {
+        "task": "copy",
+        "from": "rAssetInfo.rDebtNum",
+        "to": "yearReport.enterpriseAssets.rDebtNum"
+      }
+    ]
+  }
+]

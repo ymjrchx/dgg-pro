@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--nature上下文配置-->
+    <bean id="natureContext" class="net.fblock.core.FblockContext"/>
+    <!--死信队列管理器-->
+    <bean id="deadMessageManager" class="net.fblock.messagequeue.DeadMessageManager"/>
+    <!--Redis客户端-->
+    <bean id="redisClient" class="net.fblock.core.util.RedisClient">
+        <constructor-arg name="servers" value="${redis.servers}"/>
+    </bean>
+    <!--fblock提供的通用WebConfig配置-->
+    <bean id="fblockWebConfig" class="net.fblock.springboot.util.WebConfig"/>
+    <!--缓存操作类-->
+    <!--<bean id="cacheOperator" class="net.fblock.cache.RedisSinglentonOperator">-->
+    <!--<constructor-arg name="redisIp" value="${nature.core.cache.redis.ip}"/>-->
+    <!--<constructor-arg name="redisPort" value="${nature.core.cache.redis.port}"/>-->
+    <!--<constructor-arg name="defaultExpiretime" value="${nature.core.cache.defaultexpirtime}"/>-->
+    <!--</bean>-->
+
+    <bean id="messageManager" class="net.fblock.messagequeue.MessageManager">
+        <property name="host" value="${nature.messagequeue.host}"/>
+        <property name="username" value="${nature.messagequeue.username}"/>
+        <property name="password" value="${nature.messagequeue.password}"/>
+        <property name="port" value="${nature.messagequeue.port}"/>
+        <property name="virtualHost" value="${nature.messagequeue.vhost}"/>
+    </bean>
+
+    <!-- <mongo:mongo id="mongo" replica-set="${mongo.replicaSet}">
+        
+           connections-per-host: 每个主机答应的连接数（每个主机的连接池大小），当连接池被用光时，会被阻塞住
+           max-wait-time: 被阻塞线程从连接池获取连接的最长等待时间（ms）
+           connect-timeout:在建立（打开）套接字连接时的超时时间（ms）
+           socket-timeout:套接字超时时间;该值会被传递给Socket.setSoTimeout(int)
+           slave-ok:指明是否答应驱动从次要节点或者奴隶节点读取数据
+          
+        <mongo:options
+                connections-per-host="${mongo.connectionsPerHost}"
+                threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                connect-timeout="${mongo.connectTimeout}"
+                max-wait-time="${mongo.maxWaitTime}"
+                auto-connect-retry="${mongo.autoConnectRetry}"
+                socket-keep-alive="${mongo.socketKeepAlive}"
+                socket-timeout="${mongo.socketTimeout}"
+                slave-ok="${mongo.slaveOk}"
+                write-number="${mongo.writeNumber}"
+                write-timeout="${mongo.riteTimeout}"
+                write-fsync="${mongo.writeFsync}"/>
+    </mongo:mongo>
+    设置使用的数据库名
+    <mongo:db-factory dbname="fblock_base" mongo-ref="mongo"/>
+    mongodb的模板 -->
+    <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
+    <!--<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>-->
+    <!--</bean>-->
+
+    <!--缓存管理器-->
+    <bean id="redisClusterModuleManager" class="net.fblock.cachemodule.CacheModuleManager"/>
+    <!--消息SDK-->
+    <bean id="msgProvider" class="net.dgg.backservice.message.messagecenter.provider.MsgProvider"/>
+
+    <bean id="clientMsgSender" class="net.dgg.backservice.message.messagecenter.ClientMsgSender"/>
+
+    <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dgg-core-route
+server:
+  port: 8888
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+    order:
+      path: /test/**
+      sensitiveHeaders:
+      serviceId: dgg-test-service
+  add-proxy-headers: true
+logging:
+  level: info

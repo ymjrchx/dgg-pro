@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.tmd.foundation.platform.user.dao.UserRecorderDAO">
+    <!--向数据库插入用户实体-->
+    <insert id="insertUserEntity" parameterType="net.dgg.tmd.foundation.platform.user.entity.UserEntity">
+        INSERT INTO user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            user_id,
+            locked,
+            login_name,
+            login_pwd,
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            org_id,
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="workarea != null">
+                workarea,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="dimissiontime != null">
+                dimissiontime,
+            </if>
+            updatetime,
+            <if test="entrydate != null">
+                entrydate,
+            </if>
+            <if test="workage != null">
+                workage,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{userId},
+            #{locked},
+            #{loginName},
+            #{loginPwd},
+            <if test="realName != null">
+                #{realName},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+            #{orgId},
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
+            <if test="workarea != null">
+                #{workarea},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="dimissiontime != null">
+                #{dimissiontime},
+            </if>
+            #{updatetime},
+            <if test="entrydate != null">
+                #{entrydate},
+            </if>
+            <if test="workage != null">
+                #{workage},
+            </if>
+        </trim>
+    </insert>
+    <!--向数据库插入用户实体-->
+    <update id="updateUserEntity" parameterType="net.dgg.tmd.foundation.platform.user.entity.UserEntity">
+        UPDATE user_info
+        <set>
+            locked=#{locked},
+            login_name=#{loginName},
+            login_pwd=#{loginPwd},
+            <if test="realName != null">
+                real_name=#{realName},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            org_id=#{orgId},
+            <if test="sex != null">
+                sex=#{sex},
+            </if>
+            <if test="description != null">
+                description=#{description},
+            </if>
+            <if test="workarea != null">
+                workarea=#{workarea},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="dimissiontime != null">
+                dimissiontime=#{dimissiontime},
+            </if>
+            updatetime=#{updatetime},
+            <if test="entrydate != null">
+                entrydate=#{entrydate},
+            </if>
+            <if test="workage != null">
+                workage=#{workage},
+            </if>
+        </set>
+        WHERE user_id=#{userId}
+    </update>
+
+    <!--通过用户ID查询用户实体-->
+    <select id="findUserEntityByUserId" parameterType="long"
+            resultType="net.dgg.tmd.foundation.platform.user.entity.UserEntity">
+        SELECT user_id as userId, locked as locked, login_name as loginName, login_pwd as loginPwd, real_name as realName, phone as phone, org_id as orgId, sex as sex, description as description, workarea as workarea, email as email, dimissiontime as dimissiontime, updatetime as updatetime, entrydate as entrydate FROM user_info WHERE user_id = #{userId}
+    </select>
+
+    <!--通过用户loginName查询用户实体-->
+    <select id="findUserEntityByUserLoginName" parameterType="String"
+            resultType="net.dgg.tmd.foundation.platform.user.entity.UserEntity">
+        SELECT user_id as userId, locked as locked, login_name as loginName, login_pwd as loginPwd, real_name as realName, phone as phone, org_id as orgId, sex as sex, description as description, workarea as workarea, email as email, dimissiontime as dimissiontime, updatetime as updatetime, entrydate as entrydate FROM user_info WHERE login_name = #{userLoginName}
+    </select>
+
+    <!--通过其它关键字查询用户实体-->
+    <select id="findUserEntityListByKeyWords" resultType="java.util.Map">
+        SELECT user_id as userId, locked as locked, login_name as loginName, login_pwd as loginPwd, real_name as
+        realName, phone as phone, org_id as orgId, sex as sex, description as description, workarea as workarea, email
+        as email, dimissiontime as dimissiontime, updatetime as updatetime, entrydate as entrydate FROM user_info
+        <where>
+            <if test="keyWords.locked!=null">
+                locked = #{keyWords.locked}
+            </if>
+            <if test="keyWords.loginName!=null">
+                login_name = #{keyWords.loginName}
+            </if>
+            <if test="keyWords.realName!=null">
+                real_name like concat('%',#{keyWords.realName},'%') 
+            </if>
+            <if test="keyWords.phone!=null">
+                phone = #{keyWords.phone}
+            </if>
+            <if test="keyWords.orgId!=null">
+                org_id = #{keyWords.orgId}
+            </if>
+            <if test="keyWords.email!=null">
+                email = #{keyWords.email}
+            </if>
+        </where>
+    </select>
+
+    <!--查询指定部门下的所有用户实体-->
+    <select id="findUserDTOByOrgIdWithPage" resultType="net.dgg.tmd.foundation.platform.user.entity.UserDTO">
+        SELECT DISTINCT(a.user_id) AS id, a.login_name AS loginName, a.real_name AS NAME, a.sex AS sex, b.name AS orgName, a.locked AS locked
+        FROM user_info a
+        LEFT JOIN org_main b ON a.org_id = b.org_id
+        LEFT JOIN user_role c ON a.user_id = c.user_id
+        LEFT JOIN role d ON c.role_id = d.role_id
+        <where>
+            <if test="null!=orgId">
+                a.org_id = #{orgId}
+            </if>
+            <if test="null!=loginName">
+                a.login_name=#{loginName}
+            </if>
+            <if test="null!=userId">
+                a.user_id=#{userId}
+            </if>
+            <if test="null!=userName">
+                a.real_name=#{userName}
+            </if>
+        </where>
+    </select>
+
+    <!--根据模糊关键字查询用户名称及工号并返回DTO-->
+    <select id="findUserDTOByKeyWordsWithPage" resultType="net.dgg.tmd.foundation.platform.user.entity.UserDTO">
+        SELECT DISTINCT(a.user_id) AS id, a.login_name AS loginName, a.real_name AS NAME, a.sex AS sex, b.name AS orgName, a.locked AS locked
+        FROM user_info a
+        LEFT JOIN org_main b ON a.org_id = b.org_id
+        LEFT JOIN user_role c ON a.user_id = c.user_id
+        LEFT JOIN role d ON c.role_id = d.role_id
+        <where>
+            (a.login_name LIKE concat('%',#{mainKey},'%') OR a.real_name LIKE concat('%',#{mainKey},'%'))
+            <if test="1==selectCode and null!=orgId">
+                AND a.org_id=#{orgId}
+            </if>
+            <if test="3==selectCode and null!=orgId">
+                AND a.org_id IN (SELECT a.organization_id FROM org_closure a JOIN org_main b ON a.organization_id=b.org_id WHERE ancestor_id=#{orgId})
+            </if>
+        </where>
+    </select>
+
+    <!--统计指定部门下用户的个数-->
+    <select id="findUserTotalByOrgId" resultType="int">
+        SELECT count(*) FROM user_info WHERE org_id=#{orgId} AND 1=1
+    </select>
+
+    <!--根据模糊关键字查询用户名称及工号并返回总数量-->
+    <select id="findUserTotalByKeyWords" resultType="int">
+        SELECT COUNT(1)
+        FROM user_info a
+        LEFT JOIN org_main b ON a.org_id = b.org_id
+        LEFT JOIN user_role c ON a.user_id = c.user_id
+        LEFT JOIN role d ON c.role_id = d.role_id
+        <where>
+            (a.login_name LIKE concat('%',#{keyWords.mainKey},'%') OR a.real_name LIKE concat('%',#{keyWords.mainKey},'%') )
+            <if test="1==keyWords.selectCode and null!=keyWords.orgId">
+                AND a.org_id=#{keyWords.orgId}
+            </if>
+            <if test="3==keyWords.selectCode and null!=keyWords.orgId">
+                AND a.org_id IN (SELECT a.organization_id FROM org_closure a JOIN org_main b ON
+                a.organization_id=b.org_id WHERE ancestor_id=#{keyWords.orgId})
+            </if>
+        </where>
+    </select>
+</mapper>

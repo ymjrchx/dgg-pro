@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.bigdata.manager.role.dao.RoleMenuDao">
+    <!--添加菜单-->
+    <!--<insert id="save" parameterType="net.dgg.bigdata.manager.role.entity.RoleMenuPermission">
+        INSERT INTO role_menu_permission(
+        id,
+        role_id,
+        menu_id,
+        creator_id,
+        createtime
+        ) VALUES
+        <foreach collection="roleMenuPermissions" item="roleMenuPermission" separator=",">
+            (#{roleMenuPermission.id},#{roleMenuPermission.roleId},#{roleMenuPermission.menuId},#{roleMenuPermission.creatorId},#{roleMenuPermission.createtime})
+        </foreach>
+
+    </insert>-->
+
+   <!-- <delete id="removeByRoleId" >
+        DELETE  from role_menu_permission where role_id=#{roleId}
+    </delete>-->
+
+    <!--<delete id="removeByMenuId" >
+        DELETE  from role_menu_permission where menu_id in (
+        <foreach collection="menuIds" item="menuId" separator=",">
+        #{menuId}
+        </foreach>
+        )
+    </delete>-->
+
+<!--    <select id="findByRoleMenu" resultType="java.lang.Integer">
+        select count(1) from role_menu_permission where role_id=#{roleId} and menu_id=#{menuId}
+    </select>-->
+</mapper>

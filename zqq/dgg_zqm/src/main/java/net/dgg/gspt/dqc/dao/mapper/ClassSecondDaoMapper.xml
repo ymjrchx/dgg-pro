@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.gspt.dqc.dao.order.ClassSecondDao">
+    <insert id="save" parameterType="net.dgg.gspt.dqc.entity.order.ClassSecond">
+        INSERT INTO gspt_dqc_class_second
+    (`id`,`first_id`,`first_number`,`name`,`number`,`remark`,`is_show`,`is_colour`,`is_recommend`)
+     VALUES 
+    (#{id},#{firstId},#{firstNumber},#{name},#{number},#{remark},#{isShow},#{isColour},#{isRecommend})
+</insert>
+
+    <update id="update" parameterType="net.dgg.gspt.dqc.entity.order.ClassSecond">
+     UPDATE gspt_dqc_class_second SET 
+    `first_id` = #{firstId},
+    `first_number` = #{firstNumber},
+    `name` = #{name},
+    `number` = #{number},
+    `remark` = #{remark},
+    `is_show` = #{isShow},
+    `is_colour` = #{isColour},
+    `is_recommend` = #{isRecommend}
+     WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.gspt.dqc.entity.order.ClassSecond">
+     SELECT 
+    t.`id` as `id`,
+    t.`first_id` as `firstId`,
+    t.`first_number` as `firstNumber`,
+    t.`name` as `name`,
+    t.`number` as `number`,
+    t.`remark` as `remark`,
+    t.`is_show` as `isShow`,
+    t.`is_colour` as `isColour`,
+    t.`is_recommend` as `isRecommend`
+
+    FROM gspt_dqc_class_second t
+
+    WHERE t.`id`=#{id}
+</select>
+
+
+    <select id="query" resultType="net.dgg.gspt.dqc.entity.order.ClassSecond">
+        SELECT
+        t.`id` as `id`,
+        t.`first_id` as `firstId`,
+        t.`first_number` as `firstNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM gspt_dqc_class_second t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`first_id` as `firstId`,
+        t.`first_number` as `firstNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM gspt_dqc_class_second t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM gspt_dqc_class_second t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM gspt_dqc_class_second  WHERE  `id`=#{id}
+</delete>
+    <select id="findByNumber" parameterType="String" resultType="net.dgg.gspt.dqc.entity.order.ClassSecond">
+        SELECT
+        t.`id` as `id`,
+        t.`first_id` as `firstId`,
+        t.`first_number` as `firstNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM gspt_dqc_class_second t
+
+        WHERE t.`number`=#{number}
+    </select>
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=firstId and ''!=firstId">
+            AND t.`first_id` = #{firstId}
+        </if>
+        <if test="null!=firstNumber and ''!=firstNumber">
+            AND t.`first_number` = #{firstNumber}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` = #{name}
+        </if>
+        <if test="null!=number and ''!=number">
+            AND t.`number` = #{number}
+        </if>
+        <if test="null!=remark and ''!=remark">
+            AND t.`remark` = #{remark}
+        </if>
+        <if test="null!=isShow and ''!=isShow">
+            AND t.`is_show` = #{isShow}
+        </if>
+        <if test="null!=isColour and ''!=isColour">
+            AND t.`is_colour` = #{isColour}
+        </if>
+        <if test="null!=isRecommend and ''!=isRecommend">
+            AND t.`is_recommend` = #{isRecommend}
+        </if>
+        <if test="null!=numberArr">
+            AND t.`number` in (
+            <foreach collection="numberArr" item="number" separator=",">
+                #{number}
+            </foreach>
+            )
+        </if>
+    </sql>
+
+</mapper>

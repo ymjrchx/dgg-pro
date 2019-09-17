@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.news.NewsDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.news.News">
+     INSERT INTO zqq_news
+        (`id`,
+        `number`,`type_level1_name`,`title`,`label`,`origin`,`news_photo`,`content`,`view_times`,`praise_times`,`type`,`status`,`flag`,`create_time`,`creater_id`,`creater_org_id`,`creater_name`,`update_time`,`updater_id`,`updater_name`,`updater_org_id`)
+     VALUES
+        (#{id},#{number},#{typeLevel1Name},#{title},#{label},#{origin},#{newsPhoto},#{content},#{viewTimes},#{praiseTimes},#{type},#{status},#{flag},#{createTime},#{createrId},#{createrOrgId},#{createrName},#{updateTime},#{updaterId},#{updaterName},#{updaterOrgId})
+</insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.news.News">
+     UPDATE zqq_news SET
+        `number` = #{number},
+    `type_level1_name` = #{typeLevel1Name},
+    `title` = #{title},
+    `label` = #{label},
+    `origin` = #{origin},
+    `news_photo` = #{newsPhoto},
+    `content` = #{content},
+    `view_times` = #{viewTimes},
+    `praise_times` = #{praiseTimes},
+    `type` = #{type},
+    `status` = #{status},
+    `flag` = #{flag},
+    `create_time` = #{createTime},
+    `creater_id` = #{createrId},
+    `creater_org_id` = #{createrOrgId},
+    `creater_name` = #{createrName},
+    `update_time` = #{updateTime},
+    `updater_id` = #{updaterId},
+    `updater_name` = #{updaterName},
+    `updater_org_id` = #{updaterOrgId}
+     WHERE id = #{id}
+</update>
+
+    <update id="updateViewTimes" parameterType="Long">
+        UPDATE zqq_news SET
+        `view_times` = view_times + 1
+        WHERE id = #{id}
+    </update>
+
+    <update id="updatePraise" parameterType="net.dgg.zqq.entity.news.News">
+        UPDATE zqq_news SET
+        `praise_times` = praise_times + 1
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.news.News">
+     SELECT 
+    t.`id` as `id`,
+        t.`number` as `number`,
+    t.`type_level1_name` as `typeLevel1Name`,
+    t.`title` as `title`,
+    t.`label` as `label`,
+    t.`origin` as `origin`,
+    t.`news_photo` as `newsPhoto`,
+    t.`content` as `content`,
+    t.`view_times` as `viewTimes`,
+    t.`praise_times` as `praiseTimes`,
+    t.`type` as `type`,
+    t.`status` as `status`,
+    t.`flag` as `flag`,
+    t.`create_time` as `createTime`,
+    t.`creater_id` as `createrId`,
+    t.`creater_org_id` as `createrOrgId`,
+    t.`creater_name` as `createrName`,
+    t.`update_time` as `updateTime`,
+    t.`updater_id` as `updaterId`,
+    t.`updater_name` as `updaterName`,
+    t.`updater_org_id` as `updaterOrgId`
+
+    FROM zqq_news t
+
+    WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.news.News">
+        SELECT
+        t.`id` as `id`,
+        t.`number` as `number`,
+        t.`type_level1_name` as `typeLevel1Name`,
+        t.`title` as `title`,
+        t.`label` as `label`,
+        t.`origin` as `origin`,
+        t.`news_photo` as `newsPhoto`,
+        t.`content` as `content`,
+        t.`view_times` as `viewTimes`,
+        t.`praise_times` as `praiseTimes`,
+        t.`type` as `type`,
+        t.`status` as `status`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_news t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER BY createTime DESC
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`number` as `number`,
+        t.`type_level1_name` as `typeLevel1Name`,
+        t.`title` as `title`,
+        t.`label` as `label`,
+        t.`origin` as `origin`,
+        t.`news_photo` as `newsPhoto`,
+        t.`content` as `content`,
+        t.`view_times` as `viewTimes`,
+        t.`praise_times` as `praiseTimes`,
+        t.`type` as `type`,
+        t.`status` as `status`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_news t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER BY createTime DESC
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_news t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM zqq_news  WHERE  `id`=#{id}
+</delete>
+
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=number ">
+            AND t.`number` = #{number}
+        </if>
+        <!--<if test="null!=typeLevel1Code and ''!=typeLevel1Code">-->
+            <!--AND t.`type_level1_code` = #{typeLevel1Code}-->
+        <!--</if>-->
+        <if test="null!=typeLevel1Name and ''!=typeLevel1Name">
+            AND t.`type_level1_name` = #{typeLevel1Name}
+        </if>
+        <if test="null!=title and ''!=title">
+            AND t.`title` = #{title}
+        </if>
+        <if test="null!=label and ''!=label">
+            AND t.`label` = #{label}
+        </if>
+        <if test="null!=origin and ''!=origin">
+            AND t.`origin` = #{origin}
+        </if>
+        <if test="null!=content and ''!=content">
+            AND t.`content` = #{content}
+        </if>
+        <if test="null!=viewTimes and ''!=viewTimes">
+            AND t.`view_times` = #{viewTimes}
+        </if>
+        <if test="null!=type and ''!=type">
+            AND t.`type` = #{type}
+        </if>
+        <if test="null!=status and ''!=status">
+            AND t.`status` = #{status}
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

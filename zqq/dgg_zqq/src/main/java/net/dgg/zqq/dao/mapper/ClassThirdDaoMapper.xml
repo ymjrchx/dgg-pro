@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.order.ClassThirdDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.order.ClassThird">
+     INSERT INTO zqq_class_third
+    (`id`,`second_id`,`second_number`,`name`,`number`,`remark`,`is_show`,`is_colour`,`is_recommend`)
+     VALUES 
+    (#{id},#{secondId},#{secondNumber},#{name},#{number},#{remark},#{isShow},#{isColour},#{isRecommend})
+</insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.order.ClassThird">
+     UPDATE zqq_class_third SET 
+    `second_id` = #{secondId},
+    `second_number` = #{secondNumber},
+    `name` = #{name},
+    `number` = #{number},
+    `remark` = #{remark},
+    `is_show` = #{isShow},
+    `is_colour` = #{isColour},
+    `is_recommend` = #{isRecommend}
+     WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.order.ClassThird">
+     SELECT 
+    t.`id` as `id`,
+    t.`second_id` as `secondId`,
+    t.`second_number` as `secondNumber`,
+    t.`name` as `name`,
+    t.`number` as `number`,
+    t.`remark` as `remark`,
+    t.`is_show` as `isShow`,
+    t.`is_colour` as `isColour`,
+    t.`is_recommend` as `isRecommend`
+
+    FROM zqq_class_third t
+
+    WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.order.ClassThird">
+        SELECT
+        t.`id` as `id`,
+        t.`second_id` as `secondId`,
+        t.`second_number` as `secondNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM zqq_class_third t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryByKey" resultType="net.dgg.zqq.entity.order.ClassThird">
+        SELECT
+        t.`id` as `id`,
+        t.`second_id` as `secondId`,
+        t.`second_number` as `secondNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM zqq_class_third t
+
+        WHERE t.`name` LIKE concat(concat('%',#{name}),'%')
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`second_id` as `secondId`,
+        t.`second_number` as `secondNumber`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`remark` as `remark`,
+        t.`is_show` as `isShow`,
+        t.`is_colour` as `isColour`,
+        t.`is_recommend` as `isRecommend`
+
+        FROM zqq_class_third t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_class_third t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM zqq_class_third  WHERE  `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=secondId and ''!=secondId">
+            AND t.`second_id` = #{secondId}
+        </if>
+        <if test="null!=secondNumber and ''!=secondNumber">
+            AND t.`second_number` = #{secondNumber}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` = #{name}
+        </if>
+        <if test="null!=number and ''!=number">
+            AND t.`number` = #{number}
+        </if>
+        <if test="null!=remark and ''!=remark">
+            AND t.`remark` = #{remark}
+        </if>
+        <if test="null!=isShow and ''!=isShow">
+            AND t.`is_show` = #{isShow}
+        </if>
+        <if test="null!=isColour and ''!=isColour">
+            AND t.`is_colour` = #{isColour}
+        </if>
+        <if test="null!=isRecommend and ''!=isRecommend">
+            AND t.`is_recommend` = #{isRecommend}
+        </if>
+        <if test="null!=searcKey and ''!=searcKey">
+            AND t.`name` LIKE CONCAT('%',#{searcKey},'%')
+        </if>
+        <if test="null!=numberArr">
+            AND t.`number` in (
+            <foreach collection="numberArr" item="number" separator=",">
+                #{number}
+            </foreach>
+            )
+        </if>
+    </sql>
+
+</mapper>

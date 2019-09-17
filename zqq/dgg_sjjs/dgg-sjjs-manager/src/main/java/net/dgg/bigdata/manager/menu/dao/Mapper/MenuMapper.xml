@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.bigdata.manager.menu.dao.MenuDao">
+
+    <!--添加菜单-->
+    <!--<insert id="addMenu" parameterType="net.dgg.bigdata.manager.menu.entity.MenuMain">
+        INSERT INTO menu_main(
+            menu_id,
+			menu_name,
+			menu_url,
+            menu_code,
+            sort_num,
+            remark,
+            icon,
+            creator_id,
+            createtime,
+            updator_id,
+            updatetime
+		) VALUES (
+		    #{menuId},
+            #{menuName},
+            #{menuUrl},
+            #{menuCode},
+            #{sortNum},
+            #{remark},
+            #{icon},
+            #{creatorId},
+            #{createtime},
+            #{updatorId},
+            #{updatetime}
+		)
+    </insert>-->
+
+    <!--添加菜单关系-->
+    <!--<insert id="addMenuClosure" parameterType="net.dgg.bigdata.manager.menu.entity.MenuClosure">
+        INSERT INTO menu_closure(
+        id,
+        menu_id,
+        ancestor_id,
+        distance,
+        creator_id,
+        createtime
+        ) VALUES
+        <foreach collection="menuClosures" item="menuClosure" separator=",">
+            (
+            #{menuClosure.id},
+            #{menuClosure.menuId},
+            #{menuClosure.ancestorId},
+            #{menuClosure.distance},
+            #{menuClosure.creatorId},
+            #{menuClosure.createtime}
+            )
+        </foreach>
+    </insert>-->
+
+    <!--获取菜单-->
+    <!--<select id="getMenus" parameterType="java.lang.Long" resultType="net.dgg.bigdata.manager.menu.entity.dto.MenuNodeDto">
+        select
+          a.menu_id as menuId,a.menu_name as menuName,a.menu_url as menuUrl,a.menu_code as menuCode,
+          a.sort_num as sortNum,a.remark,a.icon,a.creator_id as creatorId,a.createtime,
+          a.updator_id as updatorId,a.updatetime,b.ancestor_id as ancestorId
+        from menu_closure b ,menu_main a
+        where a.menu_id = b.menu_id
+        <if test="ancestorId!=null and ancestorId!='' ">
+            and b.distance=1 and b.ancestor_id = #{ancestorId}
+        </if>
+        <if test="ancestorId==null">
+            and b.distance=0 and b.ancestor_id = 1
+        </if>
+        order by a.sort_num asc
+    </select>-->
+
+    <!--获取菜单id-->
+   <!-- <select id="getMenuNodeIds" resultType="java.lang.Long">
+        select
+        b.menu_id
+        from menu_closure b
+        where b.ancestor_id in (
+        <foreach collection="menuIds" item="menuId" separator=",">
+            #{menuId}
+        </foreach>
+        )
+    </select>-->
+    <!--获取菜单分页-->
+    <!--<select id="getMenuPageWithPage" resultType="net.dgg.bigdata.manager.menu.entity.MenuMain" >
+        select
+        a.menu_id as menuId,a.menu_name as menuName,a.menu_url as menuUrl,a.menu_code as menuCode,
+        a.sort_num as sortNum,a.remark,a.icon,a.creator_id as creatorId,a.createtime,
+        a.updator_id as updatorId,a.updatetime
+        from menu_main a,menu_closure b
+        where a.menu_id = b.menu_id and b.distance=1 and a.menu_id !=1
+        <if test="menuId != '' and menuId != null">
+            and b.ancestor_id = #{menuId}
+        </if>
+        <if test="menuName != '' and menuName!= null">
+            and a.menu_name LIKE CONCAT('%',CONCAT(#{menuName},'%'))
+        </if>
+        <if test="menuUrl != '' and menuUrl!= null">
+            and a.menu_url LIKE CONCAT('%',CONCAT(#{menuUrl},'%'))
+        </if>
+        order by a.sort_num asc
+    </select>-->
+
+    <!--获取菜单详细-->
+    <!--<select id="getMenu" resultType="net.dgg.bigdata.manager.menu.entity.dto.MenuNodeDto" parameterType="java.lang.Long">
+        select
+        a.menu_id as menuId,a.menu_name as menuName,a.menu_url as menuUrl,a.menu_code as menuCode,
+        a.sort_num as sortNum,a.remark,a.icon,a.creator_id as creatorId,a.createtime,
+        a.updator_id as updatorId,a.updatetime
+        from menu_main a where a.menu_id = #{menuId}
+    </select>-->
+    <!--获取菜单编码-->
+    <select id="getMenuCode" resultType="java.lang.String" parameterType="java.lang.Long">
+        select a.menu_code
+        from menu_main a where a.menu_id = #{menuId}
+    </select>
+    <!--更新菜单-->
+    <!--<update id="updateMenu" parameterType="net.dgg.bigdata.manager.menu.entity.MenuMain">
+        UPDATE menu_main SET
+        menu_name = #{menuName},
+        menu_url =#{menuUrl},
+        menu_code=#{menuCode},
+        sort_num=#{sortNum},
+        remark=#{remark},
+        icon=#{icon},
+        updator_id= #{updatorId},
+        updatetime=#{updatetime}
+        where menu_id = #{menuId}
+    </update>-->
+
+    <!--删除菜单-->
+    <!--<delete id="deleteMenus" parameterType="java.lang.Long">
+        DELETE FROM menu_main where menu_id in (
+        <foreach collection="menuIds" item="menuId" separator=",">
+            #{menuId}
+        </foreach>
+        )
+    </delete>-->
+
+    <!--删除菜单关系-->
+    <!--<delete id="deleteMenuClosures" parameterType="java.lang.Long">
+        DELETE FROM menu_closure where (menu_id in (
+        <foreach collection="menuIds" item="menuId" separator=",">
+            #{menuId}
+        </foreach> ) OR
+        ancestor_id in (
+        <foreach collection="menuIds" item="menuId" separator=",">
+            #{menuId}
+        </foreach>)
+        )
+    </delete>-->
+
+    <!--<select id="findMenuTree" resultType="net.dgg.bigdata.manager.menu.entity.MenuTree"
+            parameterType="java.lang.Long">
+        SELECT
+            DISTINCT
+            a.menu_id AS menuId,
+            a.menu_name AS menuName,
+            a.menu_url AS menuUrl,
+            a.menu_code AS menu_code,
+            b.ancestor_id AS pId,
+            a.icon AS icon
+        FROM
+            menu_main a
+        JOIN menu_closure b
+        JOIN user_role c
+        JOIN role e
+        JOIN role_menu_permission d ON a.menu_id = b.menu_id
+        AND c.role_id = d.role_id
+        AND c.role_id = e.role_id
+        AND d.menu_id = a.menu_id
+        WHERE b.distance = 1
+        AND e.enable = 1
+        AND user_id = #{userId}
+        ORDER BY a.sort_num ASC
+    </select>-->
+    <!--获取最大排序值-->
+    <select id="getMaxSortNum" resultType="java.lang.Integer">
+        select max(sort_num) from menu_main
+    </select>
+    <!--判断菜单是否有子集-->
+  <!--  <select id="existNodeChild" resultType="java.lang.Integer">
+        select count(1)  from menu_main a,menu_closure b
+        where a.menu_id = b.menu_id and b.distance=1
+        and b.ancestor_id = #{menuId}
+    </select>-->
+
+    <!--判断menu_code的唯一性-->
+    <!--<select id="existMenuCode" resultType="java.lang.Integer">
+        select count(1) from menu_main
+        where menu_code = #{menuCode}
+        <if test="menuId!=null and menuId!=''">
+          and menu_id != #{menuId}
+        </if>
+
+    </select>-->
+
+    <!--查找所有菜单的URL-->
+    <!--<select id="findAllUrls" resultType="java.lang.String">
+      select menu_url from menu_main
+    </select>-->
+</mapper>

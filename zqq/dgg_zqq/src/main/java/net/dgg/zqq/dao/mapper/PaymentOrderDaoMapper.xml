@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.payment.PaymentOrderDao">
+
+    <select id="findByProps" parameterType="java.util.Map" resultType="net.dgg.zqq.entity.payment.PaymentOrder">
+        SELECT
+        t.payment_id as `paymentId`,
+        t.business_no as `businessNo`,
+        t.business_type as `businessType`,
+        t.trade_no as `tradeNo`,
+        t.pay_type as `payType`,
+        t.fee as `fee`,
+        t.trade_status as `tradeStatus`,
+        t.creator_id as `creatorId`,
+        t.createtime as `createTime`,
+        t.updator_id as `updatorId`,
+        t.updatetime as `updateTime`
+        FROM
+        payment_order t
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+    </select>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.payment.PaymentOrder">
+        UPDATE payment_order t SET
+        t.business_no = #{businessNo},
+        t.business_type = #{businessType},
+        t.trade_no = #{tradeNo},
+        t.pay_type = #{payType},
+        t.fee = #{fee},
+        t.trade_status = #{tradeStatus},
+        t.creator_id = #{creatorId},
+        t.createtime = #{createTime},
+        t.updator_id = #{updatorId},
+        t.updatetime = #{updateTime}
+        WHERE payment_id = #{paymentId}
+    </update>
+
+    <insert id="create" parameterType="net.dgg.zqq.entity.payment.PaymentOrder">
+        INSERT INTO payment_order
+        (`payment_id`,`business_no`,`business_type`,`trade_no`,`pay_type`,`fee`,`trade_status`,`creator_id`,`createtime`,`updator_id`,`updatetime`)
+        VALUES (#{paymentId},#{businessNo},#{businessType},#{tradeNo},#{payType},#{fee},#{tradeStatus},#{creatorId},#{createTime},#{updatorId},#{updateTime})
+    </insert>
+
+    <sql id="where">
+        <if test="null!=paymentId and ''!=paymentId">
+            AND t.`payment_id` = #{paymentId}
+        </if>
+        <if test="null!=businessNo and ''!=businessNo">
+            AND t.`business_no` = #{businessNo}
+        </if>
+        <if test="null!=fee and ''!=fee">
+            AND t.`fee` = #{fee}
+        </if>
+        <if test="null!=payType and ''!=payType">
+            AND t.`pay_type` = #{payType}
+        </if>
+        <if test="null!=businessType and ''!=businessType">
+            AND t.`business_type` = #{businessType}
+        </if>
+        <if test="null!=tradeNo and ''!=tradeNo">
+            AND t.`trade_no` = #{tradeNo}
+        </if>
+        <if test="null!=tradeStatus and ''!=tradeStatus">
+            AND t.`trade_status` = #{tradeStatus}
+        </if>
+    </sql>
+
+</mapper>

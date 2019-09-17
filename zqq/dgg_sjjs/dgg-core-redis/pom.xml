@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.dgg.core</groupId>
+        <artifactId>dgg-core-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>net.dgg.core</groupId>
+    <artifactId>dgg-core-redis</artifactId>
+    <version>${dgg-core-redis.version}</version>
+
+    <name>dgg-core-redis</name>
+    <description>架构中心-redis封装工程</description>
+
+    <dependencies>
+
+        <!--dgg framework start -->
+        <dependency>
+            <groupId>net.dgg.core</groupId>
+            <artifactId>dgg-core-spring</artifactId>
+        </dependency>
+        <!--dgg framework end -->
+
+        <!--  spring data start -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+        <!--  spring data redis end -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

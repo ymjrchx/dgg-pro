@@ -1,0 +1,35 @@
+
+.ntable .tx {
+    text-align: center;
+    width: 59px;
+}
+.ntable th {
+    text-align: center;
+    background: #F2F9FC;
+    border: #E4EEF6 1px solid;
+    border-collapse: collapse;
+    padding: 10px 12px 10px 12px;
+    font-weight: normal;
+    color: #444;
+    line-height: 19px;
+}
+.ntable {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.ntable-odd tr:nth-child(odd) {
+    background: #fff;
+}
+.ntable .tx {
+    text-align: center;
+    width: 59px;
+}
+.ntable td {
+    padding: 12px 10px 12px 10px;
+    border: #E4EEF6 1px solid;
+    word-break: break-all;
+    font-size: 14px;
+    line-height: 19px;
+    color: #222;
+}

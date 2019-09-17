@@ -1,0 +1,259 @@
+.content {
+    margin-top: 20px !important;
+}
+.company {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px;
+    position: relative;
+}
+.company_l {
+    width: 10%;
+    text-align: center;
+    padding-right: 20px;
+}
+.company_l img {
+    width: 100px;
+}
+.company_m {
+    width: 80%;
+}
+.company_m p {
+    display: block;
+    font-size: 22px;
+    color: #000000;
+    letter-spacing: 0;
+    font-weight: 600;
+    line-height: 31px;
+}
+.row_2 {
+    display: inline-block;
+    width: 42%;
+    margin-bottom: 6px;
+    overflow: hidden;
+    vertical-align: top;
+}
+.row_1 {
+    overflow: hidden;
+}
+.row_1 .w80,
+.row_2 .w80 {
+    width: 80%;
+}
+
+/* //tab选项内容 */
+.tab-content {
+    overflow: hidden;
+}
+.tab-content.main{
+    margin-top: 50px;
+    margin-bottom: 100px;}
+.tab-content_l {
+    width: 938px;
+    min-height: 200px;
+}
+.tab-content_r {
+    width: 24%;
+    min-height: 200px; 
+    padding-left:20px;
+}
+.card {
+    width: 100%;
+    background-color: #fcfcfd;
+    border: 1px solid #e9eeef;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    height: 48px;
+    position: relative;
+}
+.card > div.active {
+    float: left;
+    color: #128cec;
+    border-left: 1px solid #e9eeef;
+    border-right: 1px solid #e9eeef;
+    background: #fff;
+    margin-bottom: -2px;
+    border-bottom: solid 1px #fff;
+    font-weight: 700;
+    position: relative;
+    bottom: -1px;
+}
+.card > div {
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 14.28%;
+    font-size: 16px;
+}
+.card > div span {
+    font-size: 12px;
+}
+.card > div a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.card > div:first-child {
+    border-left: none !important;
+}
+.card > div:last-child {
+    border-right: none !important;
+}
+.company_r {
+    width: 400px;
+    position: absolute;
+    right: 20px;
+    text-align: right;
+    top: 20px;
+}
+.company_r > a {
+    margin-left: 6px;
+}
+
+.c_iconDt {
+    height: 35px;
+    border: 1px solid #128bed;
+    color: #128bed;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0px 10px 0px 38px;
+    display: inline-block;
+    border-radius: 2px;
+}
+.c_iconDt span {
+    display: block;
+    position: absolute;
+    background: url("./images/icon_ca@2x.png") no-repeat;
+    background-size: 144px 96px;
+    height: 24px;
+    width: 24px;
+    margin-left: -28px;
+    margin-top: 4px;
+}
+.c_iconDt.ca_compare span {
+    background-position: -24px 0px;
+}
+.c_iconDt.ca_focus span {
+    background-position: -47px 0px;
+}
+.c_iconDt.ca_jk span {
+    background-position: -72px 0px;
+}
+.c_iconDt:hover {
+    background: #128bed;
+    color: #fff;
+}
+.c_iconDt:hover span {
+    background-position: 0px -24px;
+}
+ .c_iconDt.ca_compare:hover span {
+    background-position: -24px -24px;
+}
+.c_iconDt.ca_focus:hover span {
+    background-position: -47px -24px;
+}
+.c_iconDt.ca_jk:hover span {
+    background-position: -72px -24px;
+}
+.m_bt_refresh {
+    display: inline-block;
+    background: url("./images/icon_refresh_ie8@2x.png") no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+.m_bt_refresh_loading{
+    background: url("./images/icon_refresh.gif") no-repeat;
+    background-size: contain;
+}
+.m_rightPanels .panel .panel-heading {
+    border-bottom: 1px solid #e7e9ef;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555555;
+    height: 50px;
+}
+
+.m_rightPanels .panel-heading span h2 {
+    color: #333;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline;
+}
+.m_rightPanels section.panel{
+    padding: 0;
+}
+.m_rightPanels .panel-body {
+    text-align: center;
+}
+.btab {
+    margin: 0px;
+    padding: 0px;
+}
+.btab>a {
+    display: block;
+    width: 100%;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    font-weight: normal;
+}
+.btab>a.active h2 {
+    color: #000;
+}
+.btab>a h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline;
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+}
+/* .btab>a:last-child {
+    border-left: solid 1px #e7e9ef;
+} */
+.m_qrp img{
+    display: block;
+    margin: auto;
+}
+.m_qrp-t{
+    margin: 20px 0;
+}
+/* //选项补充 */
+.tb_content {
+  border: 1px solid #eee;
+  border-top: none;
+  background: #fff;
+}
+
+.tb_content > section.panel {
+  padding: 0 15px;
+}
+.last.panel{
+    border: none;
+    position: relative;
+    top: -4px;
+}
+
+/* 青蛙的图标 */
+.noresult {
+    text-align: center;
+    padding: 100px 0;
+}
+.noresult .noface img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+/* 锚点的设置 */

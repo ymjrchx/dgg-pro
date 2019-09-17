@@ -1,0 +1,68 @@
+debug: false
+
+spring:
+    datasource:
+        url: jdbc:mysql://10.2.1.175:3306/db_zqq?useUnicode=true&characterEncoding=utf-8
+        username: zqq
+        password: dgg652540
+
+    data:
+        mongodb:
+            uri: mongodb://192.168.254.117:27017,192.168.254.118:27017
+            Database: core-test
+
+es:
+    servers: 10.2.1.174:9300;10.2.1.176:9300;10.2.1.177:9300
+    cluster:
+        name: dcq
+
+nature:
+    messagequeue:
+        host: wwmq.dgg.net
+        username: zhiqianqiu
+        password: zhiqianqiu
+        vhost: /
+        port: 35672
+
+server:
+    port: 18577
+
+app:
+    user:
+        access:
+            event: UserAccessEvent
+
+seo:
+    api:
+        url: https://zhiqianqiu.com/api
+    upload:
+        path:
+            root: /opt/zqq/root
+        host:
+            add: 10.2.1.178
+            port: 60023
+            user: dgg
+            password: whitedgg
+    mount:
+        http:
+            path: https://www.zhiqianqiu.com/seo              #静态文件挂载目录
+    sitemap:
+        build:
+            host: 10.2.1.178
+            port: 60023
+            user: dgg
+            passwd: whitedgg
+            root: /opt/zqq/root/sitemap
+            mount:
+                path: https://www.zhiqianqiu.com/map          #SiteMap URL SET挂载目录
+            segment: 20000
+        time:
+            schedule: 0 0 23 * * *
+    robots:
+        host: 10.2.1.178
+        port: 60023
+        user: dgg
+        passwd: whitedgg
+        root: /opt/zqq/root/sitemap
+        mount:
+            path: https://www.zhiqianqiu.com/sitemap.xml     #robots定认的sitemap文件位置

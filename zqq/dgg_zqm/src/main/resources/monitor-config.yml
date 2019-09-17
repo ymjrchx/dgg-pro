@@ -1,0 +1,58 @@
+#监控类型
+monitorTypeConfig:
+  -
+    name: HTTP/HTTPS监控
+    value: HTTP
+  -
+    name: PING监控
+    value: PING
+  -
+    name: PORT监控
+    value: PORT
+
+#监控指标
+monitorIndexConfig:
+  -
+    name: 响应时间
+    value: 1
+  -
+    name: 是否成功
+    value: 2
+
+#重复几次后报警
+monitorRepeatTimeConfig:
+  -
+    name: 1
+    value: 1
+  -
+    name: 3
+    value: 3
+  -
+    name: 5
+    value: 5
+
+#监控间隔
+monitorCronConfig:
+  -
+    name: "1分钟"
+    value: 60
+  -
+    name: "5分钟"
+    value: 300
+  -
+    name: "10分钟"
+    value: 600
+  -
+    name: "15分钟"
+    value: 900
+
+#通知方式
+noticeTypeConfig:
+  -
+    name: 邮件通知
+    value: 1
+  -
+    name: 短信通知
+    value: 2
+
+

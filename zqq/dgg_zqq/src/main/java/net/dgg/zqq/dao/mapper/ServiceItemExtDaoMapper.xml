@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.serviceAndAttr.ServiceItemExtDao">
+
+
+    <select id="query" resultType="net.dgg.zqq.entity.serviceAndAttr.ServiceItem">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`type_level1_code` as `typeLevel1Code`,
+        t.`type_level2_code` as `typeLevel2Code`,
+        t.`type_level3_code` as `typeLevel3Code`,
+        t.`service_price` as `servicePrice`,
+        t.`official_price` as `officialPrice`,
+        t.`describle` as `describle`,
+        t.`status` as `status`,
+        t.`auto_add_service_price` as `autoAddServicePrice`,
+        t.`flag` as `flag`,
+        t.`sort` as `sort`,
+        t.`logo_file` as `logoFile`,
+        t.`detail_img_file` as `detailImgFile`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_service_item t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`type_level1_code` as `typeLevel1Code`,
+        t.`type_level2_code` as `typeLevel2Code`,
+        t.`type_level3_code` as `typeLevel3Code`,
+        t.`service_price` as `servicePrice`,
+        t.`official_price` as `officialPrice`,
+        t.`describle` as `describle`,
+        t.`status` as `status`,
+        t.`auto_add_service_price` as `autoAddServicePrice`,
+        t.`flag` as `flag`,
+        t.`sort` as `sort`,
+        t.`logo_file` as `logoFile`,
+        t.`detail_img_file` as `detailImgFile`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_service_item t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_service_item t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+
+
+    <select id="findByNumber" resultType="net.dgg.zqq.entity.serviceAndAttr.ServiceItem">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`number` as `number`,
+        t.`type_level1_code` as `typeLevel1Code`,
+        t.`type_level2_code` as `typeLevel2Code`,
+        t.`type_level3_code` as `typeLevel3Code`,
+        t.`service_price` as `servicePrice`,
+        t.`official_price` as `officialPrice`,
+        t.`describle` as `describle`,
+        t.`status` as `status`,
+        t.`auto_add_service_price` as `autoAddServicePrice`,
+        t.`flag` as `flag`,
+        t.`sort` as `sort`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_service_item t
+
+        <where>
+            <if test="null!=number and ''!=number">
+                t.`number` = #{number}
+            </if>
+        </where>
+
+
+    </select>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` LIKE concat('%',#{name},'%')
+        </if>
+        <if test="null!=number and ''!=number">
+            AND t.`number` LIKE concat('%',#{number},'%')
+        </if>
+        <if test="null!=typeLevel1Code and ''!=typeLevel1Code">
+            AND t.`type_level1_code` = #{typeLevel1Code}
+        </if>
+        <if test="null!=typeLevel2Code and ''!=typeLevel2Code">
+            AND t.`type_level2_code` = #{typeLevel2Code}
+        </if>
+        <if test="null!=typeLevel3Code and ''!=typeLevel3Code">
+            AND t.`type_level3_code` = #{typeLevel3Code}
+        </if>
+        <if test="null!=servicePrice and ''!=servicePrice">
+            AND t.`service_price` = #{servicePrice}
+        </if>
+        <if test="null!=officialPrice and ''!=officialPrice">
+            AND t.`official_price` = #{officialPrice}
+        </if>
+        <if test="null!=describle and ''!=describle">
+            AND t.`describle` = #{describle}
+        </if>
+        <if test="null!=status and ''!=status">
+            AND t.`status` = #{status}
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+        <if test="null!=code and ''!=code">
+            AND EXISTS (SELECT r.`service_item_id` from zqq_service_attr_relation r left join zqq_service_attr a on
+            r.`service_attr_id` = a.`id` where r.`service_item_id` = t.`id` and a.`code` LIKE concat('%',#{code},'%')
+            and a.`flag` = 1 )
+        </if>
+        <if test="null!=typeLevel3CodeArr">
+            AND t.`type_level3_code` in (
+            <foreach collection="typeLevel3CodeArr" item="code" separator=",">
+                #{code}
+            </foreach>
+            )
+        </if>
+    </sql>
+
+</mapper>

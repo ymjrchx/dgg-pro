@@ -1,0 +1,395 @@
+html,
+body {
+  min-width: 1250px;
+  font-family: "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑", "\5FAE\8F6F\96C5\9ED1";
+  font-size: 14px;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+  box-sizing: border-box
+}
+
+* {
+  font-family: "Microsoft YaHei", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: 0
+}
+
+li {
+  list-style: none
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+  cursor: pointer
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: #fd7d22
+}
+
+ul {
+  padding-left: 0;
+  margin: 0
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+textarea {
+  resize: none;
+}
+
+img {
+  vertical-align: middle
+}
+
+i,
+em {
+  font-style: normal
+}
+
+ul {
+  padding-left: 0;
+  margin: 0
+}
+
+.text-right {
+  text-align: right
+}
+
+.text-left {
+  text-align: left
+}
+
+.text-center {
+  text-align: center
+}
+
+.text-delic {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.text-delic2 {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+}
+
+.text-delic3 {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both
+}
+
+.clear2 {
+  display: block
+}
+
+.clear2:after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both
+}
+
+.zoom {
+  zoom: 1
+}
+
+.weight {
+  font-weight: 100
+}
+
+.cur {
+  cursor: pointer
+}
+
+.hide {
+  display: none
+}
+
+.Blue {
+  color: #409EFF !important
+}
+
+.Green {
+  color: #67C23A !important
+}
+
+.col {
+  color: #fd7d22
+}
+
+.col-r {
+  color: #d64954
+}
+
+.col-g {
+  color: #38d591
+}
+
+.col-y {
+  color: #ff894d
+}
+
+.col-h {
+  color: #b0b0b0
+}
+
+.col-h2 {
+  color: #9b9b9b
+}
+
+.col-h3 {
+  color: #656565
+}
+
+.col-b {
+  color: #000000
+}
+
+.back-b {
+  background: #ffffff
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none
+}
+
+textarea {
+  -webkit-appearance: none
+}
+
+button {
+  text-align: center;
+  border-radius: 0;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px
+}
+
+input {
+  -webkit-user-select: auto
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+#mask,
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 8;
+  display: none
+}
+
+.text-through {
+  text-decoration: line-through
+}
+
+.f12 {
+  font-size: 12px !important
+}
+
+.f14 {
+  font-size: 14px !important
+}
+
+.f16 {
+  font-size: 16px !important
+}
+
+.f18 {
+  font-size: 18px !important
+}
+
+.f20 {
+  font-size: 20px !important
+}
+
+.f24 {
+  font-size: 24px !important
+}
+
+.pos_re {
+  position: relative
+}
+
+.pos_ab {
+  position: absolute
+}
+
+.db {
+  display: block
+}
+
+.di {
+  display: inline
+}
+
+.dib {
+  display: inline-block
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.margin0 {
+  margin: 0 !important
+}
+
+.mar_l16 {
+  margin-left: 16px
+}
+
+.mar_r16 {
+  margin-right: 16px
+}
+
+.ml5 {
+  margin-left: 5px
+}
+
+.mr5 {
+  margin-right: 5px
+}
+
+.mr10 {
+  margin-right: 10px
+}
+
+.ml10 {
+  margin-left: 10px
+}
+
+
+
+.mt5 {
+  margin-top: 5px
+}
+
+.mt10 {
+  margin-top: 10px
+}
+
+.mt15 {
+  margin-top: 15px
+}
+
+.mb5 {
+  margin-bottom: 5px
+}
+
+.mb10 {
+  margin-bottom: 10px
+}
+
+.mb8 {
+  margin-bottom: 8px
+}
+
+.empt {
+  width: 100%;
+  height: 10px;
+  background: #efeff4
+}
+
+.w {
+  width: 1200px;
+  margin: 0 auto
+}
+
+.w2 {
+  width: 1200px;
+  margin: 0 auto
+}
+
+@media screen and (min-width:1200px) {
+  .w {
+    width: 1200px;
+    margin: 0 auto
+  }
+}
+
+/* 
+@media screen and (min-width:600px) and (max-width:1200px) {
+  .w {
+    width: 600px;
+    margin: 0 auto
+  }
+}
+
+@media screen and (max-width:600px) {
+  .w {
+    width: 400px
+  }
+} */
+
+/* //小于1300px */
+@media screen and (max-width:1350px) {
+  .hid1300 {
+    display: none !important;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none
+}
+
+input[type="number"] {
+  -moz-appearance: textfield
+}
+
+body >a:first-child{
+  display: none;
+}

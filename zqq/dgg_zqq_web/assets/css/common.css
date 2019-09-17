@@ -1,0 +1,619 @@
+.col {
+  color: #fd7d22
+}
+
+.mar {
+  margin: 0 6px
+}
+
+.ml6 {
+  margin-left: 6px
+}
+
+.hoverCol:hover {
+  color: #fd7d22 !important
+}
+
+.f28 {
+  font-size: 28px
+}
+
+.f30 {
+  font-size: 30px
+}
+
+.v-align-m {
+  vertical-align: -webkit-baseline-middle
+}
+
+.white {
+  color: #fff !important
+}
+
+.w1200 {
+  margin: 0 auto;
+  width: 1200px
+}
+
+.hidden {
+  overflow: hidden
+}
+
+.clrear3::after {
+  content: " ";
+  clear: both
+}
+
+.button {
+  display: inline-block;
+  background-color: #FF7200;
+  border: 1px solid #FF7200;
+  color: #fff;
+  border-radius: 2px;
+  outline: none
+}
+
+.button:hover {
+  background: #DE5D1A;
+  color: #fff;
+}
+
+.waterMark {
+  background-image: url('../images/mark.png') !important
+}
+
+ul::-webkit-scrollbar,
+.scroll::-webkit-scrollbar {
+  width: 2px
+}
+
+ul::-webkit-scrollbar-track,
+.scroll::-webkit-scrollbar-track {
+  background-color: #eaeaea
+}
+
+ul::-webkit-scrollbar-thumb,
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #ff5c00
+}
+
+ul::-webkit-scrollbar-button {}
+
+ul::-webkit-scrollbar-corner {}
+
+/* //一些 v-html的样式 开始*/
+.patentDetail-wrap .keyword-box .search-keyword {
+  display: block;
+  float: left;
+  color: #444;
+  margin-right: 24px;
+  margin-bottom: 6px;
+  background-color: #eee;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.patentDetail-wrap .keyword-box .search-keyword:hover {
+  background-color: #ff5c00;
+  color: #fff;
+}
+
+.list-content .Section1 {
+  font-size: 13px;
+  color: #444;
+  padding: 10px 0 0 12px;
+}
+
+.list-content .Section1 p span {
+  font-size: 13px !important;
+  color: #444;
+  line-height: 28px !important;
+
+}
+
+.richText img {
+  display: inline-block;
+  margin-right: 10px;
+  width: 100px !important;
+}
+
+/* //一些 v-html的样式 结束*/
+
+
+/* //高亮的处理 */
+.keyword {
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background-color: #ff5c00;
+}
+
+.heightCol {
+  color: #ff0000 !important;
+}
+
+.line-animate {
+  position: relative;
+  overflow: hidden;
+  background: transparent
+}
+
+.line-animate:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 1px solid #ff6000;
+  border-width: 1px 1px 0 0;
+  transition: all .5s;
+  opacity: 0
+}
+
+.line-animate:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 1px solid #ff6000;
+  border-width: 0 0 1px 1px;
+  transition: all .5s;
+  opacity: 0
+}
+
+.line-animate:hover,
+.line-animate-hover {
+  border: 1px solid transparent !important
+}
+
+.line-animate:hover:after,
+.line-animate-hover:after,
+.line-animate:hover:before,
+.line-animate-hover:before {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 1;
+  overflow: hidden
+}
+
+
+
+
+
+.paging {
+  text-align: center;
+  font-size: 0;
+  color: #777;
+  padding: 50px 0 40px
+}
+
+.btns .btn {
+  display: inline-block;
+  padding: 0 40px;
+  height: 44px;
+  line-height: 44px;
+  background-color: #ee8b3c;
+  color: #fff;
+  font-size: 14px;
+  border: 0;
+  font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei";
+  cursor: pointer;
+  transition: all 0.9s;
+  -webkit-transition: all 0.9s;
+  -moz-transition: all 0.9s;
+  -o-transition: all 0.9s;
+  -ms-transition: all 0.9s
+}
+
+.popUI {
+  position: fixed;
+  _position: absolute;
+  background-color: #fff;
+  z-index: 999999;
+  -webkit-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -moz-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -ms-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -o-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  transition: transform ease-out 0.6s, opacity ease-out 0.6s
+}
+
+.popUI.transform {
+  display: none
+}
+
+.popUI.transform1 {
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -moz-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -ms-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -o-transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  transition: transform ease-out 0.6s, opacity ease-out 0.6s;
+  -webkit-transform: rotate(1080deg) scale(1);
+  -moz-transform: rotate(1080deg) scale(1);
+  -ms-transform: rotate(1080deg) scale(1);
+  -o-transform: rotate(1080deg) scale(1);
+  transform: rotate(1080deg) scale(0)
+}
+
+.popUI.transform2 {
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: transform ease-out 0.3s, visibility ease-out 0.9s;
+  -moz-transition: transform ease-out 0.3s, visibility ease-out 0.9s;
+  -ms-transition: transform ease-out 0.3s, visibility ease-out 0.9s;
+  -o-transition: transform ease-out 0.3s, visibility ease-out 0.9s;
+  transition: transform ease-out 0.3s, visibility ease-out 0.9s;
+  -webkit-transform: translate(0, -300%);
+  -moz-transform: translate(0, -300%);
+  -ms-transform: translate(0, -300%);
+  -o-transform: translate(0, -300%);
+  transform: translate(0, -300%)
+}
+
+.popUI .popUI-close {
+  display: block;
+  background-image: url('../images/close.png');
+  background-size: 100% 100%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  line-height: 15px;
+  text-align: center;
+  font-style: normal;
+  font-size: 17px;
+  color: #444;
+  font-weight: bold;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 0px 0px
+}
+
+.popUI .popUI-close:hover {
+  color: #000
+}
+
+.popUI .popUI-header {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  font-weight: normal;
+  background-color: #008cd6;
+  color: #fff;
+  padding: 6px;
+  cursor: move;
+  overflow: hidden
+}
+
+.popUI .popUI-header .text {
+  display: block;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  width: 100%;
+  margin: 0px 0 0 -20px;
+  padding: 0 28px 0 25px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.popUI .popUI-header .icon {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  background: #000;
+  background-repeat: no-repeat;
+  background-position: 0px center
+}
+
+.popUI .popUI-body {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: #fff
+}
+
+.popUI .popUI-footer {
+  width: 100%;
+  padding: 8px;
+  text-align: right;
+  overflow: hidden;
+  background-color: #fff
+}
+
+.popUI .popUI-footer .btn {
+  display: inline-block;
+  padding: 0 20px;
+  margin: 0 5px 0 5px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 2px;
+  background-color: #008cd6;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer
+}
+
+.popUI .popUI-footer .btn-cancel {
+  background-color: #999
+}
+
+.popUI .popUI-footer .btn:hover {
+  background-color: #007BBC
+}
+
+.popUI .popUI-footer .btn-cancel:hover {
+  background-color: #777
+}
+
+.popUI-mask {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  z-index: 999998
+}
+
+@media screen and (min-width:1240px) {
+  .popUI-mask {
+    width: 100%
+  }
+}
+
+.simulationSelect {
+  width: 400px;
+  height: 40px;
+  position: relative
+}
+
+.simulationSelect .selectInputBox {
+  height: 100%;
+  position: relative
+}
+
+.simulationSelect .selectInputBox .selectInput {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0 38px 0 10px;
+  box-sizing: border-box;
+  border: solid 1px #ddd
+}
+
+.simulationSelect .selectInputBox .downArrow {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 30px;
+  height: 100%;
+  background-color: #ee8b3c;
+  cursor: pointer;
+  overflow: hidden
+}
+
+.simulationSelect .selectInputBox .downArrow .fa {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -8px 0 0 -5px;
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden
+}
+
+.simulationSelect .selectInputBox .downArrow:hover {
+  background-color: #017fc2
+}
+
+.simulationSelect .selectOptions {
+  display: none;
+  width: 100%;
+  position: absolute;
+  z-index: 9999;
+  top: 40px;
+  left: 0px;
+  background-color: #fff;
+  border: solid 1px #ddd;
+  border-top: 0;
+  box-sizing: border-box
+}
+
+.simulationSelect.open .selectOptions {
+  display: block;
+  height: 270px;
+  overflow: auto
+}
+
+.simulationSelect.open .selectInputBox .downArrow {
+  background-color: #017fc2
+}
+
+.simulationSelect .selectOptions .options-title {
+  margin: auto;
+  width: 94%;
+  border-bottom: dotted 1px #ccc;
+  height: 34px;
+  line-height: 34px;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: left
+}
+
+.simulationSelect .selectOptions .options-title input {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle
+}
+
+.simulationSelect .selectOptions li {
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
+  text-align: left;
+  padding: 0 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative
+}
+
+.simulationSelect .selectOptions li:hover {
+  background-color: #eee
+}
+
+.simulationSelect .selectOptions li input {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 12px;
+  top: 10px
+}
+
+.paging a {
+  color: #777
+}
+
+.paging .pagination {
+  display: inline-block;
+  font-size: 0
+}
+
+.paging .pagination li {
+  display: inline-block;
+  margin: 0 3px;
+  font-size: 14px
+}
+
+.paging .pagination li a {
+  display: block;
+  border: solid 1px #e5e5e5;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  text-align: center
+}
+
+.paging .pagination li span {
+  display: block;
+  border: solid 1px #e5e5e5;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  text-align: center
+}
+
+.paging .pagination li a:hover {
+  background-color: #f08c2f;
+  color: #fff
+}
+
+.paging .pagination .active a {
+  background-color: #f08c2f;
+  color: #fff
+}
+
+.paging .jump-page {
+  display: inline-block;
+  font-size: 0;
+  margin-left: 50px
+}
+
+.paging .jump-page li {
+  font-size: 14px
+}
+
+.paging .j-input {
+  width: 60px;
+  height: 30px;
+  margin: 0 8px;
+  border: solid 1px #e5e5e5;
+  text-align: center
+}
+
+.paging .j-btn {
+  display: inline-block;
+  width: 65px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 8px;
+  border: solid 1px #f08b30;
+  background: none;
+  cursor: pointer;
+  vertical-align: top;
+  text-align: center;
+  background-color: #f08c2f;
+  color: #fff
+}
+
+.paging .j-btn:hover {
+  background: #f08b30;
+  color: #fff
+}
+
+.vue-datepicker input {
+  width: 90% !important;
+}
+
+.line-animate a.none {
+  border: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  border-radius: 0 !important;
+  color: #ff6000;
+  font-size: 0 !important;
+  line-height: 26px;
+  height: auto !important;
+  vertical-align: middle;
+  margin: 0 !important;
+  position: relative;
+  z-index: 9;
+}
+
+.line-animate a.none:hover {
+  background: none !important;
+}
+
+.handle ul li p {
+  height: 52px !important;
+}
+
+.iconfont {
+  font-size: 12px;
+  font-family: 'iconfont'
+}
+
+@font-face {
+  font-family: 'iconfont';
+  /* project id 854141 */
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/iconfont.woff') format('woff'),
+    url('../font/iconfont.ttf') format('truetype'),
+    url('../font/iconfont.svg#iconfont') format('svg');
+}

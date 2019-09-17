@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.dgg.gspt.dqc.dao.UserDao">
+    <resultMap id="BaseResultMap" type="net.dgg.gspt.dqc.entity.business.User">
+        <result column="userId" property="userId" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="employeeNo" property="employeeNo" jdbcType="VARCHAR" />
+		<result column="useErpPwd" property="useErpPwd" jdbcType="INTEGER" />
+		<result column="loginPwd" property="loginPwd" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="enabled" property="enabled" jdbcType="INTEGER" />
+		<result column="lastUpdate" property="lastUpdate" jdbcType="TIMESTAMP" />
+		<result column="is_member" property="isMember" jdbcType="INTEGER" />
+		<result column="member_expirationdate" property="memberExpirationdate"
+			jdbcType="TIMESTAMP" />
+		<result column="birthday" property="birthday" jdbcType="DATE"/>
+		<result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="key" property="key" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+		<result column="isInner" property="isInner" jdbcType="INTEGER"/>
+		<result column="lastLoginDate" property="lastLoginDate" jdbcType="TIMESTAMP"/>
+		<result column="regist" property="regist" jdbcType="INTEGER"/>
+		<result column="vipEndTime" property="vipEndTime" jdbcType="INTEGER"/>
+		<result column="vipEndTime" property="vipEndTime" jdbcType="INTEGER"/>
+		<result column="status" property="status" jdbcType="VARCHAR"/>
+		<result column="flag" property="flag" jdbcType="INTEGER"/>
+	</resultMap>
+
+
+	<insert id="insertUser" parameterType="net.dgg.gspt.dqc.entity.business.User">
+		insert into sys_user_info
+		(
+		userId,username,createtime,employeeNo,useErpPwd,loginPwd,remark,enabled,lastUpdate,`type`,`birthday`,`sex`,`key`,`money`,`isInner`,`lastLoginDate`,`regist`,`vipEndTime`,`status`,`flag`
+		)
+		values (
+		#{userId},#{username},#{createtime},#{employeeNo},#{useErpPwd},#{loginPwd},#{remark},#{enabled},#{lastUpdate},#{type},#{birthday},#{sex},#{key},#{money},#{isInner},#{lastLoginDate},#{regist},#{vipEndTime},#{status},#{flag}
+		)
+	</insert>
+
+	<!--修改后台用户信息，根据id修改 -->
+	<update id="updateUser" parameterType="net.dgg.gspt.dqc.entity.business.User">
+		UPDATE sys_user_info
+		SET
+		lastUpdate=NOW()
+		<if test="username!=null and username!=''">
+			,username=#{username}
+		</if>
+		<if test="createtime!=null">
+			,createtime=#{createtime}
+		</if>
+		<if test="employeeNo!=null and employeeNo!=''">
+			,employeeNo=#{employeeNo}
+		</if>
+		<if test="loginPwd!=null and loginPwd!=''">
+			,loginPwd=#{loginPwd}
+		</if>
+		<if test="remark!=null and remark!=''">
+			,remark=#{remark}
+		</if>
+		<if test="enabled!=null">
+			,enabled=#{enabled}
+		</if>
+		<if test="nickname!=null and nickname!=''">
+			,nickname=#{nickname}
+		</if>
+		<if test="email!=null and email!=''">
+			,email=#{email}
+		</if>
+		<if test="isMember!=null">
+			,is_member=#{isMember}
+			<if test="isMember == 1">
+				,member_expirationdate = IF(member_expirationdate IS
+				NULL, DATE_ADD(NOW(), INTERVAL 1
+				YEAR),
+				DATE_ADD(IF(member_expirationdate >= NOW(),
+				member_expirationdate,
+				NOW()), INTERVAL 1 YEAR ))
+			</if>
+		</if>
+		<if test="birthday!=null">
+			,`birthday`=#{birthday}
+		</if>
+		<if test="sex!=null">
+			,`sex`=#{sex}
+		</if>
+        <if test="key!=null">
+            ,`key`=#{key}
+        </if>
+		<if test="type!=null">
+			,`type`=#{type}
+		</if>
+        <if test="money!=null">
+            ,`money`=#{money}
+        </if>
+		<if test="regist!=null">
+			,`regist`=#{regist}
+		</if>
+		<if test="vipEndTime!=null">
+			,`vipEndTime`=#{vipEndTime}
+		</if>
+		<if test="status!=null and status!=''">
+			,status=#{status}
+		</if>
+		<if test="flag!=null and flag!=''">
+			,flag=#{flag}
+		</if>
+		WHERE
+		userId=#{userId}
+
+	</update>
+
+
+
+	<update id="updateUserByName" parameterType="net.dgg.gspt.dqc.entity.business.User">
+		UPDATE sys_user_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="username!=null and username!=''">
+				username=#{username},
+			</if>
+			<if test="createtime!=null">
+				createtime=#{createtime},
+			</if>
+			<if test="employeeNo!=null and employeeNo!=''">
+				employeeNo=#{employeeNo},
+			</if>
+			<if test="loginPwd!=null and loginPwd!=''">
+				loginPwd=#{loginPwd},
+			</if>
+			<if test="remark!=null and remark!=''">
+				remark=#{remark},
+			</if>
+			<if test="enabled!=null">
+				enabled=#{enabled},
+			</if>
+			<if test="lastUpdate!=null">
+				lastUpdate=#{lastUpdate},
+			</if>
+			<if test="nickname!=null">
+				nickname=#{nickname},
+			</if>
+			<if test="email!=null">
+				email=#{email},
+			</if>
+			<if test="userCompany!=null">
+				userCompany=#{userCompany},
+			</if>
+			<if test="userPosition!=null">
+				userPosition=#{userPosition},
+			</if>
+			<if test="industry!=null">
+				industry=#{industry},
+			</if>
+			<if test="isMember!=null">
+				is_member=#{isMember},
+				<if test="isMember == 1">
+					member_expirationdate = IF(member_expirationdate IS
+					NULL, DATE_ADD(NOW(), INTERVAL 1
+					YEAR ),
+					DATE_ADD(IF(member_expirationdate >= NOW(),
+					member_expirationdate,
+					NOW()), INTERVAL 1 YEAR )),
+				</if>
+			</if>
+		</trim>
+		<if test="birthday!=null">
+			,`birthday`=#{birthday}
+		</if>
+		<if test="sex!=null">
+			,`sex`=#{sex}
+		</if>
+        <if test="key!=null">
+            ,`key`=#{key}
+        </if>
+        <if test="money!=null">
+            ,`money`=#{money}
+        </if>
+		<if test="regist!=null">
+			,`regist`=#{regist}
+		</if>
+		<if test="vipEndTime!=null">
+			,`vipEndTime`=#{vipEndTime}
+		</if>
+		<if test="status!=null and status!=''">
+			,status=#{status}
+		</if>
+		<if test="flag!=null and flag!=''">
+			,flag=#{flag}
+		</if>
+		WHERE
+		username=#{username}
+
+	</update>
+	<select id="findUserByName" resultMap="BaseResultMap"
+		parameterType="net.dgg.gspt.dqc.entity.business.User">
+		SELECT * from sys_user_info
+		WHERE username=#{username}
+	</select>
+	<!-- 查询并修改到期会员信息 -->
+	<select id="updateAndfindUserMemberExpired" >
+		UPDATE sys_user_info SET is_member = 0 WHERE userId IN (
+		SELECT A.userId FROM (SELECT userId FROM sys_user_info WHERE is_member = 1 AND member_expirationdate <![CDATA[ <= NOW()]]>)A);
+	</select>
+	<select id="findAll"
+		parameterType="map">
+		select * from sys_user_info u
+		WHERE 1=1
+		<if test="employeeNo!=null and employeeNo!=''">
+			AND u.employeeNo=#{employeeNo}
+		</if>
+		<if test="username!=null and username!=''">
+			AND u.username=#{username}
+		</if>
+		<if test="userId!=null and userId!=''">
+			AND u.userId=#{userId}
+		</if>
+		<if test="industry!=null and industry!=''">
+			AND u.industry=#{industry}
+		</if>
+		<if test="isMember!=null and isMember!=''">
+			AND u.isMember=#{isMember	}
+		</if>
+		<if test="type!=null and type!=''">
+			AND u.type=#{type}
+		</if>
+		<if
+			test="startCount!=null and startCount !='' and endCount!=null and endCount!=''">
+			limit ${startCount},${endCount}
+		</if>
+
+	</select>
+	<select id="findAllCount" resultType="java.lang.Integer"
+		parameterType="map">
+		select count(1) from sys_user_info u
+		WHERE 1=1
+		<if test="employeeNo!=null and employeeNo!=''">
+			AND u.employeeNo=#{employeeNo}
+		</if>
+		<if test="username!=null and username!=''">
+			AND u.username=#{username}
+		</if>
+		<if test="userId!=null and userId!=''">
+			AND u.userId=#{userId}
+		</if>
+		<if test="regist!=null and regist!=''">
+			AND u.regist=#{regist}
+		</if>
+		<if
+			test="startCount!=null and startCount !='' and endCount!=null and endCount!=''">
+			limit ${startCount},${endCount}
+		</if>
+
+	</select>
+
+	<!--通过主键查找用户 -->
+	<select id="selectByPrimaryKey" resultType="net.dgg.gspt.dqc.entity.business.User"
+		parameterType="map">
+		select u.* from sys_user_info u
+		WHERE 1=1
+		<if test="id!=null and id!=''">
+			AND u.userId=#{id}
+		</if>
+
+	</select>
+    <select id="findAllSysUser" resultType="net.dgg.gspt.dqc.dto.user.UserSysListReturnDto"
+            parameterType="map">
+		select
+		userId,
+		employeeNo,
+		enabled as status,
+		username AS username,
+		remark
+		AS trueName
+		from sys_user_info
+		WHERE 1=1
+		AND
+		type=1
+		<if test="username!=null and username!=''">
+			AND (remark like concat('%',#{username},'%') or employeeNo
+			like
+			concat('%',#{username},'%') or username like
+			concat('%',#{username},'%'))
+		</if>
+		<if test="status!=null and status!=null">
+			AND enabled=#{status}
+		</if>
+		<if test="startCount!=null and endCount!=null">
+			limit #{startCount},#{endCount}
+		</if>
+
+	</select>
+
+	<!--查询所有注册用户 -->
+    <select id="findAllRegisterUsers" resultType="net.dgg.gspt.dqc.dto.user.UserRegisterListDto"
+            parameterType="map">
+		SELECT
+		userId,
+		username,
+		username phoneNo,
+		nickname,
+		employeeNo,
+		email,
+		userPosition,
+		userCompany,
+		industry
+		from sys_user_info
+		where 1=1
+		and type =
+		0
+		<if test="keyWord!='' and keyWord!=null">
+			AND username like #{keyWord}
+		</if>
+		<if test="startCount!=null and endCount!=null">
+			limit #{startCount},#{endCount}
+		</if>
+	</select>
+	<select id="selectUserDetilById" resultType="java.util.Map"
+		parameterType="string">
+		SELECT
+		userId,
+		username,
+		nickname,
+		employeeNo,
+		remark,
+		email,
+		userPosition,
+		userCompany,
+		industry,
+		is_member AS isMember,
+        member_expirationdate AS memberExpirationdate,
+        birthday,
+        sex,
+        ke,
+		money,
+		regist,
+		vipEndTime,
+		status,
+		flag
+		from sys_user_info
+		WHERE
+		userId=#{userId}
+	</select>
+	<select id="selectPersonInfoById" parameterType="java.lang.String" resultType="net.dgg.gspt.dqc.entity.business.User">
+		SELECT
+		userId,
+		nickname,
+		username,
+		email,
+		loginPwd,
+		birthday,
+		sex
+		from sys_user_info
+		WHERE
+		userId=#{userId}
+	</select>
+
+	<!--查询用户部门散装信息 -->
+	<select id="findUserDeptNames" resultType="java.lang.String">
+		SELECT
+		REPLACE(group_concat(eo.deptName),',','-') deptName
+		FROM
+		erp_organization eo
+		WHERE 1=1 AND
+		<foreach collection="array" separator=" or " open="(" close=")"
+			index="index" item="item">
+			eo.id=#{item}
+		</foreach>
+		order by eo.deptSort asc
+	</select>
+
+    <!--查询用户部门散装信息 -->
+    <select id="findUserById" parameterType="java.lang.String" resultType="net.dgg.gspt.dqc.entity.business.User">
+		SELECT
+		userId,
+		username,
+		nickname,
+		loginPwd,
+		employeeNo,
+		remark,
+		email,
+		userPosition,
+		userCompany,
+		industry,
+		is_member AS isMember,
+		member_expirationdate AS memberExpirationdate,
+		`birthday`,
+		`status`,
+		`sex`,
+		`key`,
+		`money`,
+		`isInner`,
+		`lastLoginDate`,
+		`regist`,
+		`vipEndTime`
+		from sys_user_info
+		WHERE
+		`userId`=#{id}
+	</select>
+
+    <!--查询用户部门散装信息 -->
+    <select id="findUserByKey" parameterType="java.lang.String" resultType="net.dgg.gspt.dqc.entity.business.User">
+		SELECT
+		userId,
+		username,
+		nickname,
+		employeeNo,
+		remark,
+		email,
+		userPosition,
+		userCompany,
+		industry,
+		is_member AS isMember,
+		member_expirationdate AS memberExpirationdate,
+		`birthday`,
+		`sex`,
+		`key`,
+		`money`,
+		`isInner`,
+		`lastLoginDate`,
+		`regist`,
+		`vipEndTime`
+		from sys_user_info
+		WHERE
+		`key`=#{key}
+	</select>
+
+    <select id="countUserByKey" parameterType="java.lang.String" resultType="Integer">
+		SELECT COUNT(*)
+		from sys_user_info
+		WHERE
+		`key`=#{key}
+	</select>
+	<select id="findUserByUserName" resultMap="BaseResultMap"
+			parameterType="net.dgg.gspt.dqc.entity.business.User">
+		SELECT * from sys_user_info
+		WHERE username=#{userName}
+	</select>
+
+</mapper>

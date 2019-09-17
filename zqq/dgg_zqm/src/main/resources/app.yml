@@ -1,0 +1,12 @@
+firstTrial:
+    index: dgg_zqq_es_db_first_trial
+    type: firstTrial
+    brand:
+        defaultImage: http://www.zhiqianqiu.com/_nuxt/img/default.840d0d3.png
+        index: dgg_dqc_es_db_brand2
+        type: companyBrand2
+
+app:
+    user:
+        access:
+            event: UserAccessEvent.Immediate.LOCAL

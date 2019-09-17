@@ -1,0 +1,194 @@
+.banner {
+    background: url("./images/bg-company-1.jpg") no-repeat top;
+    background-color:  #005b8e;
+    background-size: cover;
+    padding: 100px 0 100px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-width: 1250px;
+    height: 478px;
+    overflow: hidden;
+  }
+  #constellationel{
+    position: absolute;
+    width: 100%;
+    height: 100% !important;
+    left: 0;
+    top: 0;
+  }
+  .banner > div {
+    width: 1200px;
+    margin: auto;
+    overflow: hidden;
+  }
+  .banner_titel {
+    font-family: "Microsoft YaHei", Arial;
+    font-size: 45px;
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 0;
+  }
+  .searchBox {
+    width: 83.33333333%;
+    margin-left: 8.33333333%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .search-nav {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 auto;
+  }
+  .V3_index_search_item {
+    width: 80%;
+    margin-left: 80px;
+    margin-bottom: 10px;
+  }
+  .search-nav li.active {
+    background-color: #fff;
+    color: #5a5a5a;
+    position: relative;
+  }
+  .search-nav li.search-type:hover {
+    background-color: #fff;
+    color: #5a5a5a;
+    position: relative;
+  }
+  .search-nav li.active:before,
+  .search-nav li.search-type:hover:before {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-width: 6px 6px 0px;
+    border-style: solid;
+    position: absolute;
+    bottom: -7px;
+    border-color: #fff transparent transparent;
+    left: 50%;
+    margin-left: -6px;
+  }
+  
+  .search-nav li {
+    list-style: none;
+    float: left;
+    margin: 10px 0px;
+    line-height: 16px;
+    color: #f9f9f9;
+    padding: 5px 8px;
+    border-radius: 2px;
+  }
+  .V3_index_search_item li {
+    font-size: 16px;
+    margin-right: 5px;
+  }
+  .search-type {
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  /* 输入的表单 */
+  .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    padding-right: 60px;
+  }
+  #search .input-lg {
+    height: 51px;
+    line-height: 1.33;
+  }
+  .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .form-control {
+    border: 1px solid #ddd;
+    padding: 10px 16px;
+  }
+  #searchkey {
+    font-size: 16px;
+    border-radius: 0px;
+    height: 51px;
+  }
+  
+  .input-group-btn {
+    width: 1%;
+    display: table-cell;
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-collapse: separate;
+  }
+  #V3_Search_bt {
+    background: #616dff;
+    font-size: 20px;
+    color: white;
+    padding: 5px 25px 5px;
+    border: none;
+    border-radius: 0px;
+    height: 51px;
+    cursor: pointer;
+    line-height: 1.33;
+  }
+  #V3_Search_bt:hover {
+    background: #4d59e8;
+  }
+  /* 热搜 */
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .index-hot {
+    font-size: 16px;
+    color: #f9f9f9;
+    margin-top: 40px;
+    margin: 0 0 10px;
+  }
+  #hot_data_label {
+    display: block;
+    float: left;
+    margin-top: 9px;
+  }
+  #hot_data {
+    float: left;
+    max-width: 85%;
+    height: 50px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  #hot_data a {
+    display: block;
+    float: left;
+    color: #bceaff;
+    padding: 10px;
+  }
+  #refresh_hot {
+    display: inline-block;
+    float: left;
+    margin-top: -3px;
+    padding: 10px;
+  }
+  .c_icon.ca_refresh {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url('./images/icon_change@2x.png');
+    background-size: 18px 18px;
+    background-position: 0px 0px;
+  }
+  #hot_data a:hover {
+    color: #fff;
+  }

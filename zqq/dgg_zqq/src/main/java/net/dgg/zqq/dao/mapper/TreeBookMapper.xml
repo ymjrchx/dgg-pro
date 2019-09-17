@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.TreeBookDao">
+  <resultMap id="BaseResultMap" type="net.dgg.zqq.entity.business.treebook.TreeBook">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="pcode" jdbcType="VARCHAR" property="pcode" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="levels" jdbcType="VARCHAR" property="levels" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+    <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+    <result column="ext5" jdbcType="VARCHAR" property="ext5" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="creater_id" jdbcType="BIGINT" property="createrId"/>
+    <result column="creater_org_id" jdbcType="BIGINT" property="createrOrgId"/>
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId"/>
+    <result column="updater_org_id" jdbcType="BIGINT" property="updaterOrgId"/>
+    <result column="updater_name" jdbcType="VARCHAR" property="updaterName"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, pcode, code, name, description, levels, sort, status, ext1, ext2, ext3, ext4, ext5,
+    create_time, creater_id, creater_org_id, creater_name, update_time, updater_id, updater_org_id, updater_name
+  </sql>
+
+  <!-- 根据pid取code -->
+  <select id="getCodeByPid" resultType="java.lang.String">
+    select code from t_qcc_tree_book where pid=#{pid}
+  </select>
+
+  <!-- 根据code取treebook -->
+  <select id="getNameAndCodeByCode" resultType="net.dgg.zqq.entity.business.treebook.TreeBook">
+    select
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book where pcode=#{code} ORDER BY sort ASC
+  </select>
+
+  <!-- 根据code取下级name -->
+  <select id="getChildNameByCode" resultType="java.lang.String">
+    select name from t_qcc_tree_book where pcode=#{code}
+  </select>
+
+  <!-- 根据code取name -->
+  <select id="getNameByCode" resultType="java.lang.String">
+    select name from t_qcc_tree_book where code=#{code}
+  </select>
+  <!-- 根据level删除字典及其子集 -->
+  <delete id="deleteByLevel" parameterType="java.lang.String">
+    delete from t_qcc_tree_book where levels like CONCAT(#{level},'%')
+  </delete>
+  
+  <!-- 根据ids获取levels -->
+  <select id="getLevelsByIds" resultType="java.lang.String">
+    select b.levels from t_qcc_tree_book b where b.id in (
+  	<foreach collection="bookIdList" item="bookId" separator=",">
+  		#{bookId}
+  	</foreach>
+  	)
+  </select>
+  
+  <!-- 根据pid查询出ids -->
+  <select id="getIdsByPid" parameterType="java.lang.Long" resultType="java.lang.String">
+    select id from t_qcc_tree_book where pid=#{pid}
+  </select>
+  
+  <!-- 用于校验字典编码是否已存在 -->
+  <select id="countTreeBookByCode"  resultType="java.lang.Integer">
+    select count(1) from t_qcc_tree_book where code=#{code}
+  </select>
+  
+  <!-- 查询满足条件的字典数量 -->
+  <select id="countChildTreeBook"  resultType="java.lang.Integer">
+    select count(1) from t_qcc_tree_book where levels like CONCAT(#{levels},'%') and status=#{status}
+  </select>
+  <!-- 根据pid查询子集数量 -->
+  <select id="getTreeBookCountByPid" resultType="java.lang.Integer">
+    select count(1) from t_qcc_tree_book where pid=#{pid}
+  </select>
+  <!-- 查询满足条件的数据字典数量 -->
+  <select id="getTreeBookCountByCondition" parameterType="net.dgg.zqq.entity.business.treebook.TreeBook" resultType="java.lang.Integer">
+    select count(1) from t_qcc_tree_book
+  	<where>
+  	  <if test="id != null">
+        id = #{id,jdbcType=BIGINT}
+      </if>
+  	  <if test="pid != null">
+        and pid = #{pid,jdbcType=BIGINT}
+      </if>
+      <if test="pcode != null">
+        and pcode = #{pcode,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        and code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null">
+        and description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="levels != null">
+        and levels = #{levels,jdbcType=VARCHAR}
+      </if>
+      <if test="sort != null">
+        and sort = #{sort,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=INTEGER}
+      </if>
+  	</where>
+  </select>
+  <!-- 根据pid查询数据字典 -->
+  <select id="getTreeBooksByPid" resultType="net.dgg.zqq.entity.business.treebook.TreeBook" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List"/>
+    from t_qcc_tree_book where pid = #{pid} order by sort
+  </select>
+  <select id="getTreeBooksByConditionWithPage"  resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/>
+    from t_qcc_tree_book
+  	where 1=1 and pid=#{id}
+  	<if test="code != null and code !='' ">
+  		and code like CONCAT('%',#{code},'%')
+  	</if>
+  	<if test="name != null and name !='' ">
+  		and name like CONCAT('%',#{name},'%')
+  	</if>
+  	order by sort
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="net.dgg.zqq.entity.business.treebook.TreeBook">
+    insert into t_qcc_tree_book (id, pid, pcode,
+      code, name, description, 
+      levels, sort, status,
+      ext1, ext2, ext3, ext4, ext5,
+      create_time, creater_id, creater_org_id, creater_name,
+      update_time, updater_id,updater_org_id, updater_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, #{pcode,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{levels,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, #{createrOrgId,jdbcType=BIGINT},#{createrName,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updaterId,jdbcType=BIGINT}, #{updaterOrgId,jdbcType=BIGINT}, #{updaterName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.dgg.zqq.entity.business.treebook.TreeBook">
+    update t_qcc_tree_book
+    set pid = #{pid,jdbcType=BIGINT},
+      pcode = #{pcode,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      levels = #{levels,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      ext3 = #{ext3,jdbcType=VARCHAR},
+      ext4 = #{ext4,jdbcType=VARCHAR},
+      ext5 = #{ext5,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      updater_name = #{updaterName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getTreeBookListByCode" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book
+    where  1=1
+    <if test="type == 1">
+      and pcode = #{code,jdbcType=VARCHAR}
+    </if>
+    <if test="type == 2">
+      and levels like CONCAT((select CONCAT(a.levels,'_',a.id) from t_qcc_tree_book a where a.code=
+      #{code,jdbcType=VARCHAR} ),'%')
+      <if test="null != level">
+        and (length(levels)-length(replace(levels,'_',''))-2) &lt;=#{level}
+      </if>
+    </if>
+    <if test="type == 3">
+      and (levels like CONCAT((select CONCAT(b.levels,'_',b.id) from t_qcc_tree_book b where b.code=
+      #{code,jdbcType=VARCHAR} ),'%') or code = #{code,jdbcType=VARCHAR})
+      <if test="null != level">
+        and (length(levels)-length(replace(levels,'_',''))-1) &lt;=#{level}
+      </if>
+    </if>
+    <if test="status != null">
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+
+    order by sort asc
+  </select>
+
+  <select id="getTreeBookByCode" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book
+    where code = #{code,jdbcType=VARCHAR}
+    limit 1;
+  </select>
+
+  <select id="queryOrgBusTypeByOrgId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book a where FIND_IN_SET(a.`code`,(select bus_type from sys_org_main where id
+    =#{orgId,jdbcType=BIGINT})) and status = 1
+  </select>
+  <select id="findTreeBookByCodes" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_qcc_tree_book a where FIND_IN_SET(a.`code`,#{codes,jdbcType=VARCHAR}) and status = 1
+  </select>
+
+  <update id="updateTreebookDrop">
+    update t_qcc_tree_book set levels = replace(levels,#{oldLevel},#{newLevel}) where levels like
+    CONCAT(#{oldLevel},'%')
+  </update>
+
+  <select id="getAllSonTreeBook" resultType="net.dgg.zqq.entity.business.treebook.TreeBook" parameterType="Long">
+    select
+    <include refid="Base_Column_List"/>
+    from t_qcc_tree_book
+    where 1=1
+    and levels LIKE CONCAT('%','${id}','%')
+  </select>
+
+
+</mapper>

@@ -1,0 +1,293 @@
+*{box-sizing: border-box;}
+input::-ms-clear,
+::-ms-reveal {
+  display: none;
+}
+
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+input::-webkit-textfield-decoration {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.backImg {
+  height: 100%;
+  width: 25px;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  line-height: 40px;
+  font-family: element-icons !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+}
+
+.line-8 {
+  float: left;
+  width: 66.6%;
+}
+
+.line-4 {
+  float: left;
+  width: 33.4%;
+}
+
+.login-panel {
+  width: 380px;
+  padding: 1px;
+  padding-bottom: 30px;
+  background: #fff;
+  font-size: 14px;
+  color: #666;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-panel-head {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding: 0 50px;
+}
+
+.login-tab {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+
+.login-tab>a {
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+
+.login-tab>a.active {
+  color: #1c8bee;
+  border-bottom: 2px solid #1c8bee;
+}
+
+.login-panel-body {
+  padding: 15px 30px;
+  padding-top: 20px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-group input {
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  padding: 0 15px;
+  padding-left: 40px;
+  font-size: 15px;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  outline: 0;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.form-group.codeBox input {
+  border-radius: 4px 0 0 4px;
+}
+
+.form-group input:focus {
+  border: 1px solid #1c8bee;
+}
+
+.form-group i {
+  position: absolute;
+  left: 8px;
+  top: 0;
+}
+
+.button {
+  display: inline-block;
+  background-color: #1c8bee;
+  border: 1px solid #1c8bee;
+  color: #fff;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+}
+
+.login-btn.btn-login {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.text-center.btn-login.btn-primary {
+  border-radius: 0 4px 4px 0;
+}
+
+.login-other {
+  margin-top: 40px;
+}
+
+.login-panel-body {
+  padding-top: 20px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.codeBox {
+  overflow: hidden;
+}
+
+.codeImg {
+  border-radius: 0px 4px 4px 0px;
+  -webkit-border-radius: 0px 4px 4px 0px;
+  -moz-border-radius: 0px 4px 4px 0px;
+  -ms-border-radius: 0px 4px 4px 0px;
+  -o-border-radius: 0px 4px 4px 0px;
+  border: 1px solid #dcdfe6;
+  height: 46px;
+  border-left: none;
+}
+
+.checkbox {
+  margin-bottom: 16px;
+}
+
+.otherLogin img {
+  width: 26px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.accReg {
+  margin-right: 16px;
+}
+
+.userTel {
+  background: url("../images/login/tel2.png") center center no-repeat;
+  background-size: 92% auto;
+}
+
+.userHead {
+  background: url("../images/login/userHead.png") center center no-repeat;
+  background-size: 92% auto;
+}
+
+.userLock {
+  background: url("../images/login/password.png") center center no-repeat;
+  background-size: 92% auto;
+}
+
+.userCode {
+  background: url("../images/login/code.png") center center no-repeat;
+  background-size: 92% auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.passContent {
+  width: 100%;
+  background: #1c8bee url("../images/login/bg.jpg") center center no-repeat;
+  height: 700px;
+}
+
+.passContentBox {
+  margin-top: 100px;
+  float: right;
+}
+
+/* //明文密码 */
+.eyeFa span {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 20px;
+  top: 50%;
+  margin-top: -12px;
+  background: #fff url('../images/login/pass_close.png') center center no-repeat;
+  background-size: 24px;
+  cursor: pointer;
+}
+
+.eyeFa .openEye {
+  background: #fff url('../images/login/pass_open.png') center center no-repeat;
+  background-size: 24px;
+
+}
+
+/* //不可用 */
+.unUse {
+  background-color: #888 !important;
+  border: 1px solid #888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.loginIcon>span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/login/login_icons.png");
+  background-size: 72px 96px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.loginIcon .wx {
+  background-position: -0px -24px;
+}
+
+.loginIcon .qq {
+  background-position: -24px 0;
+}

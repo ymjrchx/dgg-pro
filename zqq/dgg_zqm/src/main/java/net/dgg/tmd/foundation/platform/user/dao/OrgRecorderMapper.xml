@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.tmd.foundation.platform.user.dao.OrgRecorderDAO">
+    <!--向数据库插入组织机构实体-->
+    <insert id="insertOrgEntity" parameterType="net.dgg.tmd.foundation.platform.user.entity.OrganizationEntity">
+        INSERT INTO org_main
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            org_id,
+            <if test="code != null">
+                code,
+            </if>
+            name,
+            <if test="description != null">
+                description,
+            </if>
+            sort,
+            leader_id,
+            enabled,
+            updatetime
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{orgId},
+            <if test="code != null">
+                #{code},
+            </if>
+            #{name},
+            <if test="description != null">
+                #{description},
+            </if>
+            #{sort},
+            #{leaderId},
+            #{enabled},
+            #{updateTime}
+        </trim>
+    </insert>
+
+    <!--向数据库更新组织机构实体-->
+    <update id="updateOrgEntity"  parameterType="net.dgg.tmd.foundation.platform.user.entity.OrganizationEntity">
+        UPDATE org_main
+        <set>
+            <if test="code != null">
+                code=#{code},
+            </if>
+            name=#{name},
+            <if test="description != null">
+                description=#{description},
+            </if>
+            sort=#{sort},
+            leader_id=#{leaderId},
+            enabled=#{enabled},
+            updatetime=#{updateTime}
+        </set>
+        WHERE org_id=#{orgId}
+    </update>
+
+    <!--通过组织机构ID从数据表中删除组织机构-->
+    <delete id="deleteOrgByOrgId" parameterType="long">
+        DELETE FROM org_main WHERE org_id=#{orgId}
+    </delete>
+
+    <!--通过部门ID查询组织架构实体-->
+    <select id="findOrgEntityByOrgId" parameterType="long" resultType="net.dgg.tmd.foundation.platform.user.entity.OrganizationEntity">
+        SELECT org_id AS orgId, code AS code, name AS name, description AS description, sort AS sort, leader_id AS leaderId, enabled AS enabled, updatetime AS updatetime FROM org_main WHERE org_id=#{orgId}
+    </select>
+    <!--通过关键字查找组织架构实体List-->
+    <select id="findOrgEntityListByKeyWords" parameterType="java.util.Map" resultType="net.dgg.tmd.foundation.platform.user.entity.OrganizationEntity">
+        SELECT org_id AS orgId, code AS code, name AS name, description AS description, sort AS sort, leader_id AS leaderId, enabled AS enabled, updatetime AS updatetime FROM org_main
+        <where>
+            <if test="keyWords.code!=null">
+                code = #{keyWords.code}
+            </if>
+            <if test="keyWords.name!=null">
+                name like CONCAT('%',CONCAT(#{keyWords.name},'%'))
+            </if>
+            <if test="keyWords.leaderId!=null">
+                leader_id = #{keyWords.leaderId}
+            </if>
+            <if test="keyWords.enabled!=null">
+                enabled = #{keyWords.enabled}
+            </if>
+        </where>
+        <if test="keyWords.start!=null and keyWords.limit!=null">
+            limit #{keyWords.start},#{keyWords.limit}
+        </if>
+    </select>
+
+    <!--通过祖先ID查找子类名称-->
+    <select id="findOrgEntityListByPId" parameterType="long" resultType="net.dgg.tmd.foundation.platform.user.entity.OrganizationDTO">
+        SELECT org_id AS id, name AS name, ancestor_id AS pid FROM org_closure oa, org_main ob WHERE ancestor_id=#{pId} AND distance=1 AND oa.organization_id=ob.org_id AND 1=1 ORDER BY ob.name
+    </select>
+</mapper>

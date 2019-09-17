@@ -1,0 +1,43 @@
+[
+  {
+    "task": "copy",
+    "from": "_id",
+    "to": "esId"
+  },
+  {
+    "task": "copy",
+    "from": "newsSource",
+    "to": "newsSource",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "to": "newsTitle",
+    "from": "title",
+    "defaultValue": "-"
+  },
+  {
+    "task": "copy",
+    "from": "pubDate",
+    "to": "newsPublishTime",
+    "apply": "net.dgg.yk.platform.backend.mapping.StringDate2YmdTHms"
+  },
+  {
+    "task": "copy",
+    "from": "pubDate",
+    "to": "loadTime",
+    "apply": "net.dgg.yk.platform.backend.mapping.StringDate2YmdTHms"
+  },
+  {
+    "task": "copy",
+    "from": "newsUrl",
+    "to": "newsUrl",
+    "defaultValue": "-"
+  },
+  {
+    "task": "parser",
+    "from": "content",
+    "to": "content",
+    "apply": "net.dgg.yk.platform.backend.mapping.JsonArray2String"
+  }
+]

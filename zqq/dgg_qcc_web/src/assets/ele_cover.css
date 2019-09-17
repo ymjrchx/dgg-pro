@@ -1,0 +1,152 @@
+   /* //覆盖eleui的输入框样式 */
+   .searchBox .el-input__inner{
+    height: 50px;
+    line-height: 50px;
+    border-radius: 4px 0 0 4px  ;
+    -webkit-border-radius: 4px 0 0 4px  ;
+    -moz-border-radius: 4px 0 0 4px  ;
+    -ms-border-radius: 4px 0 0 4px  ;
+    -o-border-radius: 4px 0 0 4px  ;
+}
+.head_search .el-input__inner{
+    height: 36px;
+    line-height: 36px;
+    border-radius: 4px 0 0 4px  ;
+    -webkit-border-radius: 4px 0 0 4px  ;
+    -moz-border-radius: 4px 0 0 4px  ;
+    -ms-border-radius: 4px 0 0 4px  ;
+    -o-border-radius: 4px 0 0 4px  ;
+}
+.el-message{
+    top: 30% !important;
+}
+.input-group .el-autocomplete{
+    width: 100%;
+}
+.input-group .el-input__inner{
+    height: 51px;
+    font-size: 16px;
+}
+.el-carousel__container{
+    height: 210px;;
+  }
+ /* 搜索弹框  */
+ .el-scrollbar{
+     border-radius: 4px ;
+     -webkit-border-radius: 4px ;
+     -moz-border-radius: 4px ;
+     -ms-border-radius: 4px ;
+     -o-border-radius: 4px ;
+}
+/* 修改联想输入的下拉框的样式 */
+.list_search {
+    position: relative;
+    width: 100%;
+    height: 40px !important;
+    line-height: 40px !important;
+}
+.list_search span {
+    background-color: #1ccacc;
+    color: #bef5f6;
+    padding: 3px 7px;
+    font-size: 12px;
+    border-radius: 10px;
+    right: 0px;
+    top: 8px;
+    position: absolute;
+    line-height: 1;
+}
+/* //更多电话的覆盖 */
+.goods_list tbody .el-popover__reference{
+    padding: 0;
+    border: none;
+    color: #128bed;
+   
+}
+.getMoreTel{
+    width: 160px !important;
+}
+
+/* //更多电话的覆盖 结束*/
+.screen_item .el-input{
+    width: 64%;
+}
+.screen_item.select .el-input{
+    width: 150%;
+}
+.screen_item.select.style .el-input__inner{
+    background: #128bed;
+    color: #fff;
+}
+.screen_item.select.style .el-input{ 
+    color: #fff;
+    display: inline-block;
+    width: auto;
+}
+.screen_item.select.style .el-input__inner::-webkit-input-placeholder{
+    color: #fff;
+}
+.screen_item.select.style .el-input__inner:-ms-input-placeholder{
+    color: #fff;
+}
+.screen_item.select.style .el-input__inner::placeholder{
+    color: #fff;
+}
+.screen_item.select.style .el-select .el-input .el-select__caret{
+    color: #fff;
+}
+/* //登录注册 */
+.login .el-input__inner{
+    height: 46px;
+    line-height: 46px;
+    padding-left: 40px;
+    font-size: 15px;
+}
+.codeBox .el-input__inner{
+    
+    border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    -o-border-radius: 4px 0 0 4px;
+}
+.codeBox > div{
+    padding: 0;
+}
+.newPage .el-dropdown-menu__item{
+    line-height: 30px;
+}
+.list_search em i{
+    font-weight: bold;
+    color: #565656 !important;
+  }
+/* //覆盖个人中心左边 */
+.user_l .el-menu{
+    border-right: none;
+}
+/* //核名列表的高亮 */
+.verifyList >li >p i{
+    color: #f00;
+    font-size: 16px;
+}
+/* //用户中心选项的选中底色 */
+.user_l .el-menu-item.is-active{
+    background-color: #ECF5FF;
+}
+/* //设置新闻详情页的样式 */
+.news_detail_res{
+    font-size: 16px;
+    line-height: 2em;
+}
+.news_detail_res img{
+    display: block;
+    max-width: 100%;
+    min-width: 60%;
+    margin: auto;
+}
+.news_detail_res h1{
+   font-size: 16px;
+}
+.news_detail_res strong{
+   font-weight: 100;
+}

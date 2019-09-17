@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.order.TrademarkClassExtDao">
+
+
+    <select id="queryAllClassLevel1" parameterType="Long" resultType="java.util.Map">
+        SELECT DISTINCT
+        t.`class_level1_id` as `classLevel1Id`,
+        t.`class_level1_code` as `classLevel1Code`,
+        t.`class_level1_name` as `classLevel1Name`
+
+        FROM zqq_trademark_class t
+
+        <where>
+            t.`order_id` = ${orderId}
+        </where>
+    </select>
+
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=orderId and ''!=orderId">
+            AND t.`order_id` = #{orderId}
+        </if>
+        <if test="null!=trademarkId and ''!=trademarkId">
+            AND t.`trademark_id` = #{trademarkId}
+        </if>
+        <if test="null!=classLevel1Id and ''!=classLevel1Id">
+            AND t.`class_level1_id` = #{classLevel1Id}
+        </if>
+        <if test="null!=classLevel1Code and ''!=classLevel1Code">
+            AND t.`class_level1_code` = #{classLevel1Code}
+        </if>
+        <if test="null!=classLevel1Name and ''!=classLevel1Name">
+            AND t.`class_level1_name` = #{classLevel1Name}
+        </if>
+        <if test="null!=classLevel2Code and ''!=classLevel2Code">
+            AND t.`class_level2_code` = #{classLevel2Code}
+        </if>
+        <if test="null!=classLevel2Name and ''!=classLevel2Name">
+            AND t.`class_level2_name` = #{classLevel2Name}
+        </if>
+        <if test="null!=classLevel3Id and ''!=classLevel3Id">
+            AND t.`class_level3_id` = #{classLevel3Id}
+        </if>
+        <if test="null!=classLevel3Code and ''!=classLevel3Code">
+            AND t.`class_level3_code` = #{classLevel3Code}
+        </if>
+        <if test="null!=classLevel3Name and ''!=classLevel3Name">
+            AND t.`class_level3_name` = #{classLevel3Name}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

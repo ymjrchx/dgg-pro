@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.order.TrademarkAndApplicantExtDao">
+
+    <select id="findByOrderId" parameterType="Long" resultType="net.dgg.zqq.entity.order.TrademarkAndApplicant">
+     SELECT 
+    t.`id` as `id`,
+    t.`order_id` as `orderId`,
+    t.`type` as `type`,
+    t.`name` as `name`,
+    t.`explain` as `explain`,
+    t.`register_no` as `registerNo`,
+    t.`example_type` as `exampleType`,
+    t.`example_address` as `exampleAddress`,
+    t.`class_create_way` as `classCreateWay`,
+    t.`suggested_first_level` as `suggestedFirstLevel`,
+    t.`suggested_second_level` as `suggestedSecondLevel`,
+    t.`applicant_type` as `applicantType`,
+    t.`applicant_user_name` as `applicantUserName`,
+    t.`applicant_name` as `applicantName`,
+    t.`applicant_card_no` as `applicantCardNo`,
+    t.`business_licence_no` as `businessLicenceNo`,
+    t.`business_licence_area` as `businessLicenceArea`,
+    t.`postalcode` as `postalcode`,
+    t.`business_licence_address` as `businessLicenceAddress`,
+    t.`applicant_card_file` as `applicantCardFile`,
+        t.`applicant_card_pdf_file` as `applicantCardPdfFile`,
+    t.`business_licence_file` as `businessLicenceFile`,
+    t.`business_licence_pdf_file` as `businessLicencePdfFile`,
+    t.`proxy_file` as `proxyFile`,
+    t.`priority_file` as `priorityFile`,
+    t.`template_id` as `templateId`,
+    t.`applicant_card_address` as `applicantCardAddress`,
+    t.`create_time` as `createTime`,
+    t.`creater_id` as `createrId`,
+    t.`update_time` as `updateTime`,
+    t.`updater_id` as `updaterId`
+    FROM zqq_trademark_and_applicant t
+    WHERE t.`order_id`=#{orderId}
+</select>
+
+
+</mapper>

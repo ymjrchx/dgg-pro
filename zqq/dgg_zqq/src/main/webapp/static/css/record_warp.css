@@ -1,0 +1,403 @@
+/*
+ * Author:xtt
+ * 会计档案管理系统 菜单导航css
+ * 2018.01.11
+ */
+@charset "utf-8";
+body{
+	background: #fff;
+}
+#dgg-head {
+	background: #323a4d;
+}
+#dgg-head:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.head-logo {
+	float: left;
+	position: relative;
+	height: 54px;
+	width: 175px;
+	text-align: center;
+	padding: 0;
+	line-height: 54px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	background: url(../images/logo_bg.png) center no-repeat;
+	background-size: 100% 100%;
+}
+.head-logo>label {
+	display: block;
+	position: absolute;
+	width: 60px;
+	text-align: center;
+	color: #1e6dc1;
+	top: 50%;
+	margin-top: -13px;
+	left: 26px;
+	font-weight: normal;
+	font-style: italic;
+	line-height: 28px;
+	font-size: 22px;
+}
+.head-nav{
+	display: inline-block;
+	font-size: 0;
+}
+.head-nav a{
+	display: inline-block;
+	line-height: 54px;
+	color: #949bae;
+	min-width: 90px;
+	text-align: center;
+	position: relative;
+	font-size: 14px;
+	margin-right: 10px;
+}
+.head-nav a.active{
+	color: #FFF;
+	box-sizing: border-box;
+	background: #212737;
+}
+.head-nav a:hover{
+	color: #FFF;
+	box-sizing: border-box;
+}
+.head-nav a.active:after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: #FFF;
+	border-bottom: 4px solid #007cff;
+	box-sizing: border-box;
+}
+
+.left-menu {
+	position: absolute;
+	top: 54px;
+	left: 0;
+	bottom: 0;
+	width: 175px;
+	background: #323a4d;
+	padding: 12px 0;
+	overflow: auto;
+}
+.left-menu-list>li {
+	display: block;
+}
+.left-menu-list>li>a {
+	display: block;
+	position: relative;
+	line-height: 36px;
+	color: #949bae;
+	font-size: 14px;
+	border-left: 4px transparent solid;
+	padding: 0 25px 0 38px;
+}
+.left-menu-list li a.active{
+	color: #fff !important;
+}
+.left-menu-list>li>a:hover{
+	color: #fff;
+}
+.left-menu-list li.oneMenu>a:before,
+.left-menu-list li.oneMenu>a:after {
+	display: none;
+}
+.left-menu-list li>a:before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	margin-top: -4px;
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 4px transparent solid;
+	border-bottom: 4px transparent solid;
+	border-left: 5px #82889a solid;
+}
+.left-menu-list li>a:after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 22px;
+	margin-top: -4px;
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 4px transparent solid;
+	border-bottom: 4px transparent solid;
+	border-left: 5px #323a4d solid;
+}
+.left-menu-list>li>ul {
+	padding: 10px 0;
+	background: #293041;
+	line-height: 30px;
+	display: none;
+}
+.left-menu-list>li>ul>li {
+	display: block;
+	padding-left: 40px;
+	font-size: 13px;
+}
+.left-menu-list>li>ul>li>a {
+	color: #949bae;
+	display: block;
+	position: relative;
+}
+.left-menu-list>li>ul>li.active>a,
+.left-menu-list>li>ul>li>a:hover {
+	color: #fff;
+}
+.left-menu-list>li.open>a {
+	background: #212737;
+	border-color: #1e6dc1;
+	color: #fff;
+}
+.left-menu-list li.open>a:before{
+	top: 50%;
+	right: 20px;
+	margin-top: -1px;
+	border-left: 4px transparent solid;
+	border-right: 4px transparent solid;
+	border-bottom: none;
+	border-top: 5px #fff solid;
+}
+.left-menu-list li.open>a:after{
+	top: 50%;
+	right: 20px;
+	margin-top: -3px;
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 4px transparent solid;
+	border-right: 4px transparent solid;
+	border-bottom: none;
+	border-top: 5px #212737 solid;
+}
+.left-menu-list li.open>ul {
+	display: block;
+}
+.left-menu-list li.open>ul li:hover>a{
+	color: #FFF;
+}
+.last-menu-main{
+	position: fixed;
+	left: 175px;
+	top: 54px;
+	bottom: 0;
+	background: #454b60;
+	color: #949bae;
+	z-index:5;
+	width: 175px;
+	padding: 0px 0;
+	display: none;
+}
+.last-menu-main .menu-pot{
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -30px;
+	background: url(../images/menu_bg2.png) no-repeat;
+	width: 12px;
+	height: 62px;
+	cursor: pointer;
+}
+.last-menu>li a{
+	display: block;
+	color:#949bae ;
+	text-align: center;
+	font-size: 13px;
+	line-height: 36px;
+}
+.last-menu>li a.prev-menu{
+	background: #33394b;
+	color: #fff;
+    line-height: 42px;
+    margin-top: 1px;
+    font-size: 14px;
+    opacity: 0.95;
+}
+.last-menu>li a.prev-menu span{
+	display: inline-block;
+	width: 14px;
+	border-top: 2px solid #FFF;
+	padding: 3px 0;
+	border-bottom: 2px solid #fff;
+	margin-right: 5px;
+	vertical-align: middle;
+	margin-top: -2px;
+}
+.last-menu>li a.prev-menu span:before{
+	content: "";
+	display: block;
+	border-top: 2px solid #FFF;
+}
+#iframe-warp.kjdms-content {
+	position: absolute;
+	top: 62px;
+	left: 175px;
+	right: 0;
+	bottom: 0;
+}
+/*easyUI tab 样式重置*/
+.tabs-header{
+	background: #fff;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: #bababa !important;
+	height: 26px;
+}
+.tabs-tool {
+	background: #fff;
+}
+.tabs li a.tabs-inner {
+	background: #fff;
+	border: 1px #bababa solid;
+}
+.tabs li.tabs-selected a.tabs-inner {
+	background: #ecf1f5;
+	border: 1px #bababa solid;
+}
+.tabs li {
+    margin: 0 -1px -1px 0;
+}
+.tabs-wrap{
+	padding-left: 3px;
+}
+/*菜单图标*/
+.nav-icon {
+	position: absolute;
+	top: 50%;
+	left: 8px;
+	margin-top: -10px;
+	width: 20px;
+	height: 20px;
+	background-image: url(../images/kjdms/nav_icon.png);
+	background-repeat: no-repeat;
+}
+.nav-icon.center {
+	background-position: 0 0;
+}
+.left-menu-list>li.open>a>.nav-icon.center,
+/*.left-menu-list>li.active>a>.nav-icon.center,*/
+.left-menu-list>li>a:hover .nav-icon.center{
+	background-position: 0 -20px;
+}
+.nav-icon.enter {
+	background-position: -20px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.enter,
+/*.left-menu-list>li.active>a>.nav-icon.enter,*/
+.left-menu-list>li>a:hover .nav-icon.enter{
+	background-position:-20px -20px;
+}
+.nav-icon.export {
+	background-position: -40px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.export,
+/*.left-menu-list>li.active>a>.nav-icon.export,*/
+.left-menu-list>li>a:hover .nav-icon.export{
+	background-position:-40px -20px;
+}
+.nav-icon.loan {
+	background-position: -60px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.loan,
+/*.left-menu-list>li.active>a>.nav-icon.loan,*/
+.left-menu-list>li>a:hover .nav-icon.loan{
+	background-position:-60px -20px;
+}
+.nav-icon.monitoring {
+	background-position: -80px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.monitoring,
+/*.left-menu-list>li.active>a>.nav-icon.monitoring,*/
+.left-menu-list>li>a:hover .nav-icon.monitoring{
+	background-position:-80px -20px;
+}
+.nav-icon.myloan {
+	background-position: -100px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.myloan,
+/*.left-menu-list>li.active>a>.nav-icon.myloan,*/
+.left-menu-list>li>a:hover .nav-icon.myloan{
+	background-position:-100px -20px;
+}
+.nav-icon.computer {
+	background-position: -120px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.computer,
+/*.left-menu-list>li.active>a>.nav-icon.computer,*/
+.left-menu-list>li>a:hover .nav-icon.computer{
+	background-position:-120px -20px;
+}
+.nav-icon.set {
+	background-position: -140px 0;
+}
+.left-menu-list>li.open>a>.nav-icon.set,
+/*.left-menu-list>li.active>a>.nav-icon.set,*/
+.left-menu-list>li>a:hover .nav-icon.set{
+	background-position:-140px -20px;
+}
+/*2018/3/28 修改菜单导航栏*/
+.add-div-width{
+	display: inline-block;
+	height: 60px;
+	overflow: hidden;
+	position: relative;
+}
+.head-nav{
+	position: relative;
+	width: calc(100% - 430px);
+	width: -moz-calc(100% - 430px);
+	width: -webkit-calc(100% - 430px);
+	font-size: 0;
+}
+.user-state{
+	padding:15px 10px 5px 0;
+}
+.head-main{
+	right: 100px;
+}
+
+.clickCheckMore01 a.CheckMore{
+	/*display: none;*/
+	position: absolute !important;
+	top:0;
+	right: 5px;
+	/*color:#323a4d;*/
+	color:#949bae;
+	font-size: 24px;
+	/*width: 30px;*/
+	min-width: 30px;
+	height: 63px;
+	line-height: 50px;
+}
+.head-nav a.CheckMore.on{
+	color:#fff;
+}
+.clickCheckMore01>.hidden-div{
+	display: none;
+	position: absolute;
+	z-index: 20;
+	top:62px;
+	right: -92px;
+	background:#323a4d;
+	/*border:1px solid #666;*/
+	padding: 10px;
+	max-height: 200px;
+	overflow: auto;
+}
+.clickCheckMore01>.hidden-div>a{
+	 display: block;
+	 height: 30px;
+	 line-height: 30px;
+ }

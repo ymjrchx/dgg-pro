@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.dqc.backservice.dao_mybatis.ImportDataRecordDao">
+    <insert id="save" parameterType="net.dgg.dqc.backservice.entity.ImportDataRecord">
+     INSERT INTO t_import_data_record
+    (`id`,`es_server`,`index`,`type`,`import_start_time`,`import_end_time`,`query_time_start`,`query_time_end`,`query_count`,`complete`)
+     VALUES 
+    (#{id},#{esServer},#{index},#{type},#{importStartTime},#{importEndTime},#{queryTimeStart},#{queryTimeEnd},#{queryCount},#{complete})
+</insert>
+
+    <update id="update" parameterType="net.dgg.dqc.backservice.entity.ImportDataRecord">
+     UPDATE t_import_data_record SET 
+    `es_server` = #{esServer},
+    `index` = #{index},
+    `type` = #{type},
+    `import_start_time` = #{importStartTime},
+    `import_end_time` = #{importEndTime},
+    `query_time_start` = #{queryTimeStart},
+    `query_time_end` = #{queryTimeEnd},
+    `query_count` = #{queryCount},
+    `complete` = #{complete}
+     WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.dqc.backservice.entity.ImportDataRecord">
+     SELECT 
+    t.`id` as `id`,
+    t.`es_server` as `esServer`,
+    t.`index` as `index`,
+    t.`type` as `type`,
+    t.`import_start_time` as `importStartTime`,
+    t.`import_end_time` as `importEndTime`,
+    t.`query_time_start` as `queryTimeStart`,
+    t.`query_time_end` as `queryTimeEnd`,
+    t.`query_count` as `queryCount`,
+    t.`complete` as `complete`
+
+    FROM t_import_data_record t
+
+    WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.dqc.backservice.entity.ImportDataRecord">
+        SELECT
+        t.`id` as `id`,
+        t.`es_server` as `esServer`,
+        t.`index` as `index`,
+        t.`type` as `type`,
+        t.`import_start_time` as `importStartTime`,
+        t.`import_end_time` as `importEndTime`,
+        t.`query_time_start` as `queryTimeStart`,
+        t.`query_time_end` as `queryTimeEnd`,
+        t.`query_count` as `queryCount`,
+        t.`complete` as `complete`
+
+        FROM t_import_data_record t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`es_server` as `esServer`,
+        t.`index` as `index`,
+        t.`type` as `type`,
+        t.`import_start_time` as `importStartTime`,
+        t.`import_end_time` as `importEndTime`,
+        t.`query_time_start` as `queryTimeStart`,
+        t.`query_time_end` as `queryTimeEnd`,
+        t.`query_count` as `queryCount`,
+        t.`complete` as `complete`
+
+        FROM t_import_data_record t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM t_import_data_record t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM t_import_data_record  WHERE  `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=esServer and ''!=esServer">
+            AND t.`es_server` = #{esServer}
+        </if>
+        <if test="null!=index and ''!=index">
+            AND t.`index` = #{index}
+        </if>
+        <if test="null!=type and ''!=type">
+            AND t.`type` = #{type}
+        </if>
+        <if test="null!=importStartTimeStart and ''!=importStartTimeStart">
+            AND t.`import_start_time` &gt;= CONCAT(#{importStartTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=importStartTimeEnd and ''!=importStartTimeEnd">
+            AND t.`import_start_time` &lt;= CONCAT(#{importStartTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=importEndTimeStart and ''!=importEndTimeStart">
+            AND t.`import_end_time` &gt;= CONCAT(#{importEndTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=importEndTimeEnd and ''!=importEndTimeEnd">
+            AND t.`import_end_time` &lt;= CONCAT(#{importEndTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=queryTimeStartStart and ''!=queryTimeStartStart">
+            AND t.`query_time_start` &gt;= CONCAT(#{queryTimeStartStart},' 00:00:00')
+        </if>
+        <if test="null!=queryTimeStartEnd and ''!=queryTimeStartEnd">
+            AND t.`query_time_start` &lt;= CONCAT(#{queryTimeStartEnd},' 23:59:59')
+        </if>
+        <if test="null!=queryTimeEndStart and ''!=queryTimeEndStart">
+            AND t.`query_time_end` &gt;= CONCAT(#{queryTimeEndStart},' 00:00:00')
+        </if>
+        <if test="null!=queryTimeEndEnd and ''!=queryTimeEndEnd">
+            AND t.`query_time_end` &lt;= CONCAT(#{queryTimeEndEnd},' 23:59:59')
+        </if>
+        <if test="null!=queryCount and ''!=queryCount">
+            AND t.`query_count` = #{queryCount}
+        </if>
+        <if test="null!=complete and ''!=complete">
+            AND t.`complete` = #{complete}
+        </if>
+    </sql>
+
+</mapper>

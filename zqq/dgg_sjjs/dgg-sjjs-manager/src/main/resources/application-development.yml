@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://172.16.2.239:3306/dgg_sjjs?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 12345678
+  redis:
+    cluster:
+      nodes: 192.168.254.117:7001;192.168.254.117:7002;192.168.254.117:7003;192.168.254.118:7004;192.168.254.118:7005;192.168.254.118:7006
+  data:
+    mongodb:
+      uri: mongodb://192.168.254.117:27017,192.168.254.118:27017
+      Database: core-test
+

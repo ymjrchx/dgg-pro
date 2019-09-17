@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.question.AnswerExtDao">
+
+    <select id="findByQuestionId" parameterType="Long" resultType="net.dgg.zqq.entity.question.Answer">
+        SELECT
+        t.`id` as `id`,
+        t.`question_id` as `questionId`,
+        t.`answer` as `answer`,
+        t.`answer_way` as `answerWay`,
+        t.`status` as `status`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_answer t
+
+        WHERE t.`question_id`=#{questionId}
+    </select>
+
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.customerMsg.CustomerMsgExtDao">
+
+    <select id="query" resultType="net.dgg.zqq.entity.customerMsg.CustomerMsg">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`phone` as `phone`,
+        t.`trademark_name` as `trademarkName`,
+        t.`industry` as `industry`,
+        t.`area` as `area`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_customer_msg t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER BY t.`create_time` DESC
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`phone` as `phone`,
+        t.`trademark_name` as `trademarkName`,
+        t.`industry` as `industry`,
+        t.`area` as `area`,
+        t.`flag` as `flag`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_customer_msg t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER BY t.`create_time` DESC
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_customer_msg t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` like CONCAT('%',#{name},'%')
+        </if>
+        <if test="null!=phone and ''!=phone">
+            AND t.`phone` like CONCAT('%',#{phone},'%')
+        </if>
+        <if test="null!=trademarkName and ''!=trademarkName">
+            AND t.`trademark_name` like CONCAT('%',#{trademarkName},'%')
+        </if>
+        <if test="null!=industry and ''!=industry">
+            AND t.`industry` like CONCAT('%',#{industry},'%')
+        </if>
+        <if test="null!=area and ''!=area">
+            AND t.`area` like CONCAT('%',#{area},'%')
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

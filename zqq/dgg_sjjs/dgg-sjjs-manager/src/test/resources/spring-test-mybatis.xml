@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	    http://www.springframework.org/schema/tx
+	    http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	    http://www.springframework.org/schema/aop
+	    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="false">
+
+    <!-- 读入配置属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${db_master.jdbc.url}" />
+        <property name="username" value="${db_master.jdbc.username}" />
+        <property name="password" value="${db_master.jdbc.password}" />
+    </bean>
+
+    <!-- 将数据源映射到sqlSessionFactory中 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:mybatis/**/*Mapper.xml</value>
+            </array>
+        </property>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 启用spring扫描多个路径配置 -->
+        <property name="basePackage" value="net.dgg.*.dao"/>
+    </bean>
+
+    <!-- 事务管理器（由Spring管理MyBatis的事务） -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 关联数据源 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:advice id="localTxAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="query*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="count*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="localTxPointcut" expression="execution(* net.dgg.*..service..*.*(..)))"/>
+        <aop:advisor advice-ref="localTxAdvice" pointcut-ref="localTxPointcut"/>
+    </aop:config>
+
+
+</beans>

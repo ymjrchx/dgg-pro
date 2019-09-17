@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.bigdata.manager.role.dao.RoleOperatePermissionDao">
+    <!--添加角色权限-->
+    <!--<insert id="save" parameterType="net.dgg.bigdata.manager.role.entity.RoleOperatePermission">
+        INSERT INTO role_operate_permission(
+        id,
+        role_id,
+        operate_permission_id,
+        creator_id,
+        createtime
+        ) VALUES
+        <foreach collection="roleOperatePermissions" item="roleOperatePermission" separator=",">
+            (#{roleOperatePermission.id},#{roleOperatePermission.roleId},
+            #{roleOperatePermission.operatePermissionId},#{roleOperatePermission.creatorId},
+            #{roleOperatePermission.createtime})
+        </foreach>
+
+    </insert>-->
+    <!--删除角色权限-->
+    <!--<delete id="removeByRoleId">
+        DELETE from role_operate_permission where role_id=#{roleId}
+        <if test="operatePermissionIds!=null ">
+            and operate_permission_id in (
+            <foreach collection="operatePermissionIds" item="operatePermissionId" separator=",">
+                #{operatePermissionId}
+            </foreach>
+            )
+        </if>
+
+    </delete>-->
+
+    <!--删除角色权限-->
+    <!--<delete id="removeByRoleIdMenuOperms">
+        DELETE from role_operate_permission where role_id=#{roleId}
+        <if test="operatePermissionIds!=null and operatePermissionIds.size >0">
+            and operate_permission_id not in (
+            <foreach collection="operatePermissionIds" item="operatePermissionId" separator=",">
+                #{operatePermissionId}
+            </foreach>
+            )
+        </if>
+
+    </delete>-->
+
+    <!--<delete id="removeByPermId">
+        DELETE  from role_operate_permission where operate_permission_id=#{operatePermissionId}
+    </delete>-->
+
+    <!--<select id="exitsByRoleOperate" resultType="java.lang.Integer">
+        SELECT count(1) from role_operate_permission where role_id =#{roleId} and operate_permission_id=#{operatePermissionId}
+    </select>-->
+
+    <!--<select id="exitsOperate4User" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            role_operate_permission a
+        JOIN operate_permission b
+        JOIN user_role c ON a.operate_permission_id = b.operate_permission_id
+        AND a.role_id = c.role_id
+        WHERE
+            c.user_id = #{userId} and b.`code`= #{code}
+    </select>-->
+
+    <!--获取角色对应菜单相关的权限-->
+   <!-- <select id="findRoleMenuOperate" resultType="java.lang.Long" parameterType="java.lang.Long">
+         select operate_permission_id from menu_operate_permission where menu_id in (
+            SELECT menu_id from role_menu_permission where role_id =#{roleId}
+         )
+    </select>-->
+</mapper>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.gspt.dqc.dao.UserExtDao">
+    <resultMap id="BaseResultMap" type="net.dgg.gspt.dqc.entity.business.User">
+        <result column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="createtime" property="createtime" jdbcType="TIMESTAMP"/>
+        <result column="employeeNo" property="employeeNo" jdbcType="VARCHAR"/>
+        <result column="useErpPwd" property="useErpPwd" jdbcType="INTEGER"/>
+        <result column="loginPwd" property="loginPwd" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="enabled" property="enabled" jdbcType="INTEGER"/>
+        <result column="lastUpdate" property="lastUpdate" jdbcType="TIMESTAMP"/>
+        <result column="is_member" property="isMember" jdbcType="INTEGER"/>
+        <result column="member_expirationdate" property="memberExpirationdate"
+                jdbcType="TIMESTAMP"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="key" property="key" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+        <result column="isInner" property="isInner" jdbcType="INTEGER"/>
+        <result column="lastLoginDate" property="lastLoginDate" jdbcType="TIMESTAMP"/>
+        <result column="regist" property="regist" jdbcType="INTEGER"/>
+        <result column="vipEndTime" property="vipEndTime" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="area" property="status" jdbcType="VARCHAR"/>
+        <result column="flag" property="flag" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <insert id="insertUser" parameterType="net.dgg.gspt.dqc.entity.business.User">
+        insert into sys_user_info
+        (
+        userId,username,nickname,createtime,employeeNo,useErpPwd,loginPwd,remark,enabled,lastUpdate,`type`,`birthday`,`sex`,`key`,`money`,`isInner`,`lastLoginDate`,`regist`,`vipEndTime`,`status`,`flag`
+        )
+        values (
+        #{userId},#{username},#{nickname},#{createtime},#{employeeNo},#{useErpPwd},#{loginPwd},#{remark},#{enabled},#{lastUpdate},#{type},#{birthday},#{sex},#{key},#{money},#{isInner},#{lastLoginDate},#{regist},#{vipEndTime},#{status},#{flag}
+        )
+    </insert>
+
+    <select id="query" resultType="net.dgg.gspt.dqc.entity.business.User">
+        SELECT
+        t.`userId` as `userId`,
+        t.`username` as `username`,
+        t.`createtime` as `createtime`,
+        t.`employeeNo` as `employeeNo`,
+        t.`useErpPwd` as `useErpPwd`,
+        t.`loginPwd` as `loginPwd`,
+        t.`remark` as `remark`,
+        t.`enabled` as `enabled`,
+        t.`lastUpdate` as `lastUpdate`,
+        t.`nickname` as `nickname`,
+        t.`email` as `email`,
+        t.`userCompany` as `userCompany`,
+        t.`userPosition` as `userPosition`,
+        t.`industry` as `industry`,
+        t.`type` as `type`,
+        t.`is_member` as `isMember`,
+        t.`member_expirationdate` as `memberExpirationdate`,
+        t.`key` as `key`,
+        t.`birthday` as `birthday`,
+        t.`sex` as `sex`,
+        t.`area` as `area`,
+        t.`money` as `money`,
+        t.`isInner` as `isInner`,
+        t.`lastLoginDate` as `lastLoginDate`,
+        t.`status` as `status`,
+        t.`area` as `area`,
+        t.`flag` as `flag`
+
+        FROM sys_user_info t
+
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER By t.`createtime` DESC
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`userId` as `userId`,
+        t.`username` as `username`,
+        t.`createtime` as `createtime`,
+        t.`employeeNo` as `employeeNo`,
+        t.`useErpPwd` as `useErpPwd`,
+        t.`loginPwd` as `loginPwd`,
+        t.`remark` as `remark`,
+        t.`enabled` as `enabled`,
+        t.`lastUpdate` as `lastUpdate`,
+        t.`nickname` as `nickname`,
+        t.`email` as `email`,
+        t.`userCompany` as `userCompany`,
+        t.`userPosition` as `userPosition`,
+        t.`industry` as `industry`,
+        t.`type` as `type`,
+        t.`is_member` as `isMember`,
+        t.`member_expirationdate` as `memberExpirationdate`,
+        t.`key` as `key`,
+        t.`birthday` as `birthday`,
+        t.`sex` as `sex`,
+        t.`area` as `area`,
+        t.`money` as `money`,
+        t.`isInner` as `isInner`,
+        t.`lastLoginDate` as `lastLoginDate`,
+        t.`status` as `status`,
+        t.`flag` as `flag`
+
+        FROM sys_user_info t
+
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        ORDER By t.`createtime` DESC
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+    <select id="findUserById" resultMap="BaseResultMap"
+            parameterType="java.lang.String">
+        SELECT *
+        FROM sys_user_info
+        WHERE userId = #{userId}
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM sys_user_info t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+    <!--根据userId修改status-->
+    <update id="updateStatus1" parameterType="net.dgg.gspt.dqc.entity.business.User">
+        UPDATE sys_user_info
+        SET status ='status1'
+        WHERE userId = #{userId}
+    </update>
+    <update id="updateStatus2" parameterType="net.dgg.gspt.dqc.entity.business.User">
+        UPDATE sys_user_info
+        SET status ='status2'
+        WHERE userId = #{userId}
+    </update>
+
+    <update id="updateStatus" parameterType="String">
+        UPDATE sys_user_info
+        SET status =#{status}
+        WHERE userId = #{userId}
+    </update>
+
+    <update id="updateUserStatus">
+        UPDATE sys_user_info
+        SET push_status =#{pushStatus}
+        WHERE userId IN (
+        <foreach collection="userIdList" item="userId" separator=",">
+            #{userId}
+        </foreach>
+        )
+    </update>
+
+    <sql id="where">
+        <if test="null!=userId and ''!=userId">
+            AND t.`userId` = #{userId}
+        </if>
+        <if test="null!=username and ''!=username">
+            AND t.`username` = #{username}
+        </if>
+        <if test="null!=createtimeStart and ''!=createtimeStart">
+            AND t.`createtime` &gt;= CONCAT(#{createtimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createtimeEnd and ''!=createtimeEnd">
+            AND t.`createtime` &lt;= CONCAT(#{createtimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=employeeNo and ''!=employeeNo">
+            AND t.`employeeNo` = #{employeeNo}
+        </if>
+        <if test="null!=useErpPwd and ''!=useErpPwd">
+            AND t.`useErpPwd` = #{useErpPwd}
+        </if>
+        <if test="null!=loginPwd and ''!=loginPwd">
+            AND t.`loginPwd` = #{loginPwd}
+        </if>
+        <if test="null!=remark and ''!=remark">
+            AND t.`remark` = #{remark}
+        </if>
+        <if test="null!=enabled and ''!=enabled">
+            AND t.`enabled` = #{enabled}
+        </if>
+        <if test="null!=lastUpdateStart and ''!=lastUpdateStart">
+            AND t.`lastUpdateStart` &gt;= CONCAT(#{lastUpdateStart},' 00:00:00')
+        </if>
+        <if test="null!=lastUpdateEnd and ''!=lastUpdateEnd">
+            AND t.`lastUpdateEnd` &lt;= CONCAT(#{lastUpdateEnd},' 23:59:59')
+        </if>
+        <if test="null!=nickname and ''!=nickname">
+            AND t.`nickname` = #{nickname}
+        </if>
+        <if test="null!=email and ''!=email">
+            AND t.`email` = #{email}
+        </if>
+        <if test="null!=userCompany and ''!=userCompany">
+            AND t.`userCompany` = #{userCompany}
+        </if>
+        <if test="null!=userPosition and ''!=userPosition">
+            AND t.`userPosition` = #{userPosition}
+        </if>
+        <if test="null!=industry and ''!=industry">
+            AND t.`industry` = #{industry}
+        </if>
+        <if test="null!=type and ''!=type">
+            AND t.`type` = #{type}
+        </if>
+        <if test="null!=isMember and ''!=isMember">
+            AND t.`isMember` = #{isMember}
+        </if>
+        <if test="null!=memberExpirationdateStart and ''!=memberExpirationdateStart">
+            AND t.`memberExpirationdateStart` &gt;= CONCAT(#{memberExpirationdateStart},' 00:00:00')
+        </if>
+        <if test="null!=memberExpirationdateEnd and ''!=memberExpirationdateEnd">
+            AND t.`memberExpirationdateEnd` &lt;= CONCAT(#{memberExpirationdateEnd},' 23:59:59')
+        </if>
+        <if test="null!=sex and ''!=sex">
+            AND t.`sex` = #{sex}
+        </if>
+        <if test="null!=birthday and ''!=birthday">
+            AND t.`birthday` = #{birthday}
+        </if>
+        <if test="null!=key and ''!=key">
+            AND t.`key` = #{key}
+        </if>
+        <if test="null!=money and ''!=money">
+            AND t.`money` = #{money}
+        </if>
+        <if test="null!=isInner and ''!=isInner">
+            AND t.`isInner` = #{isInner}
+        </if>
+        <if test="null!=lastLoginDate and ''!=lastLoginDate">
+            AND t.`lastLoginDate` = #{lastLoginDate}
+        </if>
+        <if test="null!=status and ''!=status">
+            AND t.`status` = #{status}
+        </if>
+        <if test="null!=pushStatusIsNull and ''!=pushStatusIsNull">
+            AND t.`push_status` is NULL
+        </if>
+        <if test="null!=flag and ''!=flag">
+            AND t.`flag` = #{flag}
+        </if>
+    </sql>
+
+</mapper>

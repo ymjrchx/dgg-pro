@@ -1,0 +1,5 @@
+int length = 0;
+for(int i=0;i<doc['name'].size();i++){
+    length += doc['name'].get(i).length();
+}
+return length == ${length};

@@ -1,0 +1,85 @@
+.header {
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.header > div {
+    height: 100%;
+}
+
+.img_logo {
+    height: 100%;
+    line-height: 56px;
+    margin-right: 50px;
+}
+
+.img_logo img {
+    height: 36px;
+}
+
+.head_nav > li {
+    float: left;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.head_nav > li > a {
+    padding: 18px 17px 18px 17px;
+    font-size: 15px;
+    position: relative;
+    display: block;
+    line-height: 20px;
+    color: #222;
+}
+
+.head_nav .active > a {
+    color: #128bed;
+}
+.head_nav li:hover > a {
+    color: #128bed;
+}
+.head_nav .line {
+    padding: 18px 0;
+    color: #eaeaea;
+}
+.userName {
+    padding-left: 54px;
+    line-height: 56px;
+}
+.userName img {
+    position: absolute;
+    width: 40px;
+    top: 6px;
+    left: 14px;
+    border-radius: 5px;
+}
+.zanwei{
+    display: block;
+    min-width: 100px;
+    height: 100%;
+    color: #128bed;
+    font-size: 15px;
+    text-align: center;
+}
+.messageBox.msg-box {
+    display: none;
+    padding: 0px;
+    width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: -3px !important;
+    margin-left: -250px;
+    color: #333;
+    font-size: 14px;
+    top: 100%;
+    left: 100px;
+}
+.head_nav .news_noti{
+    height: 56px;
+}
+.news_noti:hover .messageBox.msg-box{
+    display: block;
+}

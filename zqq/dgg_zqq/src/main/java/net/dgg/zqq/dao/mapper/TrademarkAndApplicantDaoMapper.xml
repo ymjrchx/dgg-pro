@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.order.TrademarkAndApplicantDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.order.TrademarkAndApplicant">
+     INSERT INTO zqq_trademark_and_applicant
+        (`id`,`order_id`,`type`,`name`,`explain`,`register_no`,`example_type`,`example_address`,`class_create_way`,`suggested_first_level`,`suggested_second_level`,`applicant_type`,`applicant_user_name`,`applicant_name`,`applicant_card_no`,`business_licence_no`,`business_licence_area`,`postalcode`,`business_licence_address`,`applicant_card_file`,`applicant_card_pdf_file`,`business_licence_file`,`business_licence_pdf_file`,`proxy_file`,`priority_file`,`template_id`,`applicant_card_address`,`create_time`,`creater_id`,`update_time`,`updater_id`)
+        VALUES
+        (#{id},#{orderId},#{type},#{name},#{explain},#{registerNo},#{exampleType},#{exampleAddress},#{classCreateWay},#{suggestedFirstLevel},#{suggestedSecondLevel},#{applicantType},#{applicantUserName},#{applicantName},#{applicantCardNo},#{businessLicenceNo},#{businessLicenceArea},#{postalcode},#{businessLicenceAddress},#{applicantCardFile},#{applicantCardPdfFile},#{businessLicenceFile},#{businessLicencePdfFile},#{proxyFile},#{priorityFile},#{templateId},#{applicantCardAddress},#{createTime},#{createrId},#{updateTime},#{updaterId})
+</insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.order.TrademarkAndApplicant">
+     UPDATE zqq_trademark_and_applicant SET 
+    `order_id` = #{orderId},
+    `type` = #{type},
+    `name` = #{name},
+    `explain` = #{explain},
+    `register_no` = #{registerNo},
+    `example_type` = #{exampleType},
+    `example_address` = #{exampleAddress},
+    `class_create_way` = #{classCreateWay},
+    `suggested_first_level` = #{suggestedFirstLevel},
+    `suggested_second_level` = #{suggestedSecondLevel},
+    `applicant_type` = #{applicantType},
+    `applicant_user_name` = #{applicantUserName},
+    `applicant_name` = #{applicantName},
+    `applicant_card_no` = #{applicantCardNo},
+    `business_licence_no` = #{businessLicenceNo},
+    `business_licence_area` = #{businessLicenceArea},
+    `postalcode` = #{postalcode},
+    `business_licence_address` = #{businessLicenceAddress},
+    `applicant_card_file` = #{applicantCardFile},
+        `applicant_card_pdf_file` = #{applicantCardPdfFile},
+    `business_licence_file` = #{businessLicenceFile},
+    `business_licence_pdf_file` = #{businessLicencePdfFile},
+    `proxy_file` = #{proxyFile},
+    `priority_file` = #{priorityFile},
+    `template_id` = #{templateId},
+    `applicant_card_address` = #{applicantCardAddress},
+    `create_time` = #{createTime},
+    `creater_id` = #{createrId},
+    `update_time` = #{updateTime},
+    `updater_id` = #{updaterId}
+     WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.order.TrademarkAndApplicant">
+     SELECT 
+    t.`id` as `id`,
+    t.`order_id` as `orderId`,
+    t.`type` as `type`,
+    t.`name` as `name`,
+    t.`explain` as `explain`,
+    t.`register_no` as `registerNo`,
+    t.`example_type` as `exampleType`,
+    t.`example_address` as `exampleAddress`,
+    t.`class_create_way` as `classCreateWay`,
+    t.`suggested_first_level` as `suggestedFirstLevel`,
+    t.`suggested_second_level` as `suggestedSecondLevel`,
+    t.`applicant_type` as `applicantType`,
+    t.`applicant_user_name` as `applicantUserName`,
+    t.`applicant_name` as `applicantName`,
+    t.`applicant_card_no` as `applicantCardNo`,
+    t.`business_licence_no` as `businessLicenceNo`,
+    t.`business_licence_area` as `businessLicenceArea`,
+    t.`postalcode` as `postalcode`,
+    t.`business_licence_address` as `businessLicenceAddress`,
+    t.`applicant_card_file` as `applicantCardFile`,
+        t.`applicant_card_pdf_file` as `applicantCardPdfFile`,
+    t.`business_licence_file` as `businessLicenceFile`,
+    t.`business_licence_pdf_file` as `businessLicencePdfFile`,
+    t.`proxy_file` as `proxyFile`,
+    t.`priority_file` as `priorityFile`,
+    t.`template_id` as `templateId`,
+    t.`applicant_card_address` as `applicantCardAddress`,
+    t.`create_time` as `createTime`,
+    t.`creater_id` as `createrId`,
+    t.`update_time` as `updateTime`,
+    t.`updater_id` as `updaterId`
+
+    FROM zqq_trademark_and_applicant t
+
+    WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.order.TrademarkAndApplicant">
+        SELECT
+        t.`id` as `id`,
+        t.`order_id` as `orderId`,
+        t.`type` as `type`,
+        t.`name` as `name`,
+        t.`explain` as `explain`,
+        t.`register_no` as `registerNo`,
+        t.`example_type` as `exampleType`,
+        t.`example_address` as `exampleAddress`,
+        t.`class_create_way` as `classCreateWay`,
+        t.`suggested_first_level` as `suggestedFirstLevel`,
+        t.`suggested_second_level` as `suggestedSecondLevel`,
+        t.`applicant_type` as `applicantType`,
+        t.`applicant_user_name` as `applicantUserName`,
+        t.`applicant_name` as `applicantName`,
+        t.`applicant_card_no` as `applicantCardNo`,
+        t.`business_licence_no` as `businessLicenceNo`,
+        t.`business_licence_area` as `businessLicenceArea`,
+        t.`postalcode` as `postalcode`,
+        t.`business_licence_address` as `businessLicenceAddress`,
+        t.`applicant_card_file` as `applicantCardFile`,
+        t.`applicant_card_pdf_file` as `applicantCardPdfFile`,
+        t.`business_licence_file` as `businessLicenceFile`,
+        t.`business_licence_pdf_file` as `businessLicencePdfFile`,
+        t.`proxy_file` as `proxyFile`,
+        t.`priority_file` as `priorityFile`,
+        t.`template_id` as `templateId`,
+        t.`applicant_card_address` as `applicantCardAddress`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`
+
+        FROM zqq_trademark_and_applicant t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`order_id` as `orderId`,
+        t.`type` as `type`,
+        t.`name` as `name`,
+        t.`explain` as `explain`,
+        t.`register_no` as `registerNo`,
+        t.`example_type` as `exampleType`,
+        t.`example_address` as `exampleAddress`,
+        t.`class_create_way` as `classCreateWay`,
+        t.`suggested_first_level` as `suggestedFirstLevel`,
+        t.`suggested_second_level` as `suggestedSecondLevel`,
+        t.`applicant_type` as `applicantType`,
+        t.`applicant_user_name` as `applicantUserName`,
+        t.`applicant_name` as `applicantName`,
+        t.`applicant_card_no` as `applicantCardNo`,
+        t.`business_licence_no` as `businessLicenceNo`,
+        t.`business_licence_area` as `businessLicenceArea`,
+        t.`postalcode` as `postalcode`,
+        t.`business_licence_address` as `businessLicenceAddress`,
+        t.`applicant_card_file` as `applicantCardFile`,
+        t.`applicant_card_pdf_file` as `applicantCardPdfFile`,
+        t.`business_licence_file` as `businessLicenceFile`,
+        t.`business_licence_pdf_file` as `businessLicencePdfFile`,
+        t.`proxy_file` as `proxyFile`,
+        t.`priority_file` as `priorityFile`,
+        t.`template_id` as `templateId`,
+        t.`applicant_card_address` as `applicantCardAddress`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`
+
+        FROM zqq_trademark_and_applicant t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_trademark_and_applicant t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+    DELETE FROM zqq_trademark_and_applicant  WHERE  `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=orderId and ''!=orderId">
+            AND t.`order_id` = #{orderId}
+        </if>
+        <if test="null!=type and ''!=type">
+            AND t.`type` = #{type}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` = #{name}
+        </if>
+        <if test="null!=explain and ''!=explain">
+            AND t.`explain` = #{explain}
+        </if>
+        <if test="null!=registerNo and ''!=registerNo">
+            AND t.`register_no` = #{registerNo}
+        </if>
+        <if test="null!=exampleType and ''!=exampleType">
+            AND t.`example_type` = #{exampleType}
+        </if>
+        <if test="null!=exampleAddress and ''!=exampleAddress">
+            AND t.`example_address` = #{exampleAddress}
+        </if>
+        <if test="null!=classCreateWay and ''!=classCreateWay">
+            AND t.`class_create_way` = #{classCreateWay}
+        </if>
+        <if test="null!=suggestedFirstLevel and ''!=suggestedFirstLevel">
+            AND t.`suggested_first_level` = #{suggestedFirstLevel}
+        </if>
+        <if test="null!=suggestedSecondLevel and ''!=suggestedSecondLevel">
+            AND t.`suggested_second_level` = #{suggestedSecondLevel}
+        </if>
+        <if test="null!=applicantType and ''!=applicantType">
+            AND t.`applicant_type` = #{applicantType}
+        </if>
+        <if test="null!=applicantUserName and ''!=applicantUserName">
+            AND t.`applicant_user_name` = #{applicantUserName}
+        </if>
+        <if test="null!=applicantName and ''!=applicantName">
+            AND t.`applicant_name` = #{applicantName}
+        </if>
+        <if test="null!=applicantCardNo and ''!=applicantCardNo">
+            AND t.`applicant_card_no` = #{applicantCardNo}
+        </if>
+        <if test="null!=businessLicenceNo and ''!=businessLicenceNo">
+            AND t.`business_licence_no` = #{businessLicenceNo}
+        </if>
+        <if test="null!=businessLicenceArea and ''!=businessLicenceArea">
+            AND t.`business_licence_area` = #{businessLicenceArea}
+        </if>
+        <if test="null!=postalcode and ''!=postalcode">
+            AND t.`postalcode` = #{postalcode}
+        </if>
+        <if test="null!=businessLicenceAddress and ''!=businessLicenceAddress">
+            AND t.`business_licence_address` = #{businessLicenceAddress}
+        </if>
+        <if test="null!=applicantCardFile and ''!=applicantCardFile">
+            AND t.`applicant_card_file` = #{applicantCardFile}
+        </if>
+        <if test="null!=applicantCardPdfFile and ''!=applicantCardPdfFile">
+            AND t.`applicant_card_pdf_file` = #{applicantCardPdfFile}
+        </if>
+        <if test="null!=businessLicenceFile and ''!=businessLicenceFile">
+            AND t.`business_licence_file` = #{businessLicenceFile}
+        </if>
+        <if test="null!=businessLicencePdfFile and ''!=businessLicencePdfFile">
+            AND t.`business_licence_pdf_file` = #{businessLicencePdfFile}
+        </if>
+        <if test="null!=proxyFile and ''!=proxyFile">
+            AND t.`proxy_file` = #{proxyFile}
+        </if>
+        <if test="null!=priorityFile and ''!=priorityFile">
+            AND t.`priority_file` = #{priorityFile}
+        </if>
+        <if test="null!=templateId and ''!=templateId">
+            AND t.`template_id` = #{templateId}
+        </if>
+        <if test="null!=applicantCardAddress and ''!=applicantCardAddress">
+            AND t.`applicant_card_address` = #{applicantCardAddress}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+    </sql>
+
+</mapper>

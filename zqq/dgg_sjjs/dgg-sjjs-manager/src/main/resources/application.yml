@@ -1,0 +1,122 @@
+server:
+  port: 8086
+site:
+  name: \u9876\u4f01\u5ba2
+  domain: dgg.net
+
+baseStaicUrl: https://ribossstatic.dgg.net
+sys:
+  version: v1.0.0
+
+tree:
+  classification:
+    id: 7760662196010479616
+
+spring:
+  datasource:
+    druid:
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      filters: stat,wall,log4j
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-enable: false
+        session-stat-max-count: 1000
+        principal-session-name: admin
+        principal-cookie-name: admin
+        profile-enable: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: admin
+        allow:
+        deny: 128.242.127.1/24,128.242.128.1
+  profiles:
+    active: development
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  thymeleaf:
+    cache: false
+    enabled: false
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  main:
+    allow-bean-definition-overriding: true
+  freemarker:
+    allow-request-override: false
+    cache: true
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+    templateLoaderPath: classpath:/template/
+mybatis:
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:net/dgg/bigdata/manager/**/*Mapper.xml
+  type-aliases-package: net.dgg.bigdata.manager
+
+logging:
+  config: classpath:logging-config.xml
+
+usercenter:
+  url: http://192.168.254.187
+  getuser:
+    url: api/user/getUser.api
+  getorg:
+    url: api/platform/organization/organizationObj.api
+  apptoken: 7cc7a8b7d92bede9
+
+table_schema: platform_foundation_dev
+
+
+  #\u7CFB\u7EDF\u7F16\u53F7
+dgg:
+  appId: dgg-yk-manager
+
+wechat:
+  appId: wx2158bdc43fc7da5e
+  appSecret: b9b950c557b2528bed548e45a337cdfc
+  scope: snsapi_login
+qq:
+  appId: 101508189
+  appSecret: 68f59b8f0edc3412e6579d62153015f3
+
+
+trademarkClass:
+  classLevel1Price: 300
+  classLevel3Price: 30
+antiCrawler:
+  urls: /brandManager/exportBrandData,/brandManager/exportBrandData,/brandSearch/approximate,/brandSearch/brandDetail,/brandSearch/imgSearch,/brandSearch/imgSearchList,/brandSearch/searchList
+requestRecord:
+  urls: /*
+debug: false
+
+img:
+  identify:
+    idcard:
+      idcardIdentificate: https://aip.baidubce.com/rest/2.0/ocr/v1/idcard
+      accessToken: 24.995844883126e8645188db4027b19b84.2592000.1544770137.282335-11773096
+    license:
+      identificate: https://aip.baidubce.com/rest/2.0/ocr/v1/business_license
+      accessToken: 24.3018ebde2173b66368d6a21a6f422122.2592000.1544777361.282335-11773096
+

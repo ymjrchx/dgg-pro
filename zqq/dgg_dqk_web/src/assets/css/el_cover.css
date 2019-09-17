@@ -1,0 +1,70 @@
+
+/* //一些 v-html的样式 开始*/
+.patentDetail-wrap .keyword-box .search-keyword {
+  display: block;
+  float: left;
+  color: #444;
+  margin-right: 24px;
+  margin-bottom: 6px;
+  background-color: #eee;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.patentDetail-wrap .keyword-box .search-keyword:hover {
+  background-color: #ff5c00;
+  color: #fff;
+}
+/* //覆盖单选按钮 */
+
+.Jun .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+  color: #08f;
+  border-color: #08f;
+  background: #fff;
+  -webkit-box-shadow: -1px 0 0 0 #08f;
+  box-shadow: -1px 0 0 0 #08f;
+}
+/* //覆盖单选按钮 end*/
+.pages{
+  padding: 30px;
+  padding-top: 40px;
+  text-align: right;
+}
+/* //覆盖联想搜索 end*/
+.Jun_searchBox.input-group .el-autocomplete{
+  width: 82%;
+  height: 50px;
+  float: left;
+}
+.Jun_searchBox.input-group input {
+ border-radius:4px 0 0 4px ;
+ -webkit-border-radius:4px 0 0 4px ;
+ -moz-border-radius:4px 0 0 4px ;
+ -ms-border-radius:4px 0 0 4px ;
+ -o-border-radius:4px 0 0 4px ;
+}
+/* //覆盖级联选项卡 */
+.Jun-option > span{
+  display: block;
+}
+
+.Jun-option>span input{
+  height: 34px;
+  line-height: 34px;
+}
+
+.Jun-option-mult >div {
+  margin-right: 10px;
+}
+.Jun-option-mult >div:nth-child(4n) {
+  margin-right: 0px;
+}
+
+
+.action.input>div{
+  width: 420px;
+} 
+
+.jun_time.el-date-editor.el-input{
+  width: 140px;
+}

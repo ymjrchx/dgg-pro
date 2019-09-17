@@ -1,0 +1,132 @@
+[
+    {
+        "name": "工商信息",
+        "dimensions": [
+            "name",
+            "desc",
+            "operStatus",
+            "business",
+            "address",
+            "addressValue",
+            "industries",
+            "regCapitalRmb",
+            "foundTime",
+            "holderTypeList",
+            "enterpriseType",
+            "hasAnnualReport",
+            "branchOfficeNumber"
+        ]
+    },
+    {
+        "name": "联系方式",
+        "dimensions": [
+            "hasMobile",
+            "hasPhone",
+            "hasEmail",
+            "contactSource",
+            "hasMaimai",
+            "hasLinkedin",
+            "hasWeibo"
+        ]
+    },
+    {
+        "name": "招聘信息",
+        "dimensions": [
+            "recruitingName",
+            "recruitingDesc",
+            "benefitList",
+            "recruitingSource",
+            "recruitingAvgWorkingSalary",
+            "recruitingAddress",
+            "recruitingCurrentNo",
+            "recruitingCurrentCount",
+            "recruitingLastThreeMonthNo",
+            "recruitingLastThreeMonthCount",
+            "recruitingAvgUpdate",
+            "recruitingTypes"
+        ]
+    },
+    {
+        "name": "官网信息",
+        "dimensions": [
+            "domainKeywords",
+            "domainDesc",
+            "icpHomepageContent",
+            "homepage",
+            "ICPListNumber",
+            "hasDomainServiceOnLine",
+            "hasDomainHttps",
+            "domainServiceOnLineList",
+            "domainHomepageLayout",
+            "domainTitle",
+            "W3CDeviate",
+            "avgErrorRate",
+            "avgResponseTime",
+            "ipOperator",
+            "ipAddress",
+            "weightOnBaidu",
+            "weightOn360",
+            "baiduCitedNo",
+            "360CitedNo",
+            "domainTechnologies",
+            "domainAge",
+            "domainExpireDate"
+        ]
+    },
+    {
+        "name": "经营状况",
+        "dimensions": [
+            "businessType",
+            "financingNumber",
+            "financingSeries",
+            "hasCertificate",
+            "certNumber",
+            "certTypeList",
+            "certNumberThisYear",
+            "certFirstPublishTime",
+            "certLastPublishTime"
+        ]
+    },
+    {
+        "name": "自媒体信息",
+        "dimensions": [
+            "hasWeMedia",
+            "mediaName",
+            "mediaCount",
+            "weiboOrgNumber"
+        ]
+    },
+    {
+        "name": "推广信息",
+        "dimensions": [
+            "prmtText",
+            "baiduSource",
+            "hasPrmt",
+            "prmtKeysNumber",
+            "prmtCompetitorsNumber",
+            "prmtSources",
+            "lastPrmtTime",
+            "prmtLinksNumber"
+        ]
+    },
+    {
+        "name": "应用信息",
+        "dimensions": [
+            "appNames",
+            "appDescList",
+            "appClass",
+            "appStores",
+            "appNumber",
+            "appTotalDownloadCount",
+            "appAvgRate",
+            "appPublishTime",
+            "appUpgradeTime"
+        ]
+    },
+    {
+        "name": "洞客数据",
+        "dimensions": [
+            "convertCount"
+        ]
+    }
+]

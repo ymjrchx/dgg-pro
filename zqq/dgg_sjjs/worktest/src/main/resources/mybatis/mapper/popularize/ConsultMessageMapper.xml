@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dgg.net.mapper.ConsultMessageMapper" >
+  <resultMap id="BaseResultMap" type="dgg.net.entity.ConsultMessage" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="addTime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="veri" property="veri" jdbcType="VARCHAR" />
+    <result column="veriNum" property="verinum" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="device" property="device" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="web" property="web" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+    <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="handlerAt" property="handlerat" jdbcType="TIMESTAMP" />
+    <result column="crmId" property="crmid" jdbcType="VARCHAR" />
+    <result column="flag1" property="flag1" jdbcType="VARCHAR" />
+    <result column="flag2" property="flag2" jdbcType="VARCHAR" />
+    <result column="flag3" property="flag3" jdbcType="VARCHAR" />
+    <result column="front_ip" property="frontIp" jdbcType="VARCHAR" />
+    <result column="is_import" property="isImport" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="dgg.net.entity.ConsultMessageWithBLOBs" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, addTime, name, tel, veri, veriNum, type, device, place, web, url, status, ip, 
+    key, handler, handlerAt, crmId, flag1, flag2, flag3, front_ip, is_import
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="dgg.net.entity.ConsultMessageKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from consult_message
+    where id = #{id,jdbcType=VARCHAR}
+      and addTime = #{addtime,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="dgg.net.entity.ConsultMessageKey" >
+    delete from consult_message
+    where id = #{id,jdbcType=VARCHAR}
+      and addTime = #{addtime,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="dgg.net.entity.ConsultMessageWithBLOBs" >
+    insert into consult_message (id, addTime, name, 
+      tel, veri, veriNum, 
+      type, device, place, 
+      web, url, status, ip, 
+      key, handler, handlerAt, 
+      crmId, flag1, flag2, 
+      flag3, front_ip, is_import, 
+      remark, content)
+    values (#{id,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{veri,jdbcType=VARCHAR}, #{verinum,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, 
+      #{web,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
+      #{key,jdbcType=VARCHAR}, #{handler,jdbcType=VARCHAR}, #{handlerat,jdbcType=TIMESTAMP}, 
+      #{crmid,jdbcType=VARCHAR}, #{flag1,jdbcType=VARCHAR}, #{flag2,jdbcType=VARCHAR}, 
+      #{flag3,jdbcType=VARCHAR}, #{frontIp,jdbcType=VARCHAR}, #{isImport,jdbcType=BIT}, 
+      #{remark,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dgg.net.entity.ConsultMessageWithBLOBs" >
+    insert into consult_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="addtime != null" >
+        addTime,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="veri != null" >
+        veri,
+      </if>
+      <if test="verinum != null" >
+        veriNum,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="web != null" >
+        web,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="key != null" >
+        key,
+      </if>
+      <if test="handler != null" >
+        handler,
+      </if>
+      <if test="handlerat != null" >
+        handlerAt,
+      </if>
+      <if test="crmid != null" >
+        crmId,
+      </if>
+      <if test="flag1 != null" >
+        flag1,
+      </if>
+      <if test="flag2 != null" >
+        flag2,
+      </if>
+      <if test="flag3 != null" >
+        flag3,
+      </if>
+      <if test="frontIp != null" >
+        front_ip,
+      </if>
+      <if test="isImport != null" >
+        is_import,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="veri != null" >
+        #{veri,jdbcType=VARCHAR},
+      </if>
+      <if test="verinum != null" >
+        #{verinum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="web != null" >
+        #{web,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null" >
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerat != null" >
+        #{handlerat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crmid != null" >
+        #{crmid,jdbcType=VARCHAR},
+      </if>
+      <if test="flag1 != null" >
+        #{flag1,jdbcType=VARCHAR},
+      </if>
+      <if test="flag2 != null" >
+        #{flag2,jdbcType=VARCHAR},
+      </if>
+      <if test="flag3 != null" >
+        #{flag3,jdbcType=VARCHAR},
+      </if>
+      <if test="frontIp != null" >
+        #{frontIp,jdbcType=VARCHAR},
+      </if>
+      <if test="isImport != null" >
+        #{isImport,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dgg.net.entity.ConsultMessageWithBLOBs" >
+    update consult_message
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="veri != null" >
+        veri = #{veri,jdbcType=VARCHAR},
+      </if>
+      <if test="verinum != null" >
+        veriNum = #{verinum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="web != null" >
+        web = #{web,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null" >
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null" >
+        handler = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerat != null" >
+        handlerAt = #{handlerat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crmid != null" >
+        crmId = #{crmid,jdbcType=VARCHAR},
+      </if>
+      <if test="flag1 != null" >
+        flag1 = #{flag1,jdbcType=VARCHAR},
+      </if>
+      <if test="flag2 != null" >
+        flag2 = #{flag2,jdbcType=VARCHAR},
+      </if>
+      <if test="flag3 != null" >
+        flag3 = #{flag3,jdbcType=VARCHAR},
+      </if>
+      <if test="frontIp != null" >
+        front_ip = #{frontIp,jdbcType=VARCHAR},
+      </if>
+      <if test="isImport != null" >
+        is_import = #{isImport,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+      and addTime = #{addtime,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="dgg.net.entity.ConsultMessageWithBLOBs" >
+    update consult_message
+    set name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      veri = #{veri,jdbcType=VARCHAR},
+      veriNum = #{verinum,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      web = #{web,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      key = #{key,jdbcType=VARCHAR},
+      handler = #{handler,jdbcType=VARCHAR},
+      handlerAt = #{handlerat,jdbcType=TIMESTAMP},
+      crmId = #{crmid,jdbcType=VARCHAR},
+      flag1 = #{flag1,jdbcType=VARCHAR},
+      flag2 = #{flag2,jdbcType=VARCHAR},
+      flag3 = #{flag3,jdbcType=VARCHAR},
+      front_ip = #{frontIp,jdbcType=VARCHAR},
+      is_import = #{isImport,jdbcType=BIT},
+      remark = #{remark,jdbcType=LONGVARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+      and addTime = #{addtime,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dgg.net.entity.ConsultMessage" >
+    update consult_message
+    set name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      veri = #{veri,jdbcType=VARCHAR},
+      veriNum = #{verinum,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      web = #{web,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      key = #{key,jdbcType=VARCHAR},
+      handler = #{handler,jdbcType=VARCHAR},
+      handlerAt = #{handlerat,jdbcType=TIMESTAMP},
+      crmId = #{crmid,jdbcType=VARCHAR},
+      flag1 = #{flag1,jdbcType=VARCHAR},
+      flag2 = #{flag2,jdbcType=VARCHAR},
+      flag3 = #{flag3,jdbcType=VARCHAR},
+      front_ip = #{frontIp,jdbcType=VARCHAR},
+      is_import = #{isImport,jdbcType=BIT}
+    where id = #{id,jdbcType=VARCHAR}
+      and addTime = #{addtime,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

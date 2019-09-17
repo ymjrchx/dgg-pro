@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dgg.net.mapper.PopularizeRecordMapper">
+  <resultMap id="BaseResultMap" type="dgg.net.entity.PopularizeRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="popularize_name" jdbcType="VARCHAR" property="popularizeName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="popularize_url" jdbcType="VARCHAR" property="popularizeUrl" />
+    <result column="bus_type" jdbcType="VARCHAR" property="busType" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="have_form" jdbcType="VARCHAR" property="haveForm" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="creater_org_id" jdbcType="BIGINT" property="createrOrgId" />
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="updater_org_id" jdbcType="BIGINT" property="updaterOrgId" />
+    <result column="updater_name" jdbcType="VARCHAR" property="updaterName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, popularize_name, code, popularize_url, bus_type, area, channel, have_form, dept, 
+    user_name, create_time, creater_id, creater_org_id, creater_name, update_time, updater_id, 
+    updater_org_id, updater_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record (id, popularize_name, code, 
+      popularize_url, bus_type, area, 
+      channel, have_form, dept, 
+      user_name, create_time, creater_id, 
+      creater_org_id, creater_name, update_time, 
+      updater_id, updater_org_id, updater_name, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{popularizeName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{popularizeUrl,jdbcType=VARCHAR}, #{busType,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=VARCHAR}, #{haveForm,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{createrOrgId,jdbcType=BIGINT}, #{createrName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updaterId,jdbcType=BIGINT}, #{updaterOrgId,jdbcType=BIGINT}, #{updaterName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="popularizeName != null">
+        popularize_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url,
+      </if>
+      <if test="busType != null">
+        bus_type,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="haveForm != null">
+        have_form,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id,
+      </if>
+      <if test="createrName != null">
+        creater_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id,
+      </if>
+      <if test="updaterName != null">
+        updater_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="popularizeName != null">
+        #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    <set>
+      <if test="popularizeName != null">
+        popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        have_form = #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        updater_name = #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    set popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      bus_type = #{busType,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      have_form = #{haveForm,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      updater_name = #{updaterName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="dgg.net.entity.PopularizeRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="popularize_name" jdbcType="VARCHAR" property="popularizeName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="popularize_url" jdbcType="VARCHAR" property="popularizeUrl" />
+    <result column="bus_type" jdbcType="VARCHAR" property="busType" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="have_form" jdbcType="VARCHAR" property="haveForm" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="creater_org_id" jdbcType="BIGINT" property="createrOrgId" />
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="updater_org_id" jdbcType="BIGINT" property="updaterOrgId" />
+    <result column="updater_name" jdbcType="VARCHAR" property="updaterName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, popularize_name, code, popularize_url, bus_type, area, channel, have_form, dept, 
+    user_name, create_time, creater_id, creater_org_id, creater_name, update_time, updater_id, 
+    updater_org_id, updater_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record (id, popularize_name, code, 
+      popularize_url, bus_type, area, 
+      channel, have_form, dept, 
+      user_name, create_time, creater_id, 
+      creater_org_id, creater_name, update_time, 
+      updater_id, updater_org_id, updater_name, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{popularizeName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{popularizeUrl,jdbcType=VARCHAR}, #{busType,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=VARCHAR}, #{haveForm,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{createrOrgId,jdbcType=BIGINT}, #{createrName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updaterId,jdbcType=BIGINT}, #{updaterOrgId,jdbcType=BIGINT}, #{updaterName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="popularizeName != null">
+        popularize_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url,
+      </if>
+      <if test="busType != null">
+        bus_type,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="haveForm != null">
+        have_form,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id,
+      </if>
+      <if test="createrName != null">
+        creater_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id,
+      </if>
+      <if test="updaterName != null">
+        updater_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="popularizeName != null">
+        #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    <set>
+      <if test="popularizeName != null">
+        popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        have_form = #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        updater_name = #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    set popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      bus_type = #{busType,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      have_form = #{haveForm,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      updater_name = #{updaterName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="dgg.net.entity.PopularizeRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="popularize_name" jdbcType="VARCHAR" property="popularizeName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="popularize_url" jdbcType="VARCHAR" property="popularizeUrl" />
+    <result column="bus_type" jdbcType="VARCHAR" property="busType" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="have_form" jdbcType="VARCHAR" property="haveForm" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="creater_org_id" jdbcType="BIGINT" property="createrOrgId" />
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="updater_org_id" jdbcType="BIGINT" property="updaterOrgId" />
+    <result column="updater_name" jdbcType="VARCHAR" property="updaterName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, popularize_name, code, popularize_url, bus_type, area, channel, have_form, dept, 
+    user_name, create_time, creater_id, creater_org_id, creater_name, update_time, updater_id, 
+    updater_org_id, updater_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record (id, popularize_name, code, 
+      popularize_url, bus_type, area, 
+      channel, have_form, dept, 
+      user_name, create_time, creater_id, 
+      creater_org_id, creater_name, update_time, 
+      updater_id, updater_org_id, updater_name, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{popularizeName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{popularizeUrl,jdbcType=VARCHAR}, #{busType,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=VARCHAR}, #{haveForm,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{createrOrgId,jdbcType=BIGINT}, #{createrName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updaterId,jdbcType=BIGINT}, #{updaterOrgId,jdbcType=BIGINT}, #{updaterName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="popularizeName != null">
+        popularize_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url,
+      </if>
+      <if test="busType != null">
+        bus_type,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="haveForm != null">
+        have_form,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id,
+      </if>
+      <if test="createrName != null">
+        creater_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id,
+      </if>
+      <if test="updaterName != null">
+        updater_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="popularizeName != null">
+        #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    <set>
+      <if test="popularizeName != null">
+        popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        have_form = #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        updater_name = #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    set popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      bus_type = #{busType,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      have_form = #{haveForm,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      updater_name = #{updaterName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="dgg.net.entity.PopularizeRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="popularize_name" jdbcType="VARCHAR" property="popularizeName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="popularize_url" jdbcType="VARCHAR" property="popularizeUrl" />
+    <result column="bus_type" jdbcType="VARCHAR" property="busType" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="have_form" jdbcType="VARCHAR" property="haveForm" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="creater_org_id" jdbcType="BIGINT" property="createrOrgId" />
+    <result column="creater_name" jdbcType="VARCHAR" property="createrName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="updater_org_id" jdbcType="BIGINT" property="updaterOrgId" />
+    <result column="updater_name" jdbcType="VARCHAR" property="updaterName" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, popularize_name, code, popularize_url, bus_type, area, channel, have_form, dept, 
+    user_name, create_time, creater_id, creater_org_id, creater_name, update_time, updater_id, 
+    updater_org_id, updater_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bus_popularize_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record (id, popularize_name, code, 
+      popularize_url, bus_type, area, 
+      channel, have_form, dept, 
+      user_name, create_time, creater_id, 
+      creater_org_id, creater_name, update_time, 
+      updater_id, updater_org_id, updater_name, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{popularizeName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{popularizeUrl,jdbcType=VARCHAR}, #{busType,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=VARCHAR}, #{haveForm,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{createrOrgId,jdbcType=BIGINT}, #{createrName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updaterId,jdbcType=BIGINT}, #{updaterOrgId,jdbcType=BIGINT}, #{updaterName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dgg.net.entity.PopularizeRecord">
+    insert into bus_popularize_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="popularizeName != null">
+        popularize_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url,
+      </if>
+      <if test="busType != null">
+        bus_type,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="haveForm != null">
+        have_form,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id,
+      </if>
+      <if test="createrName != null">
+        creater_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id,
+      </if>
+      <if test="updaterName != null">
+        updater_name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="popularizeName != null">
+        #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    <set>
+      <if test="popularizeName != null">
+        popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="popularizeUrl != null">
+        popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="haveForm != null">
+        have_form = #{haveForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="createrOrgId != null">
+        creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="createrName != null">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterOrgId != null">
+        updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterName != null">
+        updater_name = #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dgg.net.entity.PopularizeRecord">
+    update bus_popularize_record
+    set popularize_name = #{popularizeName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      popularize_url = #{popularizeUrl,jdbcType=VARCHAR},
+      bus_type = #{busType,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      have_form = #{haveForm,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      creater_org_id = #{createrOrgId,jdbcType=BIGINT},
+      creater_name = #{createrName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      updater_org_id = #{updaterOrgId,jdbcType=BIGINT},
+      updater_name = #{updaterName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

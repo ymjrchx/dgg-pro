@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.dgg.core</groupId>
+        <artifactId>dgg-core-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>net.dgg.core</groupId>
+    <artifactId>dgg-core-message</artifactId>
+    <version>${dgg-core-message.version}</version>
+
+    <name>dgg-core-message</name>
+    <description>message封装工程</description>
+
+    <dependencies>
+
+        <!--dgg framework start -->
+        <dependency>
+            <groupId>net.dgg.core</groupId>
+            <artifactId>dgg-core-mq</artifactId>
+        </dependency>
+        <!--dgg framework end -->
+
+    </dependencies>
+
+
+</project>

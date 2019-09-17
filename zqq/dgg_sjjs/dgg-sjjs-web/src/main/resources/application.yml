@@ -1,0 +1,58 @@
+server:
+  port: 8090
+site:
+  name: \u77E5\u5343\u79CB
+  site:
+    domain: dgg.net
+cert:
+  cache: http://172.16.2.236:9093
+
+spring:
+  profiles:
+    active: development
+  session:
+    store-type: redis
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+
+mybatis:
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:net/dgg/bigdata/sjjs/**/*Mapper.xml
+  type-aliases-package: net.dgg.bigdata.sjjs
+
+jwt:
+  config:
+    key: mapdggcomyk
+dgg:
+  appId: dgg_zqq
+mq:
+  messagequeue:
+    port: 5672
+    username: admin
+    password: admin
+    host: 192.168.254.181
+    virtualHost: /
+    default: net.dgg.dqk.message.clue.queue
+  clueProvider:
+    queueName: net.dgg.dqk.message.clue.queue.trunClue
+
+logging:
+  config: classpath:logging-config.xml
+es:
+  cluster:
+    name: dcq
+  servers: 10.2.1.174:9300;10.2.1.176:9300;10.2.1.177:9300
+
+trademarkClass:
+  classLevel1Price: 300
+  classLevel3Price: 30
+antiCrawler:
+  urls: /brandManager/exportBrandData,/brandManager/exportBrandData,/brandSearch/approximate,/brandSearch/brandDetail,/brandSearch/imgSearch,/brandSearch/imgSearchList,/brandSearch/searchList
+requestRecord:
+  urls: /*

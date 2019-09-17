@@ -1,0 +1,44 @@
+#  所有配置均是默认配置
+app:
+  name: YK-Spark-backend
+
+mongo:
+  uri: mongodb://rwuser:48bb67d7996f327b@10.0.0.120:57017/?authSource=admin
+  ext: mongodb://rwuser:48bb67d7996f327b@10.0.0.120:57017/%s.%s?authSource=admin
+  host: 10.0.0.120,10.0.0.121,10.0.0.122
+  port: 57017,57017,57017
+  username: admin
+  password: 48bb67d7996f327b
+
+elasticsearch:
+  index: dgg_yk_commercial
+  type: dgg_yk_commercial
+  #servers: 192.168.254.141:9255,192.168.254.142:9255,192.168.254.143:9255
+  servers: 10.2.1.174:19200,10.2.1.176:19200,10.2.1.177:19200
+  writeSource: "%s/%s"
+
+hdfs:
+  root: "/data/v2/sink/"
+  originWritePath: "/data/v2/sink/%s/%s/origin"
+  convertFailPath: "/data/v2/sink/%s/%s/fail"
+  convertSuccessPath: "/data/v2/sink/%s/%s/success"
+
+fs:
+  root: hdfs://master:8020/data/v2/sink/
+
+mq:
+  # host: wwmq.dgg.net
+  # port: 35672
+  # username: zhiqianqiu
+  # password: zhiqianqiu
+  # vHost: /
+  host: 192.168.254.181
+  port: 5672
+  username: admin
+  password: admin
+  vHost: /
+  queue:
+    action: yk.dataplatform.action
+    failure: yk.dataplatform.failure
+
+

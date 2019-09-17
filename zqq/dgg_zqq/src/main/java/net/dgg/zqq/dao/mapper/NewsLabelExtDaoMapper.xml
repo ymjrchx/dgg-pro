@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.news.NewsLabelExtDao">
+
+    <resultMap id="newsAndLabel" type="java.util.Map">
+        <id property="newsLabelId" column="newsLabelId" />
+        <result property="newsId" column="newsId"/>
+        <result property="newsLabel" column="newsLabel"/>
+        <result property="title" column="title"/>
+        <result property="origin" column="origin"/>
+        <result property="newsPhoto" column="newsPhoto"/>
+        <result property="content" column="content"/>
+        <result property="viewTimes" column="viewTimes"/>
+        <result property="praiseTimes" column="praiseTimes"/>
+        <result property="type" column="type"/>
+        <result property="status" column="status"/>
+        <result property="flag" column="flag"/>
+        <result property="createTime" column="createTime"/>
+    </resultMap>
+
+
+    <select id="find" parameterType="java.util.Map" resultMap="newsAndLabel">
+    SELECT
+        nl.id as newsLabelId,nl.news_id as newsId,nl.news_label as newsLabel,
+        n.title as title,n.origin as origin,n.news_photo as newsPhoto,
+        n.content as content,n.view_times as viewTimes,n.praise_times as praiseTimes,
+        n.type as type,n.status as status,n.flag as flag,n.create_time as createTime
+    FROM zqq_news_label as nl
+    LEFT JOIN zqq_news as n
+    ON nl.news_id=n.id
+        WHERE nl.news_label=#{newsLabel} AND n.flag=#{flag} AND n.status=#{status}
+        ORDER BY n.create_time DESC
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+    </select>
+
+
+    <select id="findByNewsId" parameterType="Long" resultType="net.dgg.zqq.entity.news.NewsLabel">
+        SELECT
+        t.`id` as `id`,
+        t.`news_id` as `newsId`,
+        t.`news_label` as `newsLabel`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM zqq_news_label t
+
+        WHERE t.`news_id`=#{newsId}
+    </select>
+
+</mapper>

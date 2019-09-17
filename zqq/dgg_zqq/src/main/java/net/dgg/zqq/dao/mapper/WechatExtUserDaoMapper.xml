@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.wechat.WechatExtUserDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.wechat.WechatExtUser">
+     INSERT INTO sys_user_wechat
+        (`id`,`user_id`,`open_id`,`union_id`,`nick_name`,`sex`,`city`,`province`,`country`,`create_time`,`creater_id`,`creater_org_id`,`creater_name`,`update_time`,`updater_id`,`updater_name`,`updater_org_id`)
+     VALUES
+        (#{id},#{userId},#{openId},#{unionId},#{nickName},#{sex},#{city},#{province},#{country},#{createTime},#{createrId},#{createrOrgId},#{createrName},#{updateTime},#{updaterId},#{updaterName},#{updaterOrgId})
+</insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.wechat.WechatExtUser">
+     UPDATE sys_user_wechat SET
+        `user_id` = #{userId},
+    `open_id` = #{openId},
+    `union_id` = #{unionId},
+    `nick_name` = #{nickName},
+    `sex` = #{sex},
+    `city` = #{city},
+    `province` = #{province},
+        `country` = #{country},
+        `create_time` = #{createTime},
+        `creater_id` = #{createrId},
+        `creater_org_id` = #{createrOrgId},
+        `creater_name` = #{createrName},
+        `update_time` = #{updateTime},
+        `updater_id` = #{updaterId},
+        `updater_name` = #{updaterName},
+        `updater_org_id` = #{updaterOrgId}
+        WHERE id = #{id}
+</update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.wechat.WechatExtUser">
+     SELECT
+        t.`id` as `id`,
+    t.`user_id` as `userId`,
+    t.`open_id` as `openId`,
+    t.`union_id` as `unionId`,
+    t.`nick_name` as `nickName`,
+    t.`sex` as `sex`,
+    t.`city` as `city`,
+    t.`province` as `province`,
+        t.`country` as `country`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+    FROM sys_user_wechat t
+
+        WHERE t.`id`=#{id}
+</select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.wechat.WechatExtUser">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`open_id` as `openId`,
+        t.`union_id` as `unionId`,
+        t.`nick_name` as `nickName`,
+        t.`sex` as `sex`,
+        t.`city` as `city`,
+        t.`province` as `province`,
+        t.`country` as `country`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM sys_user_wechat t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`user_id` as `userId`,
+        t.`open_id` as `openId`,
+        t.`union_id` as `unionId`,
+        t.`nick_name` as `nickName`,
+        t.`sex` as `sex`,
+        t.`city` as `city`,
+        t.`province` as `province`,
+        t.`country` as `country`,
+        t.`create_time` as `createTime`,
+        t.`creater_id` as `createrId`,
+        t.`creater_org_id` as `createrOrgId`,
+        t.`creater_name` as `createrName`,
+        t.`update_time` as `updateTime`,
+        t.`updater_id` as `updaterId`,
+        t.`updater_name` as `updaterName`,
+        t.`updater_org_id` as `updaterOrgId`
+
+        FROM sys_user_wechat t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM sys_user_wechat t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM sys_user_wechat WHERE `id`=#{id}
+</delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=userId and ''!=userId">
+            AND t.`user_id` = #{userId}
+        </if>
+        <if test="null!=openId and ''!=openId">
+            AND t.`open_id` = #{openId}
+        </if>
+        <if test="null!=unionId and ''!=unionId">
+            AND t.`union_id` = #{unionId}
+        </if>
+        <if test="null!=nickName and ''!=nickName">
+            AND t.`nick_name` = #{nickName}
+        </if>
+        <if test="null!=sex and ''!=sex">
+            AND t.`sex` = #{sex}
+        </if>
+        <if test="null!=city and ''!=city">
+            AND t.`city` = #{city}
+        </if>
+        <if test="null!=province and ''!=province">
+            AND t.`province` = #{province}
+        </if>
+        <if test="null!=country and ''!=country">
+            AND t.`country` = #{country}
+        </if>
+        <if test="null!=createTimeStart and ''!=createTimeStart">
+            AND t.`create_time` &gt;= CONCAT(#{createTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=createTimeEnd and ''!=createTimeEnd">
+            AND t.`create_time` &lt;= CONCAT(#{createTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=createrId and ''!=createrId">
+            AND t.`creater_id` = #{createrId}
+        </if>
+        <if test="null!=createrOrgId and ''!=createrOrgId">
+            AND t.`creater_org_id` = #{createrOrgId}
+        </if>
+        <if test="null!=createrName and ''!=createrName">
+            AND t.`creater_name` = #{createrName}
+        </if>
+        <if test="null!=updateTimeStart and ''!=updateTimeStart">
+            AND t.`update_time` &gt;= CONCAT(#{updateTimeStart},' 00:00:00')
+        </if>
+        <if test="null!=updateTimeEnd and ''!=updateTimeEnd">
+            AND t.`update_time` &lt;= CONCAT(#{updateTimeEnd},' 23:59:59')
+        </if>
+        <if test="null!=updaterId and ''!=updaterId">
+            AND t.`updater_id` = #{updaterId}
+        </if>
+        <if test="null!=updaterName and ''!=updaterName">
+            AND t.`updater_name` = #{updaterName}
+        </if>
+        <if test="null!=updaterOrgId and ''!=updaterOrgId">
+            AND t.`updater_org_id` = #{updaterOrgId}
+        </if>
+    </sql>
+
+</mapper>

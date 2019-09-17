@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dgg.zqq.dao.industry.IndustryDao">
+    <insert id="save" parameterType="net.dgg.zqq.entity.industry.Industry">
+        INSERT INTO zqq_industry
+        (`id`,`name`,`parent_id`,`level`,`sort`)
+        VALUES
+        (#{id},#{name},#{parentId},#{level},#{sort})
+    </insert>
+
+    <update id="update" parameterType="net.dgg.zqq.entity.industry.Industry">
+        UPDATE zqq_industry SET
+        `name` = #{name},
+        `parent_id` = #{parentId},
+        `level` = #{level},
+        `sort` = #{sort}
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" parameterType="Long" resultType="net.dgg.zqq.entity.industry.Industry">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`parent_id` as `parentId`,
+        t.`level` as `level`,
+        t.`sort` as `sort`
+
+        FROM zqq_industry t
+
+        WHERE t.`id`=#{id}
+    </select>
+
+    <select id="query" resultType="net.dgg.zqq.entity.industry.Industry">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`parent_id` as `parentId`,
+        t.`level` as `level`,
+        t.`sort` as `sort`
+
+        FROM zqq_industry t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="queryMap" resultType="java.util.Map">
+        SELECT
+        t.`id` as `id`,
+        t.`name` as `name`,
+        t.`parent_id` as `parentId`,
+        t.`level` as `level`,
+        t.`sort` as `sort`
+
+        FROM zqq_industry t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+        <if test="null!=start and ''!=start and null!=limit and ''!=limit">
+            limit #{start},#{limit}
+        </if>
+        <if test="(null==start or ''==start) and null!=limit and ''!=limit">
+            limit #{limit}
+        </if>
+
+
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+
+        FROM zqq_industry t
+
+        <where>
+            <include refid="where"></include>
+        </where>
+
+    </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM zqq_industry WHERE `id`=#{id}
+    </delete>
+
+    <sql id="where">
+        <if test="null!=id and ''!=id">
+            AND t.`id` = #{id}
+        </if>
+        <if test="null!=name and ''!=name">
+            AND t.`name` = #{name}
+        </if>
+        <if test="null!=parentId and ''!=parentId">
+            AND t.`parent_id` = #{parentId}
+        </if>
+        <if test="null!=level and ''!=level">
+            AND t.`level` = #{level}
+        </if>
+        <if test="null!=sort and ''!=sort">
+            AND t.`sort` = #{sort}
+        </if>
+    </sql>
+
+</mapper>

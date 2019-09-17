@@ -1,0 +1,23 @@
+/*
+ * Author:xtt
+ * 2018.02.22
+ * 下拉树css样式
+ */
+@charset "utf-8";
+.select-tree-warp {
+	position: relative;
+}
+.copy-input {
+	display: block;
+	width: 200px;
+	border: 1px #ddd solid;
+	line-height: 28px;
+	height: 28px;
+	cursor: pointer;
+}
+.select-tree-warp {
+	position: absolute;
+	background: #fff;
+	border: 1px #ddd solid;
+	display: none;
+}

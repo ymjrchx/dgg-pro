@@ -1,0 +1,88 @@
+.form-title{
+	padding: 5px 0px;
+	border-bottom: 1px solid #c6d1d6 ;
+	margin-bottom: 13px;
+}
+.form-title:before{
+	content: "";
+	display: inline-block;
+	vertical-align:middle;
+	margin-top: -2px;
+	margin-right: 5px;
+	height: 14px;
+	border-left: 3px solid #1E9FFF;
+}
+.station-btns a{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 12px;
+	background: #E5E5E5;
+	padding: 5px 0px;
+	margin:0 5px;
+	color: #666;
+	width: 65px;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 2px;
+}
+.station-btns a.active{
+	background: #1E9FFF;
+	color: #FFF;
+}
+.edit-btns .layui-btn{
+	padding: 0 30px;
+}
+.edit-btns{
+	padding: 40px 0 20px;
+}
+.layui-table-link {
+	color: #0066ff;
+	font-size: 12px;
+	margin: 0 5px;
+}
+.layui-table-link:hover {
+	color: #0066ff;
+    text-decoration: underline;
+}
+.create-task a{
+	display: block;
+	border: 1px solid #C9C9C9;
+	font-size: 13px;
+	border-radius: 2px;
+	height: 33px;
+	line-height: 33px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.layui-form-item .layui-form-checkbox[lay-skin=primary]{
+	margin: 0;
+	padding:4px 0 0 ;
+}
+.layui-form-checkbox[lay-skin=primary] span{
+	font-size: 12px;
+}
+.layui-table td p{
+	text-align: left;
+}
+.detailMsg .layui-form-label {
+	width: 110px;
+}
+.detailMsg .layui-input-block{
+	font-size: 12px;
+	line-height: 30px;
+	margin-left: 110px;
+	padding-left: 5px;
+}
+.detail-table{
+	margin-bottom: 12px;
+}
+.layui-btn-xs02{
+	height: 26px;
+	line-height: 26px;
+	margin-right: 10px;
+}
+/*修改2018/3、30*/
+.layui-table.changeWidth>tbody>tr>td{
+	max-width: 180px;
+	overflow: hidden;
+}

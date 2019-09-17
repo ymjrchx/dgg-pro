@@ -1,0 +1,14 @@
+2019-07-23 09:51:40	error	load_data.py	224	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")
+2019-07-23 09:53:31	error	business_MongoDB.py	193	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:54:01	error	business_MongoDB.py	209	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:54:31	error	business_MongoDB.py	226	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:55:01	error	business_MongoDB.py	243	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:55:31	error	business_MongoDB.py	259	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:56:01	error	business_MongoDB.py	274	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:56:31	error	business_MongoDB.py	291	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:57:01	error	business_MongoDB.py	308	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 09:57:01	error	business_MongoDB.py	324	get_customer_feature	['        print_to_log(e, level=4)\n']	0	local variable 'df1' referenced before assignment
+2019-07-23 10:42:03	error	business_MongoDB.py	193	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 10:42:33	error	business_MongoDB.py	209	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 10:43:03	error	business_MongoDB.py	226	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out
+2019-07-23 10:43:33	error	business_MongoDB.py	243	get_customer_feature	['        print_to_log(e, level=4)\n']	0	10.2.1.111:17017: timed out

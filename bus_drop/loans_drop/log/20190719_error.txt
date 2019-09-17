@@ -1,0 +1,5 @@
+2019-07-19 17:48:09	error	load_data.py	224	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")
+2019-07-19 17:49:30	error	load_data.py	224	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")
+2019-07-19 17:49:54	error	load_data.py	224	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")
+2019-07-19 17:53:52	error	load_data.py	224	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")
+2019-07-19 17:54:18	error	load_data.py	225	run	["        print_to_log('拉取数据失败，使用旧数据: ', e, level=4)\n"]	0	拉取数据失败，使用旧数据: 	(2003, "Can't connect to MySQL server on '10.2.1.110' (timed out)")

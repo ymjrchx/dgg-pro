@@ -1,0 +1,6 @@
+*.pk
+*.csv
+*.m
+*.model.*
+checkpoint
+!.gitignore

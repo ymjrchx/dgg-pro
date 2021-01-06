@@ -14,7 +14,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "element-ui": "^2.4.9",
     "es6-promise": "^4.2.5",
     "js-cookie": "^2.2.0",

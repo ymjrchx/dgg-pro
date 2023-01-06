@@ -19,7 +19,7 @@
     "es6-promise": "^4.2.5",
     "js-cookie": "^2.2.0",
     "moment": "^2.22.2",
-    "nuxt": "^1.0.0",
+    "nuxt": "^3.0.0",
     "request": "^2.88.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
